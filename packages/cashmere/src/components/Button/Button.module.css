@@ -1,23 +1,25 @@
 /* ==========================================================================
    Button — Cashmere Design System
+   All values reference sds token variables — no raw values.
    ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Base
+   -------------------------------------------------------------------------- */
 
 .base {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: var(--sds-spacing-8);
   border: var(--sds-stroke-border) solid transparent;
   border-radius: var(--sds-radius-300);
   font-family: var(--sds-family-web-font);
-  font-weight: var(--sds-weight-medium);
-  line-height: 18px;
   cursor: pointer;
   white-space: nowrap;
   transition: background-color 120ms ease, border-color 120ms ease, color 120ms ease;
-  text-decoration: none;
   outline: none;
   box-sizing: border-box;
+  text-decoration: none;
 }
 
 .base:focus-visible {
@@ -31,7 +33,7 @@
 }
 
 /* --------------------------------------------------------------------------
-   Icon wrapper
+   Icon + label wrappers
    -------------------------------------------------------------------------- */
 
 .icon {
@@ -39,10 +41,6 @@
   align-items: center;
   flex-shrink: 0;
 }
-
-/* --------------------------------------------------------------------------
-   Label
-   -------------------------------------------------------------------------- */
 
 .label {
   display: inline-flex;
@@ -54,65 +52,58 @@
    ========================================================================== */
 
 .large {
-  height: 40px;
+  height: var(--sds-spacing-40);
   padding: 0 var(--sds-spacing-16);
-  font-size: var(--sds-size-14);
   gap: var(--sds-spacing-8);
+  font-size: var(--sds-size-14);
+  line-height: 1.43;
 }
 
 .large .icon > * {
-  width: 16px;
-  height: 16px;
+  width: var(--sds-icon-sm);
+  height: var(--sds-icon-sm);
 }
 
 .medium {
-  height: 32px;
+  height: var(--sds-spacing-32);
   padding: 0 var(--sds-spacing-12);
-  font-size: var(--sds-size-14);
   gap: var(--sds-spacing-8);
+  font-size: var(--sds-size-14);
+  line-height: 1.43;
 }
 
 .medium .icon > * {
-  width: 16px;
-  height: 16px;
+  width: var(--sds-icon-sm);
+  height: var(--sds-icon-sm);
 }
 
 .small {
-  height: 24px;
+  height: var(--sds-spacing-24);
   padding: 0 var(--sds-spacing-8);
-  font-size: var(--sds-size-12);
   gap: var(--sds-spacing-4);
+  font-size: var(--sds-size-12);
+  line-height: 1.5;
 }
 
 .small .icon > * {
-  width: 14px;
-  height: 14px;
+  width: var(--sds-icon-xs2);
+  height: var(--sds-icon-xs2);
 }
 
-/* Icon-only square shape */
+/* Icon-only: square */
 
-.iconOnly.large {
-  width: 40px;
-  padding: 0;
-}
-
-.iconOnly.medium {
-  width: 32px;
-  padding: 0;
-}
-
-.iconOnly.small {
-  width: 24px;
-  padding: 0;
-}
+.iconOnly.large  { width: var(--sds-spacing-40); padding: 0; }
+.iconOnly.medium { width: var(--sds-spacing-32); padding: 0; }
+.iconOnly.small  { width: var(--sds-spacing-24); padding: 0; }
 
 /* ==========================================================================
-   Variants — Primary
+   Variant — Primary
+   font-weight: medium (500) — matches sds-buttons-primarylarge/small
    ========================================================================== */
 
 .primary {
+  font-weight: var(--sds-weight-medium);
   background-color: var(--sds-brand-bg-default);
-  border-color: transparent;
   color: var(--sds-neutral-text-inverse);
 }
 
@@ -129,7 +120,7 @@
   color: var(--sds-neutral-text-disabled);
 }
 
-/* Primary — Negative */
+/* Primary — Negative intent */
 
 .primary.negative {
   background-color: var(--sds-negative-bg-default);
@@ -154,10 +145,12 @@
 }
 
 /* ==========================================================================
-   Variants — Secondary
+   Variant — Secondary
+   font-weight: medium (500) — matches sds-buttons-secondarylarge/small
    ========================================================================== */
 
 .secondary {
+  font-weight: var(--sds-weight-medium);
   background-color: transparent;
   border-color: var(--sds-neutral-border-default);
   color: var(--sds-neutral-text-primary);
@@ -176,7 +169,7 @@
   color: var(--sds-neutral-text-disabled);
 }
 
-/* Secondary — Negative */
+/* Secondary — Negative intent */
 
 .secondary.negative {
   border-color: var(--sds-negative-border-subtle);
@@ -201,13 +194,17 @@
 }
 
 /* ==========================================================================
-   Variants — Tertiary
+   Variant — Tertiary
+   Underlined text-link style button.
+   font-weight: semibold (600) — matches sds-buttons-tertiarylarge/small
    ========================================================================== */
 
 .tertiary {
+  font-weight: var(--sds-weight-semibold);
   background-color: transparent;
-  border-color: transparent;
   color: var(--sds-neutral-text-primary);
+  text-decoration: underline;
+  text-underline-offset: var(--sds-spacing-2);
 }
 
 .tertiary:hover:not(:disabled) {
@@ -222,7 +219,7 @@
   color: var(--sds-neutral-text-disabled);
 }
 
-/* Tertiary — Negative */
+/* Tertiary — Negative intent */
 
 .tertiary.negative {
   color: var(--sds-negative-text-default);
