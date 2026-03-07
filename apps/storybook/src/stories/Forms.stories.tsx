@@ -21,7 +21,6 @@ export const FormHeader: Story = {
         variant="form"
         heading="Page Heading"
         subheading="Subheading or description goes here"
-        showHelp
       />
     </div>
   ),
@@ -33,7 +32,6 @@ export const FormHeaderNoSubheading: Story = {
       <TopNavigation
         variant="form"
         heading="Page Heading"
-        showHelp
       />
     </div>
   ),

@@ -25,26 +25,6 @@ export const TopNavigation: React.FC<TopNavigationProps> = ({
           {heading && <h1 className={styles.heading}>{heading}</h1>}
           {subheading && <p className={styles.subheading}>{subheading}</p>}
         </div>
-        <div className={styles.trailingIcons}>
-          {showHelp && (
-            <button
-              type="button"
-              className={styles.iconBtn}
-              onClick={onHelpClick}
-              aria-label="Help"
-            >
-              <IconHelp size={24} />
-            </button>
-          )}
-          <button
-            type="button"
-            className={styles.iconBtn}
-            onClick={onProfileClick}
-            aria-label="Profile"
-          >
-            <IconUser size={24} />
-          </button>
-        </div>
       </header>
     )
   }
