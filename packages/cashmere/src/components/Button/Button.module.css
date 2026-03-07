@@ -1,0 +1,245 @@
+/* ==========================================================================
+   Button — Cashmere Design System
+   ========================================================================== */
+
+.base {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sds-spacing-8);
+  border: var(--sds-stroke-border) solid transparent;
+  border-radius: var(--sds-radius-300);
+  font-family: var(--sds-family-web-font);
+  font-weight: var(--sds-weight-medium);
+  line-height: 18px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background-color 120ms ease, border-color 120ms ease, color 120ms ease;
+  text-decoration: none;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.base:focus-visible {
+  outline: var(--sds-stroke-focus) solid var(--sds-focus-infocus-default);
+  outline-offset: 2px;
+}
+
+.base:disabled {
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* --------------------------------------------------------------------------
+   Icon wrapper
+   -------------------------------------------------------------------------- */
+
+.icon {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+/* --------------------------------------------------------------------------
+   Label
+   -------------------------------------------------------------------------- */
+
+.label {
+  display: inline-flex;
+  align-items: center;
+}
+
+/* ==========================================================================
+   Sizes
+   ========================================================================== */
+
+.large {
+  height: 40px;
+  padding: 0 var(--sds-spacing-16);
+  font-size: var(--sds-size-14);
+  gap: var(--sds-spacing-8);
+}
+
+.large .icon > * {
+  width: 16px;
+  height: 16px;
+}
+
+.medium {
+  height: 32px;
+  padding: 0 var(--sds-spacing-12);
+  font-size: var(--sds-size-14);
+  gap: var(--sds-spacing-8);
+}
+
+.medium .icon > * {
+  width: 16px;
+  height: 16px;
+}
+
+.small {
+  height: 24px;
+  padding: 0 var(--sds-spacing-8);
+  font-size: var(--sds-size-12);
+  gap: var(--sds-spacing-4);
+}
+
+.small .icon > * {
+  width: 14px;
+  height: 14px;
+}
+
+/* Icon-only square shape */
+
+.iconOnly.large {
+  width: 40px;
+  padding: 0;
+}
+
+.iconOnly.medium {
+  width: 32px;
+  padding: 0;
+}
+
+.iconOnly.small {
+  width: 24px;
+  padding: 0;
+}
+
+/* ==========================================================================
+   Variants — Primary
+   ========================================================================== */
+
+.primary {
+  background-color: var(--sds-brand-bg-default);
+  border-color: transparent;
+  color: var(--sds-neutral-text-inverse);
+}
+
+.primary:hover:not(:disabled) {
+  background-color: var(--sds-brand-bg-hover);
+}
+
+.primary:active:not(:disabled) {
+  background-color: var(--sds-brand-bg-pressed);
+}
+
+.primary:disabled {
+  background-color: var(--sds-brand-bg-disabled);
+  color: var(--sds-neutral-text-disabled);
+}
+
+/* Primary — Negative */
+
+.primary.negative {
+  background-color: var(--sds-negative-bg-default);
+  color: var(--sds-neutral-text-inverse);
+}
+
+.primary.negative:hover:not(:disabled) {
+  background-color: var(--sds-negative-bg-hover);
+}
+
+.primary.negative:active:not(:disabled) {
+  background-color: var(--sds-negative-bg-pressed);
+}
+
+.primary.negative:disabled {
+  background-color: var(--sds-negative-bg-disabled);
+  color: var(--sds-neutral-text-disabled);
+}
+
+.primary.negative:focus-visible {
+  outline-color: var(--sds-focus-infocus-error);
+}
+
+/* ==========================================================================
+   Variants — Secondary
+   ========================================================================== */
+
+.secondary {
+  background-color: transparent;
+  border-color: var(--sds-neutral-border-default);
+  color: var(--sds-neutral-text-primary);
+}
+
+.secondary:hover:not(:disabled) {
+  background-color: var(--sds-neutral-bg-default-hover);
+}
+
+.secondary:active:not(:disabled) {
+  background-color: var(--sds-neutral-bg-default-pressed);
+}
+
+.secondary:disabled {
+  border-color: var(--sds-neutral-border-disabled);
+  color: var(--sds-neutral-text-disabled);
+}
+
+/* Secondary — Negative */
+
+.secondary.negative {
+  border-color: var(--sds-negative-border-subtle);
+  color: var(--sds-negative-text-default);
+}
+
+.secondary.negative:hover:not(:disabled) {
+  background-color: var(--sds-negative-bg-subtle);
+}
+
+.secondary.negative:active:not(:disabled) {
+  background-color: var(--sds-negative-bg-subtlepressed);
+}
+
+.secondary.negative:disabled {
+  border-color: var(--sds-neutral-border-disabled);
+  color: var(--sds-neutral-text-disabled);
+}
+
+.secondary.negative:focus-visible {
+  outline-color: var(--sds-focus-infocus-error);
+}
+
+/* ==========================================================================
+   Variants — Tertiary
+   ========================================================================== */
+
+.tertiary {
+  background-color: transparent;
+  border-color: transparent;
+  color: var(--sds-neutral-text-primary);
+}
+
+.tertiary:hover:not(:disabled) {
+  background-color: var(--sds-neutral-bg-default-hover);
+}
+
+.tertiary:active:not(:disabled) {
+  background-color: var(--sds-neutral-bg-default-pressed);
+}
+
+.tertiary:disabled {
+  color: var(--sds-neutral-text-disabled);
+}
+
+/* Tertiary — Negative */
+
+.tertiary.negative {
+  color: var(--sds-negative-text-default);
+}
+
+.tertiary.negative:hover:not(:disabled) {
+  background-color: var(--sds-negative-bg-subtle);
+}
+
+.tertiary.negative:active:not(:disabled) {
+  background-color: var(--sds-negative-bg-subtlepressed);
+}
+
+.tertiary.negative:disabled {
+  color: var(--sds-neutral-text-disabled);
+}
+
+.tertiary.negative:focus-visible {
+  outline-color: var(--sds-focus-infocus-error);
+}
