@@ -33,12 +33,65 @@ const productVerticals: ProductVertical[] = [
   { id: 'payouts', label: 'Payouts' },
 ]
 
-const CashfreeLogo = () => (
-  <svg width="120" height="36" viewBox="0 0 120 36" fill="none">
-    <rect width="36" height="36" rx="8" fill="#094eff" />
-    <text x="44" y="15" fontFamily="DM Sans, sans-serif" fontSize="13" fontWeight="700" fill="#fffffc">Cashfree</text>
-    <text x="44" y="30" fontFamily="DM Sans, sans-serif" fontSize="11" fontWeight="400" fill="#fffffc" opacity="0.7">Payments</text>
+/**
+ * Cashfree Payments wordmark — reconstructed from Figma design vectors.
+ * The mark occupies the left ~30 px; wordmark text fills the remainder.
+ * Replace with the official SVG asset when available.
+ */
+const CashfreePaymentsLogo = () => (
+  <svg
+    width="120"
+    height="36"
+    viewBox="0 0 119.613 36"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    aria-label="Cashfree Payments"
+    role="img"
+  >
+    {/* Logo mark — far-left vertical bar (lime) */}
+    <rect x="0" y="6.91" width="4.98" height="23.45" fill="#B4E600" />
+    {/* Logo mark — top horizontal bar (green) */}
+    <rect x="6.72" y="0.27" width="23.45" height="4.98" fill="#00B779" />
+    {/* Logo mark — inner vertical bar (green) */}
+    <rect x="6.72" y="0.27" width="4.98" height="23.45" fill="#00B779" />
+    {/* Logo mark — middle horizontal bar (lime) */}
+    <rect x="13.28" y="6.91" width="10.76" height="4.98" fill="#B4E600" />
+    {/* Wordmark — "Cashfree" */}
+    <text
+      x="34"
+      y="15"
+      fontFamily="DM Sans, sans-serif"
+      fontSize="12.5"
+      fontWeight="700"
+      fill="#FFFFFC"
+      letterSpacing="-0.2"
+    >
+      Cashfree
+    </text>
+    {/* Wordmark — "Payments" */}
+    <text
+      x="24"
+      y="32"
+      fontFamily="DM Sans, sans-serif"
+      fontSize="10.5"
+      fontWeight="400"
+      fill="#FFFFFC"
+    >
+      Payments
+    </text>
   </svg>
+)
+
+/**
+ * "pulse" application logo — using Figma MCP asset (valid 7 days).
+ * Replace with the actual SVG asset for production.
+ */
+const PulseAppLogo = () => (
+  <img
+    src="https://www.figma.com/api/mcp/asset/a7e774c8-676e-48a8-a9c1-fb590091c8f5"
+    alt="pulse"
+    style={{ width: '31.405px', height: '11.475px', display: 'block' }}
+  />
 )
 
 const ChevronTrailing = () => <IconChevronDown size={20} />
@@ -102,7 +155,8 @@ export const Default: Story = {
     return (
       <div style={{ display: 'flex', height: '100vh', background: '#f4f6f9' }}>
         <NavigationDrawer
-          logo={<CashfreeLogo />}
+          logo={<CashfreePaymentsLogo />}
+          appLogo={<PulseAppLogo />}
           sections={sections}
           activeItemId={activeItemId}
           productVerticals={productVerticals}
@@ -134,7 +188,8 @@ export const WithDropdownOpen: Story = {
     return (
       <div style={{ display: 'flex', height: '100vh', background: '#f4f6f9' }}>
         <NavigationDrawer
-          logo={<CashfreeLogo />}
+          logo={<CashfreePaymentsLogo />}
+          appLogo={<PulseAppLogo />}
           sections={sections}
           activeItemId={activeItemId}
           productVerticals={productVerticals}

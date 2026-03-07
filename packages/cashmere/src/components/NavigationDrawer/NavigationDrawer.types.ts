@@ -29,8 +29,10 @@ export interface NavigationDrawerProps {
   sections: NavSection[]
   /** ID of the currently active nav item */
   activeItemId?: string
-  /** Logo rendered at top */
+  /** Logo rendered at top (Cashfree Payments wordmark) */
   logo?: React.ReactNode
+  /** App name logo rendered alongside the main logo, bottom-aligned (e.g. "pulse") */
+  appLogo?: React.ReactNode
   /** Product verticals for the dropdown selector */
   productVerticals?: ProductVertical[]
   /** Currently selected product vertical ID */

@@ -29,12 +29,22 @@
   flex-shrink: 0;
 }
 
+/* App name (e.g. "pulse") wrapper — bottom-aligned, clips overflow */
+.appLogoWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  overflow: hidden;
+  flex-shrink: 0;
+  padding: var(--sds-spacing-4) var(--sds-spacing-2);
+}
+
 /* ── Product Vertical trigger ─────────────────────────────────────────────── */
 .productTrigger {
   display: flex;
   align-items: center;
   gap: var(--sds-spacing-10);
-  width: 296px;
+  width: 100%;
   padding: var(--sds-spacing-12) var(--sds-spacing-24);
   border-radius: var(--sds-radius-300);
   border: var(--sds-stroke-border) solid var(--sds-neutral-border-strong);

@@ -92,6 +92,7 @@ export const NavigationDrawer: React.FC<NavigationDrawerProps> = ({
   sections,
   activeItemId,
   logo,
+  appLogo,
   productVerticals,
   activeProductId,
   productDropdownOpen = false,
@@ -109,8 +110,13 @@ export const NavigationDrawer: React.FC<NavigationDrawerProps> = ({
       className={`${styles.drawer} ${className ?? ''}`}
       aria-label="Main navigation"
     >
-      {/* Logo */}
-      {logo && <div className={styles.logoArea}>{logo}</div>}
+      {/* Logo + App name header */}
+      {(logo || appLogo) && (
+        <div className={styles.logoArea}>
+          {logo}
+          {appLogo && <div className={styles.appLogoWrapper}>{appLogo}</div>}
+        </div>
+      )}
 
       {/* Product vertical selector */}
       {productVerticals && productVerticals.length > 0 && (
