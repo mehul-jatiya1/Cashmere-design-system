@@ -3,101 +3,220 @@ import type { Meta, StoryObj } from '@storybook/react'
 
 const meta: Meta = {
   title: 'Foundations/Typography',
-  parameters: { layout: 'padded' },
+  parameters: { layout: 'fullscreen' },
 }
 
 export default meta
 
-const label = (s: string) => (
-  <h3 style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 11, fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase', color: '#767676', margin: '32px 0 12px' }}>
-    {s}
-  </h3>
+const font = 'DM Sans, sans-serif'
+
+/* ── Helpers ─────────────────────────────────────────────────────────────── */
+
+const Page = ({ children }: { children: React.ReactNode }) => (
+  <div style={{ padding: 40, background: '#f4f6f9', minHeight: '100vh', fontFamily: font }}>
+    {children}
+  </div>
 )
 
-const divider = () => <hr style={{ border: 'none', borderTop: '1px solid #e8e8e8', margin: '4px 0' }} />
+const PageTitle = ({ title, subtitle }: { title: string; subtitle?: string }) => (
+  <div style={{ marginBottom: 40 }}>
+    <h1 style={{ fontFamily: font, fontSize: 28, fontWeight: 700, color: '#1b1b1b', margin: 0 }}>{title}</h1>
+    {subtitle && <p style={{ fontFamily: font, fontSize: 14, color: '#5f5f5f', margin: '8px 0 0', lineHeight: 1.6 }}>{subtitle}</p>}
+  </div>
+)
+
+const SectionLabel = ({ children }: { children: React.ReactNode }) => (
+  <div style={{ fontFamily: font, fontSize: 11, fontWeight: 600, color: '#a4a4a4', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: 4, marginTop: 32 }}>
+    {children}
+  </div>
+)
+
+const Divider = () => (
+  <div style={{ height: 1, background: '#e8e8e8', margin: '0' }} />
+)
+
+interface TypeRowProps {
+  sample: string
+  name: string
+  sizeToken: string
+  weightToken: string
+  fontToken: string
+  lineHeight: number | string
+  uppercase?: boolean
+  className?: string
+}
+
+const TypeRow = ({ sample, name, sizeToken, weightToken, fontToken, lineHeight, uppercase }: TypeRowProps) => (
+  <>
+    <div style={{ display: 'flex', alignItems: 'center', gap: 24, padding: '16px 20px', background: '#fff', borderRadius: 8 }}>
+      {/* Sample text */}
+      <div style={{ flex: 1, minWidth: 0 }}>
+        <span style={{
+          fontFamily: `var(${fontToken})`,
+          fontSize: `var(${sizeToken})`,
+          fontWeight: `var(${weightToken})` as any,
+          lineHeight,
+          color: '#1b1b1b',
+          letterSpacing: uppercase ? '0.06em' : undefined,
+          textTransform: uppercase ? 'uppercase' : undefined,
+          display: 'block',
+        }}>
+          {sample}
+        </span>
+      </div>
+
+      {/* Meta */}
+      <div style={{ display: 'flex', gap: 32, flexShrink: 0, alignItems: 'center' }}>
+        <div style={{ textAlign: 'right', minWidth: 140 }}>
+          <div style={{ fontFamily: font, fontSize: 12, fontWeight: 600, color: '#1b1b1b' }}>{name}</div>
+        </div>
+        <TokenPill token={fontToken} />
+        <TokenPill token={sizeToken} />
+        <TokenPill token={weightToken} />
+        <div style={{ fontFamily: font, fontSize: 11, color: '#a4a4a4', minWidth: 60, textAlign: 'right' }}>
+          lh {lineHeight}
+        </div>
+      </div>
+    </div>
+    <Divider />
+  </>
+)
+
+const TokenPill = ({ token }: { token: string }) => (
+  <div style={{
+    fontFamily: font, fontSize: 10, fontWeight: 500,
+    color: '#094eff', background: '#e5edff',
+    padding: '2px 8px', borderRadius: 4,
+    whiteSpace: 'nowrap',
+  }}>
+    {token}
+  </div>
+)
+
+/* ── Weight Card ─────────────────────────────────────────────────────────── */
+
+interface WeightCardProps {
+  label: string
+  weightToken: string
+  weightValue: string
+}
+
+const WeightCard = ({ label, weightToken, weightValue }: WeightCardProps) => (
+  <div style={{ flex: 1, background: '#fff', borderRadius: 10, padding: '24px 20px', display: 'flex', flexDirection: 'column', gap: 12 }}>
+    <span style={{
+      fontFamily: `var(--sds-family-web-font)`,
+      fontSize: 48,
+      fontWeight: `var(${weightToken})` as any,
+      color: '#1b1b1b',
+      lineHeight: 1,
+    }}>
+      Aa
+    </span>
+    <div>
+      <div style={{ fontFamily: font, fontSize: 13, fontWeight: 700, color: '#1b1b1b' }}>{label}</div>
+      <div style={{ fontFamily: font, fontSize: 11, color: '#767676', marginTop: 2 }}>{weightValue}</div>
+      <TokenPill token={weightToken} />
+    </div>
+    <div style={{ marginTop: 4 }}>
+      <div style={{ fontFamily: `var(--sds-family-web-font)`, fontSize: 13, fontWeight: `var(${weightToken})` as any, color: '#494949', lineHeight: 1.5 }}>
+        The quick brown fox jumps over the lazy dog
+      </div>
+    </div>
+  </div>
+)
+
+/* ── Stories ─────────────────────────────────────────────────────────────── */
 
 export const TypeScale: StoryObj = {
+  name: 'Type Scale',
   render: () => (
-    <div style={{ padding: 8 }}>
-      {label('Headings')}
-      {[
-        { name: 'H1 · 48px · Semibold', size: 48, weight: 600, lh: 1.1 },
-        { name: 'H2 · 40px · Semibold', size: 40, weight: 600, lh: 1.2 },
-        { name: 'H3 · 32px · Semibold', size: 32, weight: 600, lh: 1.25 },
-        { name: 'H4 · 28px · Semibold', size: 28, weight: 600, lh: 1.3 },
-        { name: 'H5 · 24px · Semibold', size: 24, weight: 600, lh: 1.33 },
-        { name: 'H6 · 20px · Bold', size: 20, weight: 700, lh: 1.4 },
-        { name: 'H7 · 16px · Bold', size: 16, weight: 700, lh: 1.5 },
-      ].map(({ name, size, weight, lh }) => (
-        <div key={name}>
-          <div style={{ display: 'flex', alignItems: 'baseline', gap: 24, padding: '12px 0' }}>
-            <span style={{ fontFamily: 'DM Sans, sans-serif', fontSize: size, fontWeight: weight, lineHeight: lh, color: '#1b1b1b', flex: 1 }}>
-              The quick brown fox
-            </span>
-            <span style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 11, color: '#a4a4a4', whiteSpace: 'nowrap', flexShrink: 0 }}>{name}</span>
-          </div>
-          {divider()}
-        </div>
-      ))}
+    <Page>
+      <PageTitle
+        title="Type Scale"
+        subtitle="All typographic styles use DM Sans and reference only design tokens — never hardcoded values."
+      />
 
-      {label('Body')}
-      {[
-        { name: 'Body Large · 16px · Medium', size: 16, weight: 500, lh: 1.5 },
-        { name: 'Body Large · 16px · Semibold', size: 16, weight: 600, lh: 1.5 },
-        { name: 'Body Large · 16px · Bold', size: 16, weight: 700, lh: 1.5 },
-        { name: 'Body Small · 14px · Medium', size: 14, weight: 500, lh: 1.43 },
-        { name: 'Body Small · 14px · Semibold', size: 14, weight: 600, lh: 1.43 },
-        { name: 'Body Small · 14px · Bold', size: 14, weight: 700, lh: 1.43 },
-        { name: 'Body XS · 12px · Medium', size: 12, weight: 500, lh: 1.5 },
-        { name: 'Body XS · 12px · Semibold', size: 12, weight: 600, lh: 1.5 },
-        { name: 'Body XS · 12px · Bold', size: 12, weight: 700, lh: 1.5 },
-      ].map(({ name, size, weight, lh }) => (
-        <div key={name}>
-          <div style={{ display: 'flex', alignItems: 'baseline', gap: 24, padding: '10px 0' }}>
-            <span style={{ fontFamily: 'DM Sans, sans-serif', fontSize: size, fontWeight: weight, lineHeight: lh, color: '#1b1b1b', flex: 1 }}>
-              The quick brown fox jumps over the lazy dog
-            </span>
-            <span style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 11, color: '#a4a4a4', whiteSpace: 'nowrap', flexShrink: 0 }}>{name}</span>
-          </div>
-          {divider()}
-        </div>
-      ))}
+      {/* Token legend */}
+      <div style={{ display: 'flex', gap: 16, marginBottom: 24, alignItems: 'center' }}>
+        <span style={{ fontFamily: font, fontSize: 11, color: '#767676' }}>Tokens used per style:</span>
+        <TokenPill token="--sds-family-web-font" />
+        <TokenPill token="--sds-size-*" />
+        <TokenPill token="--sds-weight-*" />
+      </div>
 
-      {label('Overline')}
-      {[
-        { name: 'Overline · 12px · Semibold · Uppercase', size: 12, weight: 600, upper: true },
-        { name: 'Overline · 12px · Bold · Uppercase', size: 12, weight: 700, upper: true },
-      ].map(({ name, size, weight, upper }) => (
-        <div key={name}>
-          <div style={{ display: 'flex', alignItems: 'baseline', gap: 24, padding: '10px 0' }}>
-            <span style={{ fontFamily: 'DM Sans, sans-serif', fontSize: size, fontWeight: weight, lineHeight: 1.33, letterSpacing: '0.06em', textTransform: upper ? 'uppercase' : undefined, color: '#1b1b1b', flex: 1 }}>
-              Section Label
-            </span>
-            <span style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 11, color: '#a4a4a4', whiteSpace: 'nowrap', flexShrink: 0 }}>{name}</span>
-          </div>
-          {divider()}
+      {/* Column header */}
+      <div style={{ display: 'flex', alignItems: 'center', gap: 24, padding: '8px 20px', marginBottom: 4 }}>
+        <div style={{ flex: 1, fontFamily: font, fontSize: 10, fontWeight: 600, color: '#a4a4a4', textTransform: 'uppercase', letterSpacing: '0.08em' }}>Sample</div>
+        <div style={{ display: 'flex', gap: 32, flexShrink: 0 }}>
+          <div style={{ fontFamily: font, fontSize: 10, fontWeight: 600, color: '#a4a4a4', textTransform: 'uppercase', letterSpacing: '0.08em', minWidth: 140, textAlign: 'right' }}>Style</div>
+          <div style={{ fontFamily: font, fontSize: 10, fontWeight: 600, color: '#a4a4a4', textTransform: 'uppercase', letterSpacing: '0.08em', minWidth: 80 }}>Font</div>
+          <div style={{ fontFamily: font, fontSize: 10, fontWeight: 600, color: '#a4a4a4', textTransform: 'uppercase', letterSpacing: '0.08em', minWidth: 80 }}>Size</div>
+          <div style={{ fontFamily: font, fontSize: 10, fontWeight: 600, color: '#a4a4a4', textTransform: 'uppercase', letterSpacing: '0.08em', minWidth: 80 }}>Weight</div>
+          <div style={{ fontFamily: font, fontSize: 10, fontWeight: 600, color: '#a4a4a4', textTransform: 'uppercase', letterSpacing: '0.08em', minWidth: 60, textAlign: 'right' }}>Line Ht</div>
         </div>
-      ))}
-    </div>
+      </div>
+
+      <SectionLabel>Headings</SectionLabel>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 2, borderRadius: 10, overflow: 'hidden', border: '1px solid #e8e8e8' }}>
+        <TypeRow sample="H1 — The quick brown fox" name="H1 · Semibold" sizeToken="--sds-size-48" weightToken="--sds-weight-semibold" fontToken="--sds-family-web-font" lineHeight={1.1} />
+        <TypeRow sample="H2 — The quick brown fox" name="H2 · Semibold" sizeToken="--sds-size-40" weightToken="--sds-weight-semibold" fontToken="--sds-family-web-font" lineHeight={1.2} />
+        <TypeRow sample="H3 — The quick brown fox" name="H3 · Semibold" sizeToken="--sds-size-32" weightToken="--sds-weight-semibold" fontToken="--sds-family-web-font" lineHeight={1.25} />
+        <TypeRow sample="H4 — The quick brown fox" name="H4 · Semibold" sizeToken="--sds-size-28" weightToken="--sds-weight-semibold" fontToken="--sds-family-web-font" lineHeight={1.3} />
+        <TypeRow sample="H5 — The quick brown fox" name="H5 · Semibold" sizeToken="--sds-size-24" weightToken="--sds-weight-semibold" fontToken="--sds-family-web-font" lineHeight={1.33} />
+        <TypeRow sample="H6 — The quick brown fox jumps" name="H6 · Bold" sizeToken="--sds-size-20" weightToken="--sds-weight-bold" fontToken="--sds-family-web-font" lineHeight={1.4} />
+        <TypeRow sample="H7 — The quick brown fox jumps over" name="H7 · Bold" sizeToken="--sds-size-16" weightToken="--sds-weight-bold" fontToken="--sds-family-web-font" lineHeight={1.5} />
+      </div>
+
+      <SectionLabel>Body</SectionLabel>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 2, borderRadius: 10, overflow: 'hidden', border: '1px solid #e8e8e8' }}>
+        <TypeRow sample="Body Large — The quick brown fox jumps over the lazy dog" name="Body Large · Medium" sizeToken="--sds-size-16" weightToken="--sds-weight-medium" fontToken="--sds-family-web-font" lineHeight={1.5} />
+        <TypeRow sample="Body Large — The quick brown fox jumps over the lazy dog" name="Body Large · Semibold" sizeToken="--sds-size-16" weightToken="--sds-weight-semibold" fontToken="--sds-family-web-font" lineHeight={1.5} />
+        <TypeRow sample="Body Large — The quick brown fox jumps over the lazy dog" name="Body Large · Bold" sizeToken="--sds-size-16" weightToken="--sds-weight-bold" fontToken="--sds-family-web-font" lineHeight={1.5} />
+        <TypeRow sample="Body Small — The quick brown fox jumps over the lazy dog" name="Body Small · Medium" sizeToken="--sds-size-14" weightToken="--sds-weight-medium" fontToken="--sds-family-web-font" lineHeight={1.43} />
+        <TypeRow sample="Body Small — The quick brown fox jumps over the lazy dog" name="Body Small · Semibold" sizeToken="--sds-size-14" weightToken="--sds-weight-semibold" fontToken="--sds-family-web-font" lineHeight={1.43} />
+        <TypeRow sample="Body Small — The quick brown fox jumps over the lazy dog" name="Body Small · Bold" sizeToken="--sds-size-14" weightToken="--sds-weight-bold" fontToken="--sds-family-web-font" lineHeight={1.43} />
+        <TypeRow sample="Body XS — The quick brown fox jumps over the lazy dog" name="Body XS · Medium" sizeToken="--sds-size-12" weightToken="--sds-weight-medium" fontToken="--sds-family-web-font" lineHeight={1.5} />
+        <TypeRow sample="Body XS — The quick brown fox jumps over the lazy dog" name="Body XS · Semibold" sizeToken="--sds-size-12" weightToken="--sds-weight-semibold" fontToken="--sds-family-web-font" lineHeight={1.5} />
+        <TypeRow sample="Body XS — The quick brown fox jumps over the lazy dog" name="Body XS · Bold" sizeToken="--sds-size-12" weightToken="--sds-weight-bold" fontToken="--sds-family-web-font" lineHeight={1.5} />
+      </div>
+
+      <SectionLabel>Overline</SectionLabel>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 2, borderRadius: 10, overflow: 'hidden', border: '1px solid #e8e8e8' }}>
+        <TypeRow sample="Section Label" name="Overline · Semibold" sizeToken="--sds-size-12" weightToken="--sds-weight-semibold" fontToken="--sds-family-web-font" lineHeight={1.33} uppercase />
+        <TypeRow sample="Section Label" name="Overline · Bold" sizeToken="--sds-size-12" weightToken="--sds-weight-bold" fontToken="--sds-family-web-font" lineHeight={1.33} uppercase />
+      </div>
+    </Page>
   ),
 }
 
 export const FontWeights: StoryObj = {
+  name: 'Font Weights',
   render: () => (
-    <div style={{ padding: 8, display: 'flex', gap: 48 }}>
-      {[
-        { label: 'Regular', weight: 400, token: '--sds-weight-regular' },
-        { label: 'Medium', weight: 500, token: '--sds-weight-medium' },
-        { label: 'Semibold', weight: 600, token: '--sds-weight-semibold' },
-        { label: 'Bold', weight: 700, token: '--sds-weight-bold' },
-      ].map(({ label: l, weight, token }) => (
-        <div key={weight} style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-          <span style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 24, fontWeight: weight, color: '#1b1b1b' }}>Aa</span>
-          <span style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 13, fontWeight: 600, color: '#1b1b1b' }}>{l}</span>
-          <span style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 11, color: '#767676' }}>{weight}</span>
-          <span style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 10, color: '#a4a4a4' }}>{token}</span>
+    <Page>
+      <PageTitle
+        title="Font Weights"
+        subtitle="Four weights available. All reference the --sds-weight-* token."
+      />
+      <div style={{ display: 'flex', gap: 16 }}>
+        <WeightCard label="Regular" weightToken="--sds-weight-regular" weightValue="400" />
+        <WeightCard label="Medium" weightToken="--sds-weight-medium" weightValue="500" />
+        <WeightCard label="Semibold" weightToken="--sds-weight-semibold" weightValue="600" />
+        <WeightCard label="Bold" weightToken="--sds-weight-bold" weightValue="700" />
+      </div>
+
+      <div style={{ marginTop: 32 }}>
+        <SectionLabel>Font Family</SectionLabel>
+        <div style={{ background: '#fff', borderRadius: 10, padding: '24px 20px', display: 'flex', alignItems: 'center', gap: 32 }}>
+          <span style={{ fontFamily: 'var(--sds-family-web-font)', fontSize: 40, fontWeight: 600, color: '#1b1b1b', letterSpacing: '-0.01em' }}>
+            DM Sans
+          </span>
+          <div>
+            <div style={{ fontFamily: font, fontSize: 13, fontWeight: 600, color: '#1b1b1b', marginBottom: 4 }}>DM Sans</div>
+            <div style={{ fontFamily: font, fontSize: 11, color: '#767676', marginBottom: 8 }}>Google Fonts · weights 400, 500, 600, 700</div>
+            <TokenPill token="--sds-family-web-font" />
+          </div>
         </div>
-      ))}
-    </div>
+      </div>
+    </Page>
   ),
 }
