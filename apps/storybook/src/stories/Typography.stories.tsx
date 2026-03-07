@@ -8,215 +8,266 @@ const meta: Meta = {
 
 export default meta
 
+/* ── Shared styles ───────────────────────────────────────────────────────── */
+
 const font = 'DM Sans, sans-serif'
+const mono = 'ui-monospace, SFMono-Regular, Menlo, monospace'
 
-/* ── Helpers ─────────────────────────────────────────────────────────────── */
-
-const Page = ({ children }: { children: React.ReactNode }) => (
-  <div style={{ padding: 40, background: '#f4f6f9', minHeight: '100vh', fontFamily: font }}>
-    {children}
-  </div>
-)
-
-const PageTitle = ({ title, subtitle }: { title: string; subtitle?: string }) => (
-  <div style={{ marginBottom: 40 }}>
-    <h1 style={{ fontFamily: font, fontSize: 28, fontWeight: 700, color: '#1b1b1b', margin: 0 }}>{title}</h1>
-    {subtitle && <p style={{ fontFamily: font, fontSize: 14, color: '#5f5f5f', margin: '8px 0 0', lineHeight: 1.6 }}>{subtitle}</p>}
-  </div>
-)
-
-const SectionLabel = ({ children }: { children: React.ReactNode }) => (
-  <div style={{ fontFamily: font, fontSize: 11, fontWeight: 600, color: '#a4a4a4', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: 4, marginTop: 32 }}>
-    {children}
-  </div>
-)
-
-const Divider = () => (
-  <div style={{ height: 1, background: '#e8e8e8', margin: '0' }} />
-)
-
-interface TypeRowProps {
-  sample: string
-  name: string
-  sizeToken: string
-  weightToken: string
-  fontToken: string
-  lineHeight: number | string
-  uppercase?: boolean
-  className?: string
+const page: React.CSSProperties = {
+  padding: '40px 48px',
+  background: '#fff',
+  minHeight: '100vh',
+  fontFamily: font,
+  maxWidth: 960,
+  margin: '0 auto',
 }
 
-const TypeRow = ({ sample, name, sizeToken, weightToken, fontToken, lineHeight, uppercase }: TypeRowProps) => (
-  <>
-    <div style={{ display: 'flex', alignItems: 'center', gap: 24, padding: '16px 20px', background: '#fff', borderRadius: 8 }}>
-      {/* Sample text */}
-      <div style={{ flex: 1, minWidth: 0 }}>
-        <span style={{
-          fontFamily: `var(${fontToken})`,
-          fontSize: `var(${sizeToken})`,
-          fontWeight: `var(${weightToken})` as any,
-          lineHeight,
-          color: '#1b1b1b',
-          letterSpacing: uppercase ? '0.06em' : undefined,
-          textTransform: uppercase ? 'uppercase' : undefined,
-          display: 'block',
-        }}>
-          {sample}
-        </span>
-      </div>
-
-      {/* Meta */}
-      <div style={{ display: 'flex', gap: 32, flexShrink: 0, alignItems: 'center' }}>
-        <div style={{ textAlign: 'right', minWidth: 140 }}>
-          <div style={{ fontFamily: font, fontSize: 12, fontWeight: 600, color: '#1b1b1b' }}>{name}</div>
-        </div>
-        <TokenPill token={fontToken} />
-        <TokenPill token={sizeToken} />
-        <TokenPill token={weightToken} />
-        <div style={{ fontFamily: font, fontSize: 11, color: '#a4a4a4', minWidth: 60, textAlign: 'right' }}>
-          lh {lineHeight}
-        </div>
-      </div>
-    </div>
-    <Divider />
-  </>
-)
-
-const TokenPill = ({ token }: { token: string }) => (
-  <div style={{
-    fontFamily: font, fontSize: 10, fontWeight: 500,
-    color: '#094eff', background: '#e5edff',
-    padding: '2px 8px', borderRadius: 4,
-    whiteSpace: 'nowrap',
-  }}>
-    {token}
-  </div>
-)
-
-/* ── Weight Card ─────────────────────────────────────────────────────────── */
-
-interface WeightCardProps {
-  label: string
-  weightToken: string
-  weightValue: string
+const sectionTitle: React.CSSProperties = {
+  fontFamily: font,
+  fontSize: 20,
+  fontWeight: 700,
+  color: '#1b1b1b',
+  margin: '40px 0 12px',
 }
 
-const WeightCard = ({ label, weightToken, weightValue }: WeightCardProps) => (
-  <div style={{ flex: 1, background: '#fff', borderRadius: 10, padding: '24px 20px', display: 'flex', flexDirection: 'column', gap: 12 }}>
-    <span style={{
-      fontFamily: `var(--sds-family-web-font)`,
-      fontSize: 48,
-      fontWeight: `var(${weightToken})` as any,
-      color: '#1b1b1b',
-      lineHeight: 1,
-    }}>
-      Aa
-    </span>
-    <div>
-      <div style={{ fontFamily: font, fontSize: 13, fontWeight: 700, color: '#1b1b1b' }}>{label}</div>
-      <div style={{ fontFamily: font, fontSize: 11, color: '#767676', marginTop: 2 }}>{weightValue}</div>
-      <TokenPill token={weightToken} />
-    </div>
-    <div style={{ marginTop: 4 }}>
-      <div style={{ fontFamily: `var(--sds-family-web-font)`, fontSize: 13, fontWeight: `var(${weightToken})` as any, color: '#494949', lineHeight: 1.5 }}>
-        The quick brown fox jumps over the lazy dog
-      </div>
-    </div>
-  </div>
-)
+const table: React.CSSProperties = {
+  width: '100%',
+  borderCollapse: 'collapse',
+  border: '1px solid #e8e8e8',
+  borderRadius: 8,
+  overflow: 'hidden',
+  fontSize: 14,
+  fontFamily: font,
+}
+
+const th: React.CSSProperties = {
+  padding: '10px 16px',
+  background: '#f9f9f9',
+  borderBottom: '1px solid #e8e8e8',
+  textAlign: 'left',
+  fontWeight: 600,
+  fontSize: 13,
+  color: '#1b1b1b',
+}
+
+const td: React.CSSProperties = {
+  padding: '14px 16px',
+  borderBottom: '1px solid #f2f2f2',
+  verticalAlign: 'middle',
+}
+
+const tokenName: React.CSSProperties = {
+  fontFamily: mono,
+  fontSize: 12,
+  color: '#494949',
+  background: '#f4f6f9',
+  padding: '3px 8px',
+  borderRadius: 4,
+  display: 'inline-block',
+}
 
 /* ── Stories ─────────────────────────────────────────────────────────────── */
 
-export const TypeScale: StoryObj = {
-  name: 'Type Scale',
+export const Typography: StoryObj = {
+  name: 'Typography',
   render: () => (
-    <Page>
-      <PageTitle
-        title="Type Scale"
-        subtitle="All typographic styles use DM Sans and reference only design tokens — never hardcoded values."
-      />
+    <div style={page}>
+      <h1 style={{ fontFamily: font, fontSize: 28, fontWeight: 700, color: '#1b1b1b', margin: '0 0 8px' }}>
+        Typography
+      </h1>
+      <p style={{ fontFamily: font, fontSize: 14, color: '#5f5f5f', margin: '0 0 8px', lineHeight: 1.6 }}>
+        All typography tokens use <strong>DM Sans</strong> and are referenced via <code style={{ ...tokenName, fontSize: 11 }}>--sds-*</code> CSS custom properties.
+        Never use hardcoded font values in components — always reference these tokens.
+      </p>
 
-      {/* Token legend */}
-      <div style={{ display: 'flex', gap: 16, marginBottom: 24, alignItems: 'center' }}>
-        <span style={{ fontFamily: font, fontSize: 11, color: '#767676' }}>Tokens used per style:</span>
-        <TokenPill token="--sds-family-web-font" />
-        <TokenPill token="--sds-size-*" />
-        <TokenPill token="--sds-weight-*" />
-      </div>
+      {/* ── Font Family ── */}
+      <h2 style={sectionTitle}>Font Family</h2>
+      <table style={table}>
+        <thead>
+          <tr>
+            <th style={{ ...th, width: 260 }}>Token Name</th>
+            <th style={th}>Value</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style={td}><span style={tokenName}>--sds-family-web-font</span></td>
+            <td style={td}>
+              <span style={{ fontFamily: font, fontSize: 14, color: '#1b1b1b' }}>"DM Sans", sans-serif</span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
 
-      {/* Column header */}
-      <div style={{ display: 'flex', alignItems: 'center', gap: 24, padding: '8px 20px', marginBottom: 4 }}>
-        <div style={{ flex: 1, fontFamily: font, fontSize: 10, fontWeight: 600, color: '#a4a4a4', textTransform: 'uppercase', letterSpacing: '0.08em' }}>Sample</div>
-        <div style={{ display: 'flex', gap: 32, flexShrink: 0 }}>
-          <div style={{ fontFamily: font, fontSize: 10, fontWeight: 600, color: '#a4a4a4', textTransform: 'uppercase', letterSpacing: '0.08em', minWidth: 140, textAlign: 'right' }}>Style</div>
-          <div style={{ fontFamily: font, fontSize: 10, fontWeight: 600, color: '#a4a4a4', textTransform: 'uppercase', letterSpacing: '0.08em', minWidth: 80 }}>Font</div>
-          <div style={{ fontFamily: font, fontSize: 10, fontWeight: 600, color: '#a4a4a4', textTransform: 'uppercase', letterSpacing: '0.08em', minWidth: 80 }}>Size</div>
-          <div style={{ fontFamily: font, fontSize: 10, fontWeight: 600, color: '#a4a4a4', textTransform: 'uppercase', letterSpacing: '0.08em', minWidth: 80 }}>Weight</div>
-          <div style={{ fontFamily: font, fontSize: 10, fontWeight: 600, color: '#a4a4a4', textTransform: 'uppercase', letterSpacing: '0.08em', minWidth: 60, textAlign: 'right' }}>Line Ht</div>
-        </div>
-      </div>
+      {/* ── Font Weight ── */}
+      <h2 style={sectionTitle}>Font Weight</h2>
+      <table style={table}>
+        <thead>
+          <tr>
+            <th style={{ ...th, width: 260 }}>Token Name</th>
+            <th style={{ ...th, width: 80 }}>Value</th>
+            <th style={th}>Preview</th>
+          </tr>
+        </thead>
+        <tbody>
+          {[
+            { token: '--sds-weight-regular',  value: '400', label: 'Regular' },
+            { token: '--sds-weight-medium',   value: '500', label: 'Medium' },
+            { token: '--sds-weight-semibold', value: '600', label: 'Semibold' },
+            { token: '--sds-weight-bold',     value: '700', label: 'Bold' },
+          ].map(({ token, value, label }) => (
+            <tr key={token}>
+              <td style={td}><span style={tokenName}>{token}</span></td>
+              <td style={{ ...td, color: '#494949', fontWeight: 600 }}>{value}</td>
+              <td style={td}>
+                <span style={{ fontFamily: `var(--sds-family-web-font)`, fontSize: 16, fontWeight: `var(${token})` as any, color: '#1b1b1b' }}>
+                  {label} — The quick brown fox jumps over the lazy dog
+                </span>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
 
-      <SectionLabel>Headings</SectionLabel>
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 2, borderRadius: 10, overflow: 'hidden', border: '1px solid #e8e8e8' }}>
-        <TypeRow sample="H1 — The quick brown fox" name="H1 · Semibold" sizeToken="--sds-size-48" weightToken="--sds-weight-semibold" fontToken="--sds-family-web-font" lineHeight={1.1} />
-        <TypeRow sample="H2 — The quick brown fox" name="H2 · Semibold" sizeToken="--sds-size-40" weightToken="--sds-weight-semibold" fontToken="--sds-family-web-font" lineHeight={1.2} />
-        <TypeRow sample="H3 — The quick brown fox" name="H3 · Semibold" sizeToken="--sds-size-32" weightToken="--sds-weight-semibold" fontToken="--sds-family-web-font" lineHeight={1.25} />
-        <TypeRow sample="H4 — The quick brown fox" name="H4 · Semibold" sizeToken="--sds-size-28" weightToken="--sds-weight-semibold" fontToken="--sds-family-web-font" lineHeight={1.3} />
-        <TypeRow sample="H5 — The quick brown fox" name="H5 · Semibold" sizeToken="--sds-size-24" weightToken="--sds-weight-semibold" fontToken="--sds-family-web-font" lineHeight={1.33} />
-        <TypeRow sample="H6 — The quick brown fox jumps" name="H6 · Bold" sizeToken="--sds-size-20" weightToken="--sds-weight-bold" fontToken="--sds-family-web-font" lineHeight={1.4} />
-        <TypeRow sample="H7 — The quick brown fox jumps over" name="H7 · Bold" sizeToken="--sds-size-16" weightToken="--sds-weight-bold" fontToken="--sds-family-web-font" lineHeight={1.5} />
-      </div>
+      {/* ── Font Size ── */}
+      <h2 style={sectionTitle}>Font Size</h2>
+      <table style={table}>
+        <thead>
+          <tr>
+            <th style={{ ...th, width: 200 }}>Token Name</th>
+            <th style={{ ...th, width: 80 }}>Value</th>
+            <th style={th}>Preview</th>
+          </tr>
+        </thead>
+        <tbody>
+          {[
+            { token: '--sds-size-10', value: '10px' },
+            { token: '--sds-size-11', value: '11px' },
+            { token: '--sds-size-12', value: '12px' },
+            { token: '--sds-size-14', value: '14px' },
+            { token: '--sds-size-16', value: '16px' },
+            { token: '--sds-size-18', value: '18px' },
+            { token: '--sds-size-20', value: '20px' },
+            { token: '--sds-size-24', value: '24px' },
+            { token: '--sds-size-28', value: '28px' },
+            { token: '--sds-size-32', value: '32px' },
+            { token: '--sds-size-40', value: '40px' },
+            { token: '--sds-size-48', value: '48px' },
+            { token: '--sds-size-56', value: '56px' },
+          ].map(({ token, value }) => (
+            <tr key={token}>
+              <td style={td}><span style={tokenName}>{token}</span></td>
+              <td style={{ ...td, color: '#494949', fontWeight: 600 }}>{value}</td>
+              <td style={{ ...td, padding: '8px 16px' }}>
+                <span style={{ fontFamily: `var(--sds-family-web-font)`, fontSize: `var(${token})`, fontWeight: `var(--sds-weight-medium)` as any, color: '#1b1b1b', lineHeight: 1.3, display: 'block' }}>
+                  Era of rising Payments
+                </span>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
 
-      <SectionLabel>Body</SectionLabel>
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 2, borderRadius: 10, overflow: 'hidden', border: '1px solid #e8e8e8' }}>
-        <TypeRow sample="Body Large — The quick brown fox jumps over the lazy dog" name="Body Large · Medium" sizeToken="--sds-size-16" weightToken="--sds-weight-medium" fontToken="--sds-family-web-font" lineHeight={1.5} />
-        <TypeRow sample="Body Large — The quick brown fox jumps over the lazy dog" name="Body Large · Semibold" sizeToken="--sds-size-16" weightToken="--sds-weight-semibold" fontToken="--sds-family-web-font" lineHeight={1.5} />
-        <TypeRow sample="Body Large — The quick brown fox jumps over the lazy dog" name="Body Large · Bold" sizeToken="--sds-size-16" weightToken="--sds-weight-bold" fontToken="--sds-family-web-font" lineHeight={1.5} />
-        <TypeRow sample="Body Small — The quick brown fox jumps over the lazy dog" name="Body Small · Medium" sizeToken="--sds-size-14" weightToken="--sds-weight-medium" fontToken="--sds-family-web-font" lineHeight={1.43} />
-        <TypeRow sample="Body Small — The quick brown fox jumps over the lazy dog" name="Body Small · Semibold" sizeToken="--sds-size-14" weightToken="--sds-weight-semibold" fontToken="--sds-family-web-font" lineHeight={1.43} />
-        <TypeRow sample="Body Small — The quick brown fox jumps over the lazy dog" name="Body Small · Bold" sizeToken="--sds-size-14" weightToken="--sds-weight-bold" fontToken="--sds-family-web-font" lineHeight={1.43} />
-        <TypeRow sample="Body XS — The quick brown fox jumps over the lazy dog" name="Body XS · Medium" sizeToken="--sds-size-12" weightToken="--sds-weight-medium" fontToken="--sds-family-web-font" lineHeight={1.5} />
-        <TypeRow sample="Body XS — The quick brown fox jumps over the lazy dog" name="Body XS · Semibold" sizeToken="--sds-size-12" weightToken="--sds-weight-semibold" fontToken="--sds-family-web-font" lineHeight={1.5} />
-        <TypeRow sample="Body XS — The quick brown fox jumps over the lazy dog" name="Body XS · Bold" sizeToken="--sds-size-12" weightToken="--sds-weight-bold" fontToken="--sds-family-web-font" lineHeight={1.5} />
-      </div>
+      {/* ── Line Height ── */}
+      <h2 style={sectionTitle}>Line Height</h2>
+      <table style={table}>
+        <thead>
+          <tr>
+            <th style={{ ...th, width: 200 }}>Style</th>
+            <th style={{ ...th, width: 100 }}>Line Height</th>
+            <th style={{ ...th, width: 200 }}>Size Token</th>
+            <th style={th}>Preview</th>
+          </tr>
+        </thead>
+        <tbody>
+          {[
+            { label: 'H1',           lh: 1.1,  sizeToken: '--sds-size-48' },
+            { label: 'H2',           lh: 1.2,  sizeToken: '--sds-size-40' },
+            { label: 'H3',           lh: 1.25, sizeToken: '--sds-size-32' },
+            { label: 'H4',           lh: 1.3,  sizeToken: '--sds-size-28' },
+            { label: 'H5',           lh: 1.33, sizeToken: '--sds-size-24' },
+            { label: 'H6',           lh: 1.4,  sizeToken: '--sds-size-20' },
+            { label: 'H7 / Body L',  lh: 1.5,  sizeToken: '--sds-size-16' },
+            { label: 'Body S',       lh: 1.43, sizeToken: '--sds-size-14' },
+            { label: 'Body XS / Overline', lh: 1.5, sizeToken: '--sds-size-12' },
+          ].map(({ label, lh, sizeToken }) => (
+            <tr key={label}>
+              <td style={td}><span style={{ fontFamily: font, fontSize: 13, fontWeight: 600, color: '#1b1b1b' }}>{label}</span></td>
+              <td style={{ ...td, color: '#494949', fontWeight: 600 }}>{lh}</td>
+              <td style={td}><span style={tokenName}>{sizeToken}</span></td>
+              <td style={{ ...td, padding: '8px 16px' }}>
+                <span style={{
+                  fontFamily: `var(--sds-family-web-font)`,
+                  fontSize: `var(${sizeToken})`,
+                  fontWeight: `var(--sds-weight-medium)` as any,
+                  lineHeight: lh,
+                  color: '#1b1b1b',
+                  display: 'block',
+                }}>
+                  Era of rising Payments
+                </span>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
 
-      <SectionLabel>Overline</SectionLabel>
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 2, borderRadius: 10, overflow: 'hidden', border: '1px solid #e8e8e8' }}>
-        <TypeRow sample="Section Label" name="Overline · Semibold" sizeToken="--sds-size-12" weightToken="--sds-weight-semibold" fontToken="--sds-family-web-font" lineHeight={1.33} uppercase />
-        <TypeRow sample="Section Label" name="Overline · Bold" sizeToken="--sds-size-12" weightToken="--sds-weight-bold" fontToken="--sds-family-web-font" lineHeight={1.33} uppercase />
-      </div>
-    </Page>
-  ),
-}
-
-export const FontWeights: StoryObj = {
-  name: 'Font Weights',
-  render: () => (
-    <Page>
-      <PageTitle
-        title="Font Weights"
-        subtitle="Four weights available. All reference the --sds-weight-* token."
-      />
-      <div style={{ display: 'flex', gap: 16 }}>
-        <WeightCard label="Regular" weightToken="--sds-weight-regular" weightValue="400" />
-        <WeightCard label="Medium" weightToken="--sds-weight-medium" weightValue="500" />
-        <WeightCard label="Semibold" weightToken="--sds-weight-semibold" weightValue="600" />
-        <WeightCard label="Bold" weightToken="--sds-weight-bold" weightValue="700" />
-      </div>
-
-      <div style={{ marginTop: 32 }}>
-        <SectionLabel>Font Family</SectionLabel>
-        <div style={{ background: '#fff', borderRadius: 10, padding: '24px 20px', display: 'flex', alignItems: 'center', gap: 32 }}>
-          <span style={{ fontFamily: 'var(--sds-family-web-font)', fontSize: 40, fontWeight: 600, color: '#1b1b1b', letterSpacing: '-0.01em' }}>
-            DM Sans
-          </span>
-          <div>
-            <div style={{ fontFamily: font, fontSize: 13, fontWeight: 600, color: '#1b1b1b', marginBottom: 4 }}>DM Sans</div>
-            <div style={{ fontFamily: font, fontSize: 11, color: '#767676', marginBottom: 8 }}>Google Fonts · weights 400, 500, 600, 700</div>
-            <TokenPill token="--sds-family-web-font" />
-          </div>
-        </div>
-      </div>
-    </Page>
+      {/* ── Text Styles ── */}
+      <h2 style={sectionTitle}>Text Styles</h2>
+      <p style={{ fontFamily: font, fontSize: 13, color: '#767676', margin: '0 0 12px', lineHeight: 1.5 }}>
+        Named styles combining size, weight, and line-height tokens. Use the CSS class directly on elements.
+      </p>
+      <table style={table}>
+        <thead>
+          <tr>
+            <th style={{ ...th, width: 260 }}>CSS Class</th>
+            <th style={{ ...th, width: 80 }}>Size</th>
+            <th style={{ ...th, width: 100 }}>Weight</th>
+            <th style={th}>Preview</th>
+          </tr>
+        </thead>
+        <tbody>
+          {[
+            { cls: 'sds-typography-h1-semibold',           size: '48px', weight: 'Semibold', sizeT: '--sds-size-48', weightT: '--sds-weight-semibold', lh: 1.1 },
+            { cls: 'sds-typography-h2-semibold',           size: '40px', weight: 'Semibold', sizeT: '--sds-size-40', weightT: '--sds-weight-semibold', lh: 1.2 },
+            { cls: 'sds-typography-h3-semibold',           size: '32px', weight: 'Semibold', sizeT: '--sds-size-32', weightT: '--sds-weight-semibold', lh: 1.25 },
+            { cls: 'sds-typography-h4-semibold',           size: '28px', weight: 'Semibold', sizeT: '--sds-size-28', weightT: '--sds-weight-semibold', lh: 1.3 },
+            { cls: 'sds-typography-h5-semibold',           size: '24px', weight: 'Semibold', sizeT: '--sds-size-24', weightT: '--sds-weight-semibold', lh: 1.33 },
+            { cls: 'sds-typography-h6-bold',               size: '20px', weight: 'Bold',     sizeT: '--sds-size-20', weightT: '--sds-weight-bold',     lh: 1.4 },
+            { cls: 'sds-typography-h7-bold',               size: '16px', weight: 'Bold',     sizeT: '--sds-size-16', weightT: '--sds-weight-bold',     lh: 1.5 },
+            { cls: 'sds-typography-bodylarge-medium',      size: '16px', weight: 'Medium',   sizeT: '--sds-size-16', weightT: '--sds-weight-medium',   lh: 1.5 },
+            { cls: 'sds-typography-bodylarge-semibold',    size: '16px', weight: 'Semibold', sizeT: '--sds-size-16', weightT: '--sds-weight-semibold', lh: 1.5 },
+            { cls: 'sds-typography-bodylarge-bold',        size: '16px', weight: 'Bold',     sizeT: '--sds-size-16', weightT: '--sds-weight-bold',     lh: 1.5 },
+            { cls: 'sds-typography-bodysmall-medium',      size: '14px', weight: 'Medium',   sizeT: '--sds-size-14', weightT: '--sds-weight-medium',   lh: 1.43 },
+            { cls: 'sds-typography-bodysmall-semibold',    size: '14px', weight: 'Semibold', sizeT: '--sds-size-14', weightT: '--sds-weight-semibold', lh: 1.43 },
+            { cls: 'sds-typography-bodysmall-bold',        size: '14px', weight: 'Bold',     sizeT: '--sds-size-14', weightT: '--sds-weight-bold',     lh: 1.43 },
+            { cls: 'sds-typography-bodyextrasmall-medium', size: '12px', weight: 'Medium',   sizeT: '--sds-size-12', weightT: '--sds-weight-medium',   lh: 1.5 },
+            { cls: 'sds-typography-bodyextrasmall-bold',   size: '12px', weight: 'Bold',     sizeT: '--sds-size-12', weightT: '--sds-weight-bold',     lh: 1.5 },
+            { cls: 'sds-typography-overline-semibold',     size: '12px', weight: 'Semibold', sizeT: '--sds-size-12', weightT: '--sds-weight-semibold', lh: 1.33, upper: true },
+            { cls: 'sds-typography-overline-bold',         size: '12px', weight: 'Bold',     sizeT: '--sds-size-12', weightT: '--sds-weight-bold',     lh: 1.33, upper: true },
+          ].map(({ cls, size, weight, sizeT, weightT, lh, upper }) => (
+            <tr key={cls}>
+              <td style={td}><span style={tokenName}>.{cls}</span></td>
+              <td style={{ ...td, color: '#494949', fontFamily: mono, fontSize: 12 }}>{size}</td>
+              <td style={{ ...td, color: '#494949', fontFamily: mono, fontSize: 12 }}>{weight}</td>
+              <td style={{ ...td, padding: '8px 16px' }}>
+                <span style={{
+                  fontFamily: `var(--sds-family-web-font)`,
+                  fontSize: `var(${sizeT})`,
+                  fontWeight: `var(${weightT})` as any,
+                  lineHeight: lh,
+                  letterSpacing: upper ? '0.06em' : undefined,
+                  textTransform: upper ? 'uppercase' : undefined,
+                  color: '#1b1b1b',
+                  display: 'block',
+                }}>
+                  Era of rising Payments
+                </span>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
   ),
 }
