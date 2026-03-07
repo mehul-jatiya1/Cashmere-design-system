@@ -1,0 +1,400 @@
+/* ==========================================================================
+   Cashmere Design System — Text Style Classes
+   Source of truth: Figma file OEwHAfVtHhfYFGKEalynMP → Text Styles
+   All styles use DM Sans. Load via:
+     <link rel="preconnect" href="https://fonts.googleapis.com" />
+     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+   Usage: apply class directly, e.g. <h1 className="sds-typography-h1-semibold">
+   Note: line-height values are typographically derived — verify with design team.
+   ========================================================================== */
+
+/* ============================================================
+   Headings (typography/h1 – h7)
+   ============================================================ */
+
+.sds-typography-h1-regular {
+  font-family: var(--sds-family-web-font);
+  font-size: var(--sds-size-48);
+  font-weight: var(--sds-weight-regular);
+  line-height: 1.1;
+  letter-spacing: 0;
+}
+.sds-typography-h1-medium {
+  font-family: var(--sds-family-web-font);
+  font-size: var(--sds-size-48);
+  font-weight: var(--sds-weight-medium);
+  line-height: 1.1;
+  letter-spacing: 0;
+}
+.sds-typography-h1-semibold {
+  font-family: var(--sds-family-web-font);
+  font-size: var(--sds-size-48);
+  font-weight: var(--sds-weight-semibold);
+  line-height: 1.1;
+  letter-spacing: 0;
+}
+
+.sds-typography-h2-regular {
+  font-family: var(--sds-family-web-font);
+  font-size: var(--sds-size-40);
+  font-weight: var(--sds-weight-regular);
+  line-height: 1.2;
+  letter-spacing: 0;
+}
+.sds-typography-h2-medium {
+  font-family: var(--sds-family-web-font);
+  font-size: var(--sds-size-40);
+  font-weight: var(--sds-weight-medium);
+  line-height: 1.2;
+  letter-spacing: 0;
+}
+.sds-typography-h2-semibold {
+  font-family: var(--sds-family-web-font);
+  font-size: var(--sds-size-40);
+  font-weight: var(--sds-weight-semibold);
+  line-height: 1.2;
+  letter-spacing: 0;
+}
+
+.sds-typography-h3-regular {
+  font-family: var(--sds-family-web-font);
+  font-size: var(--sds-size-32);
+  font-weight: var(--sds-weight-regular);
+  line-height: 1.25;
+  letter-spacing: 0;
+}
+.sds-typography-h3-medium {
+  font-family: var(--sds-family-web-font);
+  font-size: var(--sds-size-32);
+  font-weight: var(--sds-weight-medium);
+  line-height: 1.25;
+  letter-spacing: 0;
+}
+.sds-typography-h3-semibold {
+  font-family: var(--sds-family-web-font);
+  font-size: var(--sds-size-32);
+  font-weight: var(--sds-weight-semibold);
+  line-height: 1.25;
+  letter-spacing: 0;
+}
+
+.sds-typography-h4-regular {
+  font-family: var(--sds-family-web-font);
+  font-size: var(--sds-size-28);
+  font-weight: var(--sds-weight-regular);
+  line-height: 1.3;
+  letter-spacing: 0;
+}
+.sds-typography-h4-medium {
+  font-family: var(--sds-family-web-font);
+  font-size: var(--sds-size-28);
+  font-weight: var(--sds-weight-medium);
+  line-height: 1.3;
+  letter-spacing: 0;
+}
+.sds-typography-h4-semibold {
+  font-family: var(--sds-family-web-font);
+  font-size: var(--sds-size-28);
+  font-weight: var(--sds-weight-semibold);
+  line-height: 1.3;
+  letter-spacing: 0;
+}
+
+.sds-typography-h5-regular {
+  font-family: var(--sds-family-web-font);
+  font-size: var(--sds-size-24);
+  font-weight: var(--sds-weight-regular);
+  line-height: 1.33;
+  letter-spacing: 0;
+}
+.sds-typography-h5-medium {
+  font-family: var(--sds-family-web-font);
+  font-size: var(--sds-size-24);
+  font-weight: var(--sds-weight-medium);
+  line-height: 1.33;
+  letter-spacing: 0;
+}
+.sds-typography-h5-semibold {
+  font-family: var(--sds-family-web-font);
+  font-size: var(--sds-size-24);
+  font-weight: var(--sds-weight-semibold);
+  line-height: 1.33;
+  letter-spacing: 0;
+}
+
+.sds-typography-h6-regular {
+  font-family: var(--sds-family-web-font);
+  font-size: var(--sds-size-20);
+  font-weight: var(--sds-weight-regular);
+  line-height: 1.4;
+  letter-spacing: 0;
+}
+.sds-typography-h6-medium {
+  font-family: var(--sds-family-web-font);
+  font-size: var(--sds-size-20);
+  font-weight: var(--sds-weight-medium);
+  line-height: 1.4;
+  letter-spacing: 0;
+}
+.sds-typography-h6-semibold {
+  font-family: var(--sds-family-web-font);
+  font-size: var(--sds-size-20);
+  font-weight: var(--sds-weight-semibold);
+  line-height: 1.4;
+  letter-spacing: 0;
+}
+.sds-typography-h6-bold {
+  font-family: var(--sds-family-web-font);
+  font-size: var(--sds-size-20);
+  font-weight: var(--sds-weight-bold);
+  line-height: 1.4;
+  letter-spacing: 0;
+}
+
+.sds-typography-h7-regular {
+  font-family: var(--sds-family-web-font);
+  font-size: var(--sds-size-16);
+  font-weight: var(--sds-weight-regular);
+  line-height: 1.5;
+  letter-spacing: 0;
+}
+.sds-typography-h7-medium {
+  font-family: var(--sds-family-web-font);
+  font-size: var(--sds-size-16);
+  font-weight: var(--sds-weight-medium);
+  line-height: 1.5;
+  letter-spacing: 0;
+}
+.sds-typography-h7-semibold {
+  font-family: var(--sds-family-web-font);
+  font-size: var(--sds-size-16);
+  font-weight: var(--sds-weight-semibold);
+  line-height: 1.5;
+  letter-spacing: 0;
+}
+.sds-typography-h7-bold {
+  font-family: var(--sds-family-web-font);
+  font-size: var(--sds-size-16);
+  font-weight: var(--sds-weight-bold);
+  line-height: 1.5;
+  letter-spacing: 0;
+}
+
+/* ============================================================
+   Body
+   ============================================================ */
+
+.sds-typography-bodylarge-medium {
+  font-family: var(--sds-family-web-font);
+  font-size: var(--sds-size-16);
+  font-weight: var(--sds-weight-medium);
+  line-height: 1.5;
+  letter-spacing: 0;
+}
+.sds-typography-bodylarge-semibold {
+  font-family: var(--sds-family-web-font);
+  font-size: var(--sds-size-16);
+  font-weight: var(--sds-weight-semibold);
+  line-height: 1.5;
+  letter-spacing: 0;
+}
+.sds-typography-bodylarge-bold {
+  font-family: var(--sds-family-web-font);
+  font-size: var(--sds-size-16);
+  font-weight: var(--sds-weight-bold);
+  line-height: 1.5;
+  letter-spacing: 0;
+}
+
+.sds-typography-bodysmall-medium {
+  font-family: var(--sds-family-web-font);
+  font-size: var(--sds-size-14);
+  font-weight: var(--sds-weight-medium);
+  line-height: 1.43;
+  letter-spacing: 0;
+}
+.sds-typography-bodysmall-semibold {
+  font-family: var(--sds-family-web-font);
+  font-size: var(--sds-size-14);
+  font-weight: var(--sds-weight-semibold);
+  line-height: 1.43;
+  letter-spacing: 0;
+}
+.sds-typography-bodysmall-bold {
+  font-family: var(--sds-family-web-font);
+  font-size: var(--sds-size-14);
+  font-weight: var(--sds-weight-bold);
+  line-height: 1.43;
+  letter-spacing: 0;
+}
+
+.sds-typography-bodyextrasmall-medium {
+  font-family: var(--sds-family-web-font);
+  font-size: var(--sds-size-12);
+  font-weight: var(--sds-weight-medium);
+  line-height: 1.5;
+  letter-spacing: 0;
+}
+.sds-typography-bodyextrasmall-semibold {
+  font-family: var(--sds-family-web-font);
+  font-size: var(--sds-size-12);
+  font-weight: var(--sds-weight-semibold);
+  line-height: 1.5;
+  letter-spacing: 0;
+}
+.sds-typography-bodyextrasmall-bold {
+  font-family: var(--sds-family-web-font);
+  font-size: var(--sds-size-12);
+  font-weight: var(--sds-weight-bold);
+  line-height: 1.5;
+  letter-spacing: 0;
+}
+
+/* ============================================================
+   Subtitle
+   ============================================================ */
+
+.sds-typography-subtitlelarge-medium {
+  font-family: var(--sds-family-web-font);
+  font-size: var(--sds-size-16);
+  font-weight: var(--sds-weight-medium);
+  line-height: 1.5;
+  letter-spacing: 0;
+}
+.sds-typography-subtitlelarge-semibold {
+  font-family: var(--sds-family-web-font);
+  font-size: var(--sds-size-16);
+  font-weight: var(--sds-weight-semibold);
+  line-height: 1.5;
+  letter-spacing: 0;
+}
+.sds-typography-subtitlelarge-bold {
+  font-family: var(--sds-family-web-font);
+  font-size: var(--sds-size-16);
+  font-weight: var(--sds-weight-bold);
+  line-height: 1.5;
+  letter-spacing: 0;
+}
+
+.sds-typography-subtitlesmall-medium {
+  font-family: var(--sds-family-web-font);
+  font-size: var(--sds-size-14);
+  font-weight: var(--sds-weight-medium);
+  line-height: 1.43;
+  letter-spacing: 0;
+}
+.sds-typography-subtitlesmall-semibold {
+  font-family: var(--sds-family-web-font);
+  font-size: var(--sds-size-14);
+  font-weight: var(--sds-weight-semibold);
+  line-height: 1.43;
+  letter-spacing: 0;
+}
+.sds-typography-subtitlesmall-bold {
+  font-family: var(--sds-family-web-font);
+  font-size: var(--sds-size-14);
+  font-weight: var(--sds-weight-bold);
+  line-height: 1.43;
+  letter-spacing: 0;
+}
+
+/* ============================================================
+   Overline
+   ============================================================ */
+
+.sds-typography-overline-semibold {
+  font-family: var(--sds-family-web-font);
+  font-size: var(--sds-size-12);
+  font-weight: var(--sds-weight-semibold);
+  line-height: 1.33;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+.sds-typography-overline-bold {
+  font-family: var(--sds-family-web-font);
+  font-size: var(--sds-size-12);
+  font-weight: var(--sds-weight-bold);
+  line-height: 1.33;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+/* ============================================================
+   Component Text Styles
+   These are intended for internal component use.
+   ============================================================ */
+
+/* Buttons */
+.sds-buttons-primarylarge    { font-family: var(--sds-family-web-font); font-size: var(--sds-size-14); font-weight: var(--sds-weight-medium); line-height: 1.43; }
+.sds-buttons-primarysmall    { font-family: var(--sds-family-web-font); font-size: var(--sds-size-12); font-weight: var(--sds-weight-medium); line-height: 1.5; }
+.sds-buttons-secondarylarge  { font-family: var(--sds-family-web-font); font-size: var(--sds-size-14); font-weight: var(--sds-weight-medium); line-height: 1.43; }
+.sds-buttons-secondarysmall  { font-family: var(--sds-family-web-font); font-size: var(--sds-size-12); font-weight: var(--sds-weight-medium); line-height: 1.5; }
+.sds-buttons-tertiarylarge   { font-family: var(--sds-family-web-font); font-size: var(--sds-size-14); font-weight: var(--sds-weight-semibold); line-height: 1.43; }
+.sds-buttons-tertiarysmall   { font-family: var(--sds-family-web-font); font-size: var(--sds-size-12); font-weight: var(--sds-weight-semibold); line-height: 1.5; }
+
+/* Input */
+.sds-input-label             { font-family: var(--sds-family-web-font); font-size: var(--sds-size-14); font-weight: var(--sds-weight-semibold); line-height: 1.43; }
+.sds-input-placeholder       { font-family: var(--sds-family-web-font); font-size: var(--sds-size-14); font-weight: var(--sds-weight-medium); line-height: 1.43; }
+.sds-input-active            { font-family: var(--sds-family-web-font); font-size: var(--sds-size-14); font-weight: var(--sds-weight-semibold); line-height: 1.43; }
+.sds-input-filled            { font-family: var(--sds-family-web-font); font-size: var(--sds-size-14); font-weight: var(--sds-weight-bold); line-height: 1.43; }
+.sds-input-body              { font-family: var(--sds-family-web-font); font-size: var(--sds-size-12); font-weight: var(--sds-weight-medium); line-height: 1.5; }
+.sds-input-assistivetext     { font-family: var(--sds-family-web-font); font-size: var(--sds-size-12); font-weight: var(--sds-weight-medium); line-height: 1.5; }
+
+/* Chips & Filters */
+.sds-chips-chipdefault        { font-family: var(--sds-family-web-font); font-size: var(--sds-size-14); font-weight: var(--sds-weight-medium); line-height: 1.43; }
+.sds-chips-chipactive         { font-family: var(--sds-family-web-font); font-size: var(--sds-size-14); font-weight: var(--sds-weight-semibold); line-height: 1.43; }
+.sds-chips-badge              { font-family: var(--sds-family-web-font); font-size: var(--sds-size-12); font-weight: var(--sds-weight-medium); line-height: 1.5; }
+.sds-chips-searchplaceholder  { font-family: var(--sds-family-web-font); font-size: var(--sds-size-14); font-weight: var(--sds-weight-regular); line-height: 1.43; }
+.sds-chips-searchactive       { font-family: var(--sds-family-web-font); font-size: var(--sds-size-14); font-weight: var(--sds-weight-medium); line-height: 1.43; }
+
+/* Table */
+.sds-table-title             { font-family: var(--sds-family-web-font); font-size: var(--sds-size-14); font-weight: var(--sds-weight-semibold); line-height: 1.43; }
+.sds-table-cell              { font-family: var(--sds-family-web-font); font-size: var(--sds-size-14); font-weight: var(--sds-weight-medium); line-height: 1.43; }
+.sds-table-cellsubtext       { font-family: var(--sds-family-web-font); font-size: var(--sds-size-12); font-weight: var(--sds-weight-regular); line-height: 1.5; }
+.sds-table-hover             { font-family: var(--sds-family-web-font); font-size: var(--sds-size-14); font-weight: var(--sds-weight-semibold); line-height: 1.43; }
+.sds-table-selected          { font-family: var(--sds-family-web-font); font-size: var(--sds-size-14); font-weight: var(--sds-weight-semibold); line-height: 1.43; }
+
+/* Tabs */
+.sds-tabs-default            { font-family: var(--sds-family-web-font); font-size: var(--sds-size-16); font-weight: var(--sds-weight-medium); line-height: 1.5; }
+.sds-tabs-active             { font-family: var(--sds-family-web-font); font-size: var(--sds-size-16); font-weight: var(--sds-weight-bold); line-height: 1.5; }
+.sds-tabs-defaultsmall       { font-family: var(--sds-family-web-font); font-size: var(--sds-size-12); font-weight: var(--sds-weight-medium); line-height: 1.5; }
+.sds-tabs-activesmall        { font-family: var(--sds-family-web-font); font-size: var(--sds-size-12); font-weight: var(--sds-weight-bold); line-height: 1.5; }
+
+/* Tags */
+.sds-tags-tablestatus        { font-family: var(--sds-family-web-font); font-size: var(--sds-size-12); font-weight: var(--sds-weight-semibold); line-height: 1.5; }
+.sds-tags-pagestatus         { font-family: var(--sds-family-web-font); font-size: var(--sds-size-16); font-weight: var(--sds-weight-bold); line-height: 1.5; }
+.sds-tags-nonstatus          { font-family: var(--sds-family-web-font); font-size: var(--sds-size-12); font-weight: var(--sds-weight-bold); line-height: 1.5; }
+
+/* Navigation */
+.sds-navigation-productdropdown  { font-family: var(--sds-family-web-font); font-size: var(--sds-size-20); font-weight: var(--sds-weight-bold); line-height: 1.4; }
+.sds-navigation-listitemdefault  { font-family: var(--sds-family-web-font); font-size: var(--sds-size-14); font-weight: var(--sds-weight-medium); line-height: 1.43; }
+.sds-navigation-listitemhover    { font-family: var(--sds-family-web-font); font-size: var(--sds-size-14); font-weight: var(--sds-weight-semibold); line-height: 1.43; }
+.sds-navigation-listitemactive   { font-family: var(--sds-family-web-font); font-size: var(--sds-size-14); font-weight: var(--sds-weight-bold); line-height: 1.43; }
+.sds-navigation-sectionheader    { font-family: var(--sds-family-web-font); font-size: var(--sds-size-20); font-weight: var(--sds-weight-bold); line-height: 1.4; }
+
+/* Data Card */
+.sds-datacard-title          { font-family: var(--sds-family-web-font); font-size: var(--sds-size-16); font-weight: var(--sds-weight-semibold); line-height: 1.5; }
+.sds-datacard-titlesmall     { font-family: var(--sds-family-web-font); font-size: var(--sds-size-14); font-weight: var(--sds-weight-medium); line-height: 1.43; }
+.sds-datacard-numeric        { font-family: var(--sds-family-web-font); font-size: var(--sds-size-24); font-weight: var(--sds-weight-bold); line-height: 1.33; }
+.sds-datacard-decimal        { font-family: var(--sds-family-web-font); font-size: var(--sds-size-16); font-weight: var(--sds-weight-bold); line-height: 1.5; }
+.sds-datacard-numericsmall   { font-family: var(--sds-family-web-font); font-size: var(--sds-size-18); font-weight: var(--sds-weight-semibold); line-height: 1.44; }
+.sds-datacard-decimalsmall   { font-family: var(--sds-family-web-font); font-size: var(--sds-size-14); font-weight: var(--sds-weight-semibold); line-height: 1.43; }
+.sds-datacard-trend          { font-family: var(--sds-family-web-font); font-size: var(--sds-size-14); font-weight: var(--sds-weight-medium); line-height: 1.43; }
+.sds-datacard-subtext        { font-family: var(--sds-family-web-font); font-size: var(--sds-size-14); font-weight: var(--sds-weight-regular); line-height: 1.43; }
+
+/* Toast */
+.sds-toast-desktopheading    { font-family: var(--sds-family-web-font); font-size: var(--sds-size-16); font-weight: var(--sds-weight-bold); line-height: 1.5; }
+.sds-toast-desktopbody       { font-family: var(--sds-family-web-font); font-size: var(--sds-size-14); font-weight: var(--sds-weight-medium); line-height: 1.43; }
+.sds-toast-mobileheading     { font-family: var(--sds-family-web-font); font-size: var(--sds-size-14); font-weight: var(--sds-weight-bold); line-height: 1.43; }
+.sds-toast-mobilebody        { font-family: var(--sds-family-web-font); font-size: var(--sds-size-12); font-weight: var(--sds-weight-medium); line-height: 1.5; }
+
+/* Tooltip */
+.sds-tooltip-web             { font-family: var(--sds-family-web-font); font-size: var(--sds-size-12); font-weight: var(--sds-weight-medium); line-height: 1.5; }
+.sds-tooltip-mobile          { font-family: var(--sds-family-web-font); font-size: var(--sds-size-11); font-weight: var(--sds-weight-medium); line-height: 1.45; }
+
+/* Timeline */
+.sds-timeline-default        { font-family: var(--sds-family-web-font); font-size: var(--sds-size-14); font-weight: var(--sds-weight-medium); line-height: 1.43; }
+.sds-timeline-active         { font-family: var(--sds-family-web-font); font-size: var(--sds-size-14); font-weight: var(--sds-weight-bold); line-height: 1.43; }
+.sds-timeline-subtext        { font-family: var(--sds-family-web-font); font-size: var(--sds-size-12); font-weight: var(--sds-weight-medium); line-height: 1.5; }
+.sds-timeline-body           { font-family: var(--sds-family-web-font); font-size: var(--sds-size-12); font-weight: var(--sds-weight-regular); line-height: 1.5; }

@@ -1,0 +1,28 @@
+{
+  "name": "@cashfree/cashmere-storybook",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "dev": "storybook dev -p 6006",
+    "build": "storybook build -o storybook-static",
+    "preview": "npx http-server storybook-static -p 6007"
+  },
+  "dependencies": {
+    "@cashfree/cashmere": "workspace:*",
+    "@cashfree/cashmere-tokens": "workspace:*",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@storybook/addon-essentials": "^8.6.12",
+    "@storybook/addon-interactions": "^8.6.12",
+    "@storybook/react": "^8.6.12",
+    "@storybook/react-vite": "^8.6.12",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "@vitejs/plugin-react": "^4.3.1",
+    "storybook": "^8.6.12",
+    "typescript": "^5.4.5",
+    "vite": "^5.3.1"
+  }
+}

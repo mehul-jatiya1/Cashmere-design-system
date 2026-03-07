@@ -1,0 +1,268 @@
+/* =============================================================================
+   NavigationDrawer
+   Width: 358px | Padding: 32px horizontal, 24px vertical | Gap: 16px
+   Token source: Figma OEwHAfVtHhfYFGKEalynMP node 7819:4420
+   ============================================================================= */
+
+.drawer {
+  position: sticky;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sds-spacing-16);
+  width: 358px;
+  height: 100vh;
+  background-color: var(--sds-neutral-bg-inverse-inverse);
+  padding: var(--sds-spacing-24) var(--sds-spacing-32);
+  box-sizing: border-box;
+  overflow-y: auto;
+  flex-shrink: 0;
+}
+
+/* ── Logo ─────────────────────────────────────────────────────────────────── */
+.logoArea {
+  display: flex;
+  align-items: flex-end;
+  gap: var(--sds-spacing-2);
+  padding-top: var(--sds-spacing-24);
+  padding-bottom: var(--sds-spacing-24);
+  flex-shrink: 0;
+}
+
+/* ── Product Vertical trigger ─────────────────────────────────────────────── */
+.productTrigger {
+  display: flex;
+  align-items: center;
+  gap: var(--sds-spacing-10);
+  width: 296px;
+  padding: var(--sds-spacing-12) var(--sds-spacing-24);
+  border-radius: var(--sds-radius-300);
+  border: var(--sds-stroke-border) solid var(--sds-neutral-border-strong);
+  background-color: var(--sds-neutral-bg-inverse-inverse);
+  color: var(--sds-neutral-text-inverse);
+  cursor: pointer;
+  text-align: left;
+  font-family: var(--sds-family-web-font);
+  font-size: var(--sds-size-20);
+  font-weight: var(--sds-weight-bold);
+  line-height: 25px;
+  flex-shrink: 0;
+  transition: background-color 120ms ease, border-width 120ms ease;
+}
+
+.productTriggerOpen {
+  background-color: var(--sds-neutral-bg-inversesubtle-subtle);
+  border-width: var(--sds-stroke-focus);
+}
+
+.productTriggerLabel {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.productTriggerChevron {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  color: var(--sds-neutral-text-inverse);
+}
+
+/* ── Product dropdown overlay ─────────────────────────────────────────────── */
+.productDropdown {
+  position: absolute;
+  top: 188px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--sds-neutral-bg-inversesubtle-subtle);
+  border: var(--sds-stroke-border) solid var(--sds-neutral-border-strong);
+  border-radius: var(--sds-radius-300);
+  overflow: hidden;
+  width: 294px;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sds-spacing-0);
+  padding: var(--sds-spacing-0);
+}
+
+.productDropdownItem {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sds-spacing-4);
+  align-items: flex-start;
+  justify-content: center;
+  width: 294px;
+  padding: var(--sds-spacing-10) var(--sds-spacing-24);
+  border: none;
+  background-color: var(--sds-neutral-bg-inversesubtle-subtle);
+  color: var(--sds-neutral-text-inverse);
+  cursor: pointer;
+  text-align: left;
+  font-family: var(--sds-family-web-font);
+  font-size: var(--sds-size-20);
+  font-weight: var(--sds-weight-bold);
+  line-height: 25px;
+  transition: background-color 100ms ease;
+}
+
+.productDropdownItemActive {
+  background-color: var(--sds-neutral-bg-inversesubtle-hover);
+}
+
+.productDropdownItem:hover:not(.productDropdownItemActive) {
+  background-color: var(--sds-neutral-bg-inversesubtle-hover);
+}
+
+/* ── Sections wrapper ─────────────────────────────────────────────────────── */
+.sectionsWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sds-spacing-16);
+}
+
+/* ── Nav item group (items container within a section) ───────────────────── */
+.itemsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sds-spacing-8);
+}
+
+.itemWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sds-spacing-4);
+}
+
+/* ── L1 Nav item ──────────────────────────────────────────────────────────── */
+.navItem {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--sds-spacing-8);
+  width: 100%;
+  padding: var(--sds-spacing-8) var(--sds-spacing-10);
+  border: none;
+  border-radius: var(--sds-radius-200);
+  background-color: transparent;
+  color: var(--sds-neutral-text-inverse);
+  cursor: pointer;
+  text-align: left;
+  font-family: var(--sds-family-web-font);
+  font-size: var(--sds-size-14);
+  font-weight: var(--sds-weight-medium);
+  line-height: 20px;
+  transition: background-color 120ms ease;
+  box-sizing: border-box;
+}
+
+.navItem:hover {
+  background-color: var(--sds-neutral-bg-inversesubtle-subtle);
+}
+
+.navItemActive {
+  background-color: var(--sds-neutral-bg-inversesubtle-hover);
+}
+
+.navItemIconLabel {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--sds-spacing-8);
+  flex: 1;
+  min-width: 0;
+  min-height: 1px;
+}
+
+.navItemIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  overflow: hidden;
+  color: var(--sds-neutral-text-inverse);
+}
+
+.navItemLabel {
+  flex: 1;
+  min-width: 0;
+  min-height: 1px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.navItemTrailing {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--sds-neutral-text-inverse);
+}
+
+/* Chevron icon trailing — constrained to 20×20 */
+.navItemTrailingIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  overflow: hidden;
+  color: var(--sds-neutral-text-inverse);
+}
+
+/* ── Divider ──────────────────────────────────────────────────────────────── */
+.divider {
+  height: 0;
+  border: none;
+  border-top: var(--sds-stroke-border) solid var(--sds-neutral-border-strong);
+  width: 100%;
+  flex-shrink: 0;
+}
+
+/* ── Section header ───────────────────────────────────────────────────────── */
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  gap: var(--sds-spacing-10);
+  width: 100%;
+  padding: var(--sds-spacing-8) var(--sds-spacing-10);
+  border-radius: var(--sds-radius-200);
+  flex-shrink: 0;
+}
+
+.sectionHeaderCollapsible {
+  cursor: pointer;
+}
+
+.sectionHeaderCollapsible:hover {
+  background-color: var(--sds-neutral-bg-inversesubtle-subtle);
+}
+
+.sectionHeaderLabel {
+  flex: 1;
+  min-width: 0;
+  min-height: 1px;
+  font-family: var(--sds-family-web-font);
+  font-size: var(--sds-size-20);
+  font-weight: var(--sds-weight-bold);
+  line-height: 25px;
+  color: var(--sds-neutral-text-inverse);
+}
+
+.sectionHeaderChevron {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  overflow: hidden;
+  color: var(--sds-neutral-text-inverse);
+}

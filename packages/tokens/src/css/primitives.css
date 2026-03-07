@@ -1,0 +1,232 @@
+/* ==========================================================================
+   Cashmere Design System — Primitive Tokens
+   Source of truth: Figma file OEwHAfVtHhfYFGKEalynMP
+   Do not edit manually — re-run `pnpm tokens:sync` to regenerate.
+   ========================================================================== */
+
+:root {
+
+  /* -------------------------------------------------------------------------
+     Color Primitives — Accent (Cashfree Brand Blue)
+     ------------------------------------------------------------------------- */
+  --sds-accent-50: #e5edff;
+  --sds-accent-100: #ccdaff;
+  --sds-accent-200: #9eb9ff;
+  --sds-accent-300: #6b95ff;
+  --sds-accent-400: #3870ff;
+  --sds-accent-500: #094eff;
+  --sds-accent-600: #003bd1;
+  --sds-accent-700: #002c9e;
+  --sds-accent-800: #001e6b;
+  --sds-accent-900: #000e33;
+  --sds-accent-950: #00071a;
+
+  /* -------------------------------------------------------------------------
+     Color Primitives — Neutral (Grayscale)
+     Note: scale is dark-first — 0 = pure black, 1000 = near-white (#fffffc)
+     ------------------------------------------------------------------------- */
+  --sds-neutral-0: #000000;
+  --sds-neutral-50: #1b1b1b;
+  --sds-neutral-100: #323232;
+  --sds-neutral-200: #494949;
+  --sds-neutral-300: #5f5f5f;
+  --sds-neutral-400: #767676;
+  --sds-neutral-500: #8d8d8d;
+  --sds-neutral-600: #a4a4a4;
+  --sds-neutral-700: #bbbbbb;
+  --sds-neutral-800: #d1d1d1;
+  --sds-neutral-900: #e8e8e8;
+  --sds-neutral-950: #f2f2f2;
+  --sds-neutral-1000: #fffffc;
+
+  /* -------------------------------------------------------------------------
+     Color Primitives — Brand
+     Mirrors neutral by default. Swap this collection to retheme for
+     non-Cashfree contexts without touching semantic tokens.
+     ------------------------------------------------------------------------- */
+  --sds-brand-0: #000000;
+  --sds-brand-50: #1b1b1b;
+  --sds-brand-100: #323232;
+  --sds-brand-200: #494949;
+  --sds-brand-300: #5f5f5f;
+  --sds-brand-400: #767676;
+  --sds-brand-500: #8d8d8d;
+  --sds-brand-600: #a4a4a4;
+  --sds-brand-700: #bbbbbb;
+  --sds-brand-800: #d1d1d1;
+  --sds-brand-900: #e8e8e8;
+  --sds-brand-950: #f2f2f2;
+  --sds-brand-1000: #fffffc;
+
+  /* -------------------------------------------------------------------------
+     Color Primitives — Negative (Error / Destructive)
+     ------------------------------------------------------------------------- */
+  --sds-negative-50: #ffe0e0;
+  --sds-negative-100: #ffbdbd;
+  --sds-negative-200: #ff7a7a;
+  --sds-negative-300: #ff3d3d;
+  --sds-negative-400: #fa0000;
+  --sds-negative-500: #b80000;
+  --sds-negative-600: #940000;
+  --sds-negative-700: #700000;
+  --sds-negative-800: #470000;
+  --sds-negative-900: #240000;
+  --sds-negative-950: #140000;
+
+  /* -------------------------------------------------------------------------
+     Color Primitives — Positive (Success)
+     ------------------------------------------------------------------------- */
+  --sds-positive-50: #dcffe9;
+  --sds-positive-100: #89f2af;
+  --sds-positive-200: #6adc96;
+  --sds-positive-300: #4ac77f;
+  --sds-positive-400: #04ab61;
+  --sds-positive-500: #009b54;
+  --sds-positive-600: #008641;
+  --sds-positive-700: #007030;
+  --sds-positive-800: #005b21;
+  --sds-positive-900: #004614;
+  --sds-positive-950: #00280b;
+
+  /* -------------------------------------------------------------------------
+     Color Primitives — Warning
+     ------------------------------------------------------------------------- */
+  --sds-warning-50: #fff7e6;
+  --sds-warning-100: #fef0d2;
+  --sds-warning-200: #fddfa0;
+  --sds-warning-300: #fdcf73;
+  --sds-warning-400: #fcc045;
+  --sds-warning-500: #fbb016;
+  --sds-warning-600: #d89204;
+  --sds-warning-700: #a06d03;
+  --sds-warning-800: #694702;
+  --sds-warning-900: #372501;
+  --sds-warning-950: #191100;
+
+  /* -------------------------------------------------------------------------
+     Color Primitives — Info
+     Shares the same palette as Accent (blue) by design.
+     ------------------------------------------------------------------------- */
+  --sds-info-50: #e5edff;
+  --sds-info-100: #ccdaff;
+  --sds-info-200: #9eb9ff;
+  --sds-info-300: #6b95ff;
+  --sds-info-400: #3870ff;
+  --sds-info-500: #094eff;
+  --sds-info-600: #003bd1;
+  --sds-info-700: #002c9e;
+  --sds-info-800: #001e6b;
+  --sds-info-900: #000e33;
+  --sds-info-950: #00071a;
+
+  /* -------------------------------------------------------------------------
+     Color Primitives — White
+     Note: #fffffc is intentional — Cashmere near-white, not pure white.
+     ------------------------------------------------------------------------- */
+  --sds-white-50: #fffffc;
+
+  /* -------------------------------------------------------------------------
+     Color Primitives — Overlays
+     Base color #151515 at 10%–100% opacity.
+     ------------------------------------------------------------------------- */
+  --sds-overlays-100: #1515151a; /* 10% */
+  --sds-overlays-200: #15151533; /* 20% */
+  --sds-overlays-300: #1515154d; /* 30% */
+  --sds-overlays-400: #15151566; /* 40% */
+  --sds-overlays-500: #15151580; /* 50% */
+  --sds-overlays-600: #15151599; /* 60% */
+  --sds-overlays-700: #151515b2; /* 70% */
+  --sds-overlays-800: #151515cc; /* 80% */
+  --sds-overlays-900: #151515e5; /* 90% */
+  --sds-overlays-950: #151515;   /* 100% */
+
+  /* -------------------------------------------------------------------------
+     Spacing
+     ------------------------------------------------------------------------- */
+  --sds-spacing-0: 0px;
+  --sds-spacing-2: 2px;
+  --sds-spacing-4: 4px;
+  --sds-spacing-8: 8px;
+  --sds-spacing-10: 10px;
+  --sds-spacing-12: 12px;
+  --sds-spacing-16: 16px;
+  --sds-spacing-20: 20px;
+  --sds-spacing-24: 24px;
+  --sds-spacing-32: 32px;
+  --sds-spacing-40: 40px;
+  --sds-spacing-48: 48px;
+  --sds-spacing-64: 64px;
+  --sds-spacing-96: 96px;
+  --sds-spacing-160: 160px;
+  --sds-spacing-negative-4: -4px;
+  --sds-spacing-negative-8: -8px;
+  --sds-spacing-negative-12: -12px;
+  --sds-spacing-negative-16: -16px;
+  --sds-spacing-negative-24: -24px;
+
+  /* -------------------------------------------------------------------------
+     Border Radius
+     ------------------------------------------------------------------------- */
+  --sds-radius-50: 0px;
+  --sds-radius-100: 2px;
+  --sds-radius-200: 4px;
+  --sds-radius-300: 8px;
+  --sds-radius-400: 12px;
+  --sds-radius-500: 14px;
+  --sds-radius-600: 16px;
+  --sds-radius-700: 18px;
+  --sds-radius-800: 20px;
+  --sds-radius-900: 24px;
+  --sds-radius-1000: 32px;
+  --sds-radius-full: 9999px;
+
+  /* -------------------------------------------------------------------------
+     Stroke (Border Width)
+     ------------------------------------------------------------------------- */
+  --sds-stroke-border: 1px;
+  --sds-stroke-focus: 2px;
+  --sds-stroke-focuslarge: 8px;
+
+  /* -------------------------------------------------------------------------
+     Icon Sizes
+     ------------------------------------------------------------------------- */
+  --sds-icon-xs: 12px;
+  --sds-icon-xs2: 14px;
+  --sds-icon-sm: 16px;
+  --sds-icon-md: 18px;
+  --sds-icon-lg: 20px;
+  --sds-icon-xl: 24px;
+  --sds-icon-2xl: 32px;
+
+  /* -------------------------------------------------------------------------
+     Typography — Font Family
+     Ensure DM Sans is loaded via Google Fonts or self-hosted before use:
+     https://fonts.google.com/specimen/DM+Sans
+     ------------------------------------------------------------------------- */
+  --sds-family-web-font: 'DM Sans', sans-serif;
+
+  /* -------------------------------------------------------------------------
+     Typography — Font Size
+     ------------------------------------------------------------------------- */
+  --sds-size-10: 10px;
+  --sds-size-11: 11px;
+  --sds-size-12: 12px;
+  --sds-size-14: 14px;
+  --sds-size-16: 16px;
+  --sds-size-18: 18px;
+  --sds-size-20: 20px;
+  --sds-size-24: 24px;
+  --sds-size-28: 28px;
+  --sds-size-32: 32px;
+  --sds-size-40: 40px;
+  --sds-size-48: 48px;
+  --sds-size-56: 56px;
+
+  /* -------------------------------------------------------------------------
+     Typography — Font Weight
+     ------------------------------------------------------------------------- */
+  --sds-weight-regular: 400;
+  --sds-weight-medium: 500;
+  --sds-weight-semibold: 600;
+  --sds-weight-bold: 700;
+}

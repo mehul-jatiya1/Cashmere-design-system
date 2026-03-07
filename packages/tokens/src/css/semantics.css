@@ -1,0 +1,258 @@
+/* ==========================================================================
+   Cashmere Design System — Semantic Color Tokens
+   Source of truth: Figma file OEwHAfVtHhfYFGKEalynMP
+   Do not edit manually — re-run `pnpm tokens:sync` to regenerate.
+
+   Naming pattern: --sds-{role}-{element}-{state}
+   ========================================================================== */
+
+:root {
+
+  /* -------------------------------------------------------------------------
+     Neutral — Text
+     ------------------------------------------------------------------------- */
+  --sds-neutral-text-primary: #1b1b1b;
+  --sds-neutral-text-secondary: #494949;
+  --sds-neutral-text-muted: #767676;
+  --sds-neutral-text-disabled: #8d8d8d;
+  --sds-neutral-text-inverse: #fffffc;
+
+  /* -------------------------------------------------------------------------
+     Neutral — Icon
+     ------------------------------------------------------------------------- */
+  --sds-neutral-icon-primary: #1b1b1b;
+  --sds-neutral-icon-secondary: #494949;
+  --sds-neutral-icon-muted: #767676;
+  --sds-neutral-icon-disabled: #8d8d8d;
+  --sds-neutral-icon-inverse: #fffffc;
+
+  /* -------------------------------------------------------------------------
+     Neutral — Background
+     ------------------------------------------------------------------------- */
+  --sds-neutral-bg-default-default: #fffffc;
+  --sds-neutral-bg-default-hover: #f2f2f2;
+  --sds-neutral-bg-default-pressed: #bbbbbb;
+  --sds-neutral-bg-default-active: #d1d1d1;
+  --sds-neutral-bg-default-disabled: #e8e8e8;
+  --sds-neutral-bg-default-subtle: #f2f2f2;
+  --sds-neutral-bg-default-muted: #d1d1d1;
+
+  --sds-neutral-bg-inverse-inverse: #1b1b1b;
+  --sds-neutral-bg-inverse-hover: #494949;
+  --sds-neutral-bg-inverse-pressed: #000000;
+  --sds-neutral-bg-inverse-active: #5f5f5f;
+  --sds-neutral-bg-inverse-disabled: #323232;
+
+  --sds-neutral-bg-inversesubtle-subtle: #494949;
+  --sds-neutral-bg-inversesubtle-hover: #5f5f5f;
+  --sds-neutral-bg-inversesubtle-pressed: #1b1b1b;
+  --sds-neutral-bg-inversesubtle-active: #767676;
+  --sds-neutral-bg-inversesubtle-disabled: #323232;
+
+  /* -------------------------------------------------------------------------
+     Neutral — Border
+     ------------------------------------------------------------------------- */
+  --sds-neutral-border-default: #1b1b1b;
+  --sds-neutral-border-subtle: #a4a4a4;
+  --sds-neutral-border-strong: #5f5f5f;
+  --sds-neutral-border-muted: #bbbbbb;
+  --sds-neutral-border-light: #e8e8e8;
+  --sds-neutral-border-disabled: #d1d1d1;
+  --sds-neutral-border-inverse: #fffffc;
+
+  /* -------------------------------------------------------------------------
+     Neutral — Divider
+     ------------------------------------------------------------------------- */
+  --sds-neutral-divider-default: #5f5f5f;
+  --sds-neutral-divider-subtle: #a4a4a4;
+
+  /* -------------------------------------------------------------------------
+     Brand — Text
+     ------------------------------------------------------------------------- */
+  --sds-brand-text-primary: #1b1b1b;
+  --sds-brand-text-secondary: #494949;
+  --sds-brand-text-muted: #767676;
+  --sds-brand-text-disabled: #8d8d8d;
+  --sds-brand-text-inverse: #fffffc;
+  --sds-brand-text-link: #1b1b1b;
+  --sds-brand-text-linkhover: #494949;
+  --sds-brand-text-selected: #000000;
+
+  /* -------------------------------------------------------------------------
+     Brand — Background
+     ------------------------------------------------------------------------- */
+  --sds-brand-bg-default: #1b1b1b;
+  --sds-brand-bg-hover: #323232;
+  --sds-brand-bg-pressed: #000000;
+  --sds-brand-bg-active: #1b1b1b;
+  --sds-brand-bg-disabled: #e8e8e8;
+  --sds-brand-bg-selected: #1b1b1b;
+  --sds-brand-bg-selectedsubtle: #fffffc;
+
+  /* -------------------------------------------------------------------------
+     Accent — Text
+     ------------------------------------------------------------------------- */
+  --sds-accent-text-default: #094eff;
+  --sds-accent-text-subtle: #fffffc;
+
+  /* -------------------------------------------------------------------------
+     Accent — Icon
+     ------------------------------------------------------------------------- */
+  --sds-accent-icon-default: #094eff;
+  --sds-accent-icon-subtle: #fffffc;
+  --sds-accent-icon-disabled: #e8e8e8;
+
+  /* -------------------------------------------------------------------------
+     Accent — Background
+     ------------------------------------------------------------------------- */
+  --sds-accent-bg-default: #094eff;
+  --sds-accent-bg-hover: #3870ff;
+  --sds-accent-bg-pressed: #003bd1;
+  --sds-accent-bg-disabled: #e8e8e8;
+  --sds-accent-bg-subtle: #e5edff;
+  --sds-accent-bg-subtlehover: #e5edff;
+  --sds-accent-bg-subtlepressed: #ccdaff;
+
+  /* -------------------------------------------------------------------------
+     Accent — Border
+     ------------------------------------------------------------------------- */
+  --sds-accent-border-default: #003bd1;
+  --sds-accent-border-subtle: #094eff;
+  --sds-accent-border-strong: #002c9e;
+
+  /* -------------------------------------------------------------------------
+     Positive — Text
+     ------------------------------------------------------------------------- */
+  --sds-positive-text-default: #007030;
+  --sds-positive-text-subtle: #fffffc;
+
+  /* -------------------------------------------------------------------------
+     Positive — Icon
+     ------------------------------------------------------------------------- */
+  --sds-positive-icon-default: #009b54;
+  --sds-positive-icon-subtle: #fffffc;
+  --sds-positive-icon-disabled: #e8e8e8;
+
+  /* -------------------------------------------------------------------------
+     Positive — Background
+     ------------------------------------------------------------------------- */
+  --sds-positive-bg-default: #009b54;
+  --sds-positive-bg-hover: #04ab61;
+  --sds-positive-bg-pressed: #008641;
+  --sds-positive-bg-active: #008641;
+  --sds-positive-bg-disabled: #e8e8e8;
+  --sds-positive-bg-subtle: #dcffe9;
+  --sds-positive-bg-subtlehover: #dcffe9;
+  --sds-positive-bg-subtlepressed: #89f2af;
+
+  /* -------------------------------------------------------------------------
+     Positive — Border
+     ------------------------------------------------------------------------- */
+  --sds-positive-border-default: #008641;
+  --sds-positive-border-subtle: #dcffe9;
+  --sds-positive-border-strong: #007030;
+
+  /* -------------------------------------------------------------------------
+     Negative — Text
+     ------------------------------------------------------------------------- */
+  --sds-negative-text-default: #b80000;
+
+  /* -------------------------------------------------------------------------
+     Negative — Icon
+     ------------------------------------------------------------------------- */
+  --sds-negative-icon-default: #b80000;
+
+  /* -------------------------------------------------------------------------
+     Negative — Background
+     ------------------------------------------------------------------------- */
+  --sds-negative-bg-default: #b80000;
+  --sds-negative-bg-hover: #fa0000;
+  --sds-negative-bg-pressed: #940000;
+  --sds-negative-bg-active: #940000;
+  --sds-negative-bg-disabled: #e8e8e8;
+  --sds-negative-bg-subtle: #ffe0e0;
+  --sds-negative-bg-subtlehover: #ffe0e0;
+  --sds-negative-bg-subtlepressed: #ffbdbd;
+
+  /* -------------------------------------------------------------------------
+     Negative — Border
+     ------------------------------------------------------------------------- */
+  --sds-negative-border-default: #940000;
+  --sds-negative-border-subtle: #b80000;
+  --sds-negative-border-strong: #700000;
+
+  /* -------------------------------------------------------------------------
+     Warning — Text
+     ------------------------------------------------------------------------- */
+  --sds-warning-text-default: #a06d03;
+
+  /* -------------------------------------------------------------------------
+     Warning — Icon
+     ------------------------------------------------------------------------- */
+  --sds-warning-icon-default: #a06d03;
+
+  /* -------------------------------------------------------------------------
+     Warning — Background
+     ------------------------------------------------------------------------- */
+  --sds-warning-bg-default: #d89204;
+  --sds-warning-bg-hover: #fbb016;
+  --sds-warning-bg-pressed: #694702;
+  --sds-warning-bg-active: #694702;
+  --sds-warning-bg-disabled: #e8e8e8;
+  --sds-warning-bg-subtle: #fff7e6;
+  --sds-warning-bg-subtlehover: #fff7e6;
+  --sds-warning-bg-subtlepressed: #fef0d2;
+
+  /* -------------------------------------------------------------------------
+     Warning — Border
+     ------------------------------------------------------------------------- */
+  --sds-warning-border-default: #d89204;
+  --sds-warning-border-subtle: #a06d03;
+  --sds-warning-border-strong: #694702;
+
+  /* -------------------------------------------------------------------------
+     Info — Text
+     ------------------------------------------------------------------------- */
+  --sds-info-text-default: #094eff;
+
+  /* -------------------------------------------------------------------------
+     Info — Icon
+     ------------------------------------------------------------------------- */
+  --sds-info-icon-default: #094eff;
+
+  /* -------------------------------------------------------------------------
+     Info — Background
+     ------------------------------------------------------------------------- */
+  --sds-info-bg-default: #094eff;
+  --sds-info-bg-subtle: #e5edff;
+
+  /* -------------------------------------------------------------------------
+     Info — Border
+     ------------------------------------------------------------------------- */
+  --sds-info-border-default: #003bd1;
+
+  /* -------------------------------------------------------------------------
+     Focus
+     ------------------------------------------------------------------------- */
+  --sds-focus-infocus-default: #094eff;
+  --sds-focus-infocus-inverse: #5f5f5f;
+  --sds-focus-infocus-error: #b80000;
+  --sds-focus-infocus-subtle: #e8e8e8;
+
+  /* -------------------------------------------------------------------------
+     Overlay
+     ------------------------------------------------------------------------- */
+  --sds-overlay-bg-default: #15151580;
+  --sds-overlay-bg-elevated: #1515151a;
+
+  /* -------------------------------------------------------------------------
+     Data Visualization
+     ------------------------------------------------------------------------- */
+  --sds-data-primary: #1b1b1b;
+  --sds-data-secondary: #494949;
+  --sds-data-positive: #008641;
+  --sds-data-negative: #940000;
+  --sds-data-warning: #d89204;
+  --sds-data-neutral: #1b1b1b;
+  --sds-data-inverse: #fffffc;
+}
