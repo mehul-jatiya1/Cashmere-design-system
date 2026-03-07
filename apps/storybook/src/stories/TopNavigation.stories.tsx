@@ -53,31 +53,6 @@ export const NoUnreadNotifications: Story = {
   },
 }
 
-export const FormHeader: Story = {
-  render: () => (
-    <div style={{ background: '#f4f6f9', minHeight: '100vh' }}>
-      <TopNavigation
-        variant="form"
-        heading="Page Heading"
-        subheading="Subheading or description goes here"
-        showHelp
-      />
-    </div>
-  ),
-}
-
-export const FormHeaderNoSubheading: Story = {
-  render: () => (
-    <div style={{ background: '#f4f6f9', minHeight: '100vh' }}>
-      <TopNavigation
-        variant="form"
-        heading="Page Heading"
-        showHelp
-      />
-    </div>
-  ),
-}
-
 // ── Composed dashboard shell ──────────────────────────────────────────────────
 // Shows NavigationDrawer + TopNavigation in a real layout.
 // Resize the Storybook canvas to see the search bar shrink down to min-width.
