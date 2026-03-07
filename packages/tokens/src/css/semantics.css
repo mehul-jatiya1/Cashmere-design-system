@@ -9,64 +9,6 @@
 :root {
 
   /* -------------------------------------------------------------------------
-     Neutral — Text
-     ------------------------------------------------------------------------- */
-  --sds-neutral-text-primary: #1b1b1b;
-  --sds-neutral-text-secondary: #494949;
-  --sds-neutral-text-muted: #767676;
-  --sds-neutral-text-disabled: #8d8d8d;
-  --sds-neutral-text-inverse: #fffffc;
-
-  /* -------------------------------------------------------------------------
-     Neutral — Icon
-     ------------------------------------------------------------------------- */
-  --sds-neutral-icon-primary: #1b1b1b;
-  --sds-neutral-icon-secondary: #494949;
-  --sds-neutral-icon-muted: #767676;
-  --sds-neutral-icon-disabled: #8d8d8d;
-  --sds-neutral-icon-inverse: #fffffc;
-
-  /* -------------------------------------------------------------------------
-     Neutral — Background
-     ------------------------------------------------------------------------- */
-  --sds-neutral-bg-default-default: #fffffc;
-  --sds-neutral-bg-default-hover: #f2f2f2;
-  --sds-neutral-bg-default-pressed: #bbbbbb;
-  --sds-neutral-bg-default-active: #d1d1d1;
-  --sds-neutral-bg-default-disabled: #e8e8e8;
-  --sds-neutral-bg-default-subtle: #f2f2f2;
-  --sds-neutral-bg-default-muted: #d1d1d1;
-
-  --sds-neutral-bg-inverse-inverse: #1b1b1b;
-  --sds-neutral-bg-inverse-hover: #494949;
-  --sds-neutral-bg-inverse-pressed: #000000;
-  --sds-neutral-bg-inverse-active: #5f5f5f;
-  --sds-neutral-bg-inverse-disabled: #323232;
-
-  --sds-neutral-bg-inversesubtle-subtle: #494949;
-  --sds-neutral-bg-inversesubtle-hover: #5f5f5f;
-  --sds-neutral-bg-inversesubtle-pressed: #1b1b1b;
-  --sds-neutral-bg-inversesubtle-active: #767676;
-  --sds-neutral-bg-inversesubtle-disabled: #323232;
-
-  /* -------------------------------------------------------------------------
-     Neutral — Border
-     ------------------------------------------------------------------------- */
-  --sds-neutral-border-default: #1b1b1b;
-  --sds-neutral-border-subtle: #a4a4a4;
-  --sds-neutral-border-strong: #5f5f5f;
-  --sds-neutral-border-muted: #bbbbbb;
-  --sds-neutral-border-light: #e8e8e8;
-  --sds-neutral-border-disabled: #d1d1d1;
-  --sds-neutral-border-inverse: #fffffc;
-
-  /* -------------------------------------------------------------------------
-     Neutral — Divider
-     ------------------------------------------------------------------------- */
-  --sds-neutral-divider-default: #5f5f5f;
-  --sds-neutral-divider-subtle: #a4a4a4;
-
-  /* -------------------------------------------------------------------------
      Brand — Text
      ------------------------------------------------------------------------- */
   --sds-brand-text-primary: #1b1b1b;
@@ -90,6 +32,65 @@
   --sds-brand-bg-selectedsubtle: #fffffc;
 
   /* -------------------------------------------------------------------------
+     Neutral — Text
+     ------------------------------------------------------------------------- */
+  --sds-neutral-text-primary: #1b1b1b;
+  --sds-neutral-text-secondary: #494949;
+  --sds-neutral-text-muted: #767676;
+  --sds-neutral-text-disabled: #8d8d8d;
+  --sds-neutral-text-inverse: #fffffc;
+
+  /* -------------------------------------------------------------------------
+     Neutral — Icon
+     ------------------------------------------------------------------------- */
+  --sds-neutral-icon-primary: #1b1b1b;
+  --sds-neutral-icon-secondary: #494949;
+  --sds-neutral-icon-muted: #767676;
+  --sds-neutral-icon-disabled: #8d8d8d;
+  --sds-neutral-icon-inverse: #fffffc;
+
+  /* -------------------------------------------------------------------------
+     Neutral — Background
+     ------------------------------------------------------------------------- */
+  --sds-neutral-bg-default-white: #fffffc;
+  --sds-neutral-bg-default-subtle: #f2f2f2;
+  --sds-neutral-bg-default-muted: #d1d1d1;
+  --sds-neutral-bg-default-hover: #f2f2f2;
+  --sds-neutral-bg-default-pressed: #bbbbbb;
+  --sds-neutral-bg-default-active: #d1d1d1;
+  --sds-neutral-bg-default-disabled: #e8e8e8;
+
+  --sds-neutral-bg-inverse-inverse: #1b1b1b;
+  --sds-neutral-bg-inverse-hover: #494949;
+  --sds-neutral-bg-inverse-pressed: #000000;
+  --sds-neutral-bg-inverse-active: #5f5f5f;
+  --sds-neutral-bg-inverse-disabled: #323232;
+
+  --sds-neutral-bg-inversesubtle-subtle: #494949;
+  --sds-neutral-bg-inversesubtle-hover: #5f5f5f;
+  --sds-neutral-bg-inversesubtle-pressed: #1b1b1b;
+  --sds-neutral-bg-inversesubtle-active: #767676;
+  --sds-neutral-bg-inversesubtle-disabled: #323232;
+
+  /* -------------------------------------------------------------------------
+     Neutral — Border
+     ------------------------------------------------------------------------- */
+  --sds-neutral-border-default: #1b1b1b;
+  --sds-neutral-border-muted: #bbbbbb;
+  --sds-neutral-border-medium: #d1d1d1;
+  --sds-neutral-border-light: #e8e8e8;
+  --sds-neutral-border-subtle: #a4a4a4;
+  --sds-neutral-border-strong: #5f5f5f;
+  --sds-neutral-border-disabled: #d1d1d1;
+  --sds-neutral-border-inverse: #fffffc;
+
+  /* -------------------------------------------------------------------------
+     Neutral — Divider
+     ------------------------------------------------------------------------- */
+  --sds-neutral-divider-default: #5f5f5f;
+  --sds-neutral-divider-subtle: #a4a4a4;
+
+  /* -------------------------------------------------------------------------
      Accent — Text
      ------------------------------------------------------------------------- */
   --sds-accent-text-default: #094eff;
@@ -99,8 +100,8 @@
      Accent — Icon
      ------------------------------------------------------------------------- */
   --sds-accent-icon-default: #094eff;
-  --sds-accent-icon-subtle: #fffffc;
   --sds-accent-icon-disabled: #e8e8e8;
+  --sds-accent-icon-subtle: #fffffc;
 
   /* -------------------------------------------------------------------------
      Accent — Background
@@ -130,16 +131,16 @@
      Positive — Icon
      ------------------------------------------------------------------------- */
   --sds-positive-icon-default: #009b54;
-  --sds-positive-icon-subtle: #fffffc;
   --sds-positive-icon-disabled: #e8e8e8;
+  --sds-positive-icon-subtle: #fffffc;
 
   /* -------------------------------------------------------------------------
      Positive — Background
      ------------------------------------------------------------------------- */
   --sds-positive-bg-default: #009b54;
   --sds-positive-bg-hover: #04ab61;
-  --sds-positive-bg-pressed: #008641;
   --sds-positive-bg-active: #008641;
+  --sds-positive-bg-pressed: #008641;
   --sds-positive-bg-disabled: #e8e8e8;
   --sds-positive-bg-subtle: #dcffe9;
   --sds-positive-bg-subtlehover: #dcffe9;
@@ -235,15 +236,15 @@
      Focus
      ------------------------------------------------------------------------- */
   --sds-focus-infocus-default: #094eff;
+  --sds-focus-infocus-subtle: #e8e8e8;
   --sds-focus-infocus-inverse: #5f5f5f;
   --sds-focus-infocus-error: #b80000;
-  --sds-focus-infocus-subtle: #e8e8e8;
 
   /* -------------------------------------------------------------------------
      Overlay
      ------------------------------------------------------------------------- */
-  --sds-overlay-bg-default: #15151580;
-  --sds-overlay-bg-elevated: #1515151a;
+  --sds-overlay-bg-default: rgba(21, 21, 21, 0.5);
+  --sds-overlay-bg-elevated: rgba(21, 21, 21, 0.1);
 
   /* -------------------------------------------------------------------------
      Data Visualization
