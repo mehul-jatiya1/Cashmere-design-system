@@ -23,6 +23,10 @@ export {
   IconWaiting,
   IconCode,
   IconSettings,
+  IconSearch,
+  IconBell,
+  IconHelp,
+  IconUser,
   IconChevronDown,
   IconChevronUp,
   IconChevronDown24,
@@ -39,6 +43,10 @@ export { NavigationDrawer } from './components/NavigationDrawer'
 export type {
   NavigationDrawerProps,
   NavItem,
+  NavSubItem,
   NavSection,
   ProductVertical,
 } from './components/NavigationDrawer'
+
+export { TopNavigation } from './components/TopNavigation'
+export type { TopNavigationProps } from './components/TopNavigation'

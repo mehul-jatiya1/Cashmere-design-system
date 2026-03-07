@@ -227,6 +227,36 @@
   color: var(--sds-neutral-text-inverse);
 }
 
+/* ── L2 Sub-items ─────────────────────────────────────────────────────────── */
+.navSubItems {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sds-spacing-4);
+}
+
+.navSubItem {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: var(--sds-spacing-8) var(--sds-spacing-12) var(--sds-spacing-8) 48px;
+  border: none;
+  border-radius: var(--sds-radius-200);
+  background-color: transparent;
+  color: var(--sds-neutral-text-inverse);
+  cursor: pointer;
+  text-align: left;
+  font-family: var(--sds-family-web-font);
+  font-size: var(--sds-size-14);
+  font-weight: var(--sds-weight-medium);
+  line-height: 20px;
+  transition: background-color 120ms ease;
+  box-sizing: border-box;
+}
+
+.navSubItem:hover {
+  background-color: var(--sds-neutral-bg-inversesubtle-subtle);
+}
+
 /* ── Divider ──────────────────────────────────────────────────────────────── */
 .divider {
   height: 0;

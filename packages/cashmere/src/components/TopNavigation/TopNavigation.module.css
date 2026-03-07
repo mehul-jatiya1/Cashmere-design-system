@@ -1,0 +1,157 @@
+/* =============================================================================
+   TopNavigation
+   Token source: Figma OEwHAfVtHhfYFGKEalynMP node 12782:2917
+   ============================================================================= */
+
+/* ── Default variant ──────────────────────────────────────────────────────── */
+.topNav {
+  display: flex;
+  align-items: center;
+  gap: var(--sds-spacing-24);
+  padding: var(--sds-spacing-20) var(--sds-spacing-32) var(--sds-spacing-20) var(--sds-spacing-24);
+  background-color: var(--sds-neutral-bg-default-default);
+  box-sizing: border-box;
+  width: 100%;
+}
+
+/* ── Form variant ─────────────────────────────────────────────────────────── */
+.topNavForm {
+  display: flex;
+  align-items: center;
+  gap: var(--sds-spacing-24);
+  padding: var(--sds-spacing-20) var(--sds-spacing-32);
+  background-color: var(--sds-neutral-bg-default-default);
+  border-bottom: var(--sds-stroke-border) solid var(--sds-neutral-border-light);
+  box-sizing: border-box;
+  width: 100%;
+}
+
+/* ── Search bar ───────────────────────────────────────────────────────────── */
+.searchArea {
+  flex: 1;
+  min-width: 0;
+}
+
+.searchBar {
+  display: flex;
+  align-items: center;
+  height: 56px;
+  background-color: var(--sds-neutral-bg-default-default);
+  border: var(--sds-stroke-border) solid var(--sds-neutral-border-muted);
+  border-radius: var(--sds-radius-full);
+  overflow: hidden;
+  max-width: 676px;
+  box-sizing: border-box;
+}
+
+.searchIconWrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 55px;
+  padding: var(--sds-spacing-16);
+  color: var(--sds-neutral-text-secondary);
+  box-sizing: border-box;
+}
+
+.searchInput {
+  flex: 1;
+  height: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: var(--sds-family-web-font);
+  font-size: var(--sds-size-16);
+  font-weight: var(--sds-weight-medium);
+  line-height: 22px;
+  color: var(--sds-neutral-text-primary);
+  padding: 0 var(--sds-spacing-8);
+}
+
+.searchInput::placeholder {
+  color: var(--sds-neutral-text-secondary);
+  font-weight: var(--sds-weight-medium);
+}
+
+.searchInput::-webkit-search-decoration,
+.searchInput::-webkit-search-cancel-button {
+  display: none;
+}
+
+/* ── Trailing icons area ──────────────────────────────────────────────────── */
+.trailingIcons {
+  display: flex;
+  align-items: center;
+  gap: var(--sds-spacing-16);
+  flex-shrink: 0;
+}
+
+/* ── Icon button (notification / help / profile) ──────────────────────────── */
+.iconBtn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: var(--sds-spacing-8);
+  border: none;
+  border-radius: var(--sds-radius-full);
+  background-color: var(--sds-neutral-bg-default-default);
+  color: var(--sds-neutral-icon-primary);
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background-color 120ms ease;
+  box-sizing: border-box;
+}
+
+.iconBtn:hover {
+  background-color: var(--sds-neutral-bg-default-hover);
+}
+
+/* ── Notification badge dot ───────────────────────────────────────────────── */
+.notificationBadge {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 8px;
+  height: 8px;
+  border-radius: var(--sds-radius-full);
+  background-color: var(--sds-accent-bg-default);
+  border: 1.5px solid var(--sds-neutral-bg-default-default);
+  pointer-events: none;
+}
+
+/* ── Form variant: heading area ───────────────────────────────────────────── */
+.headingArea {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sds-spacing-2);
+}
+
+.heading {
+  margin: 0;
+  font-family: var(--sds-family-web-font);
+  font-size: var(--sds-size-20);
+  font-weight: var(--sds-weight-semibold);
+  line-height: 25px;
+  color: var(--sds-neutral-text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.subheading {
+  margin: 0;
+  font-family: var(--sds-family-web-font);
+  font-size: var(--sds-size-16);
+  font-weight: var(--sds-weight-medium);
+  line-height: 23px;
+  color: var(--sds-neutral-text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

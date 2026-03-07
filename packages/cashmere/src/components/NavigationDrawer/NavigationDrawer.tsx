@@ -9,6 +9,7 @@ import {
 import type {
   NavigationDrawerProps,
   NavItem,
+  NavSubItem,
   NavSection,
   ProductVertical,
 } from './NavigationDrawer.types'
@@ -20,27 +21,55 @@ interface NavItemRowProps {
   onItemClick: (item: NavItem) => void
 }
 
-const NavItemRow: React.FC<NavItemRowProps> = ({ item, isActive, onItemClick }) => (
-  <div className={styles.itemWrapper}>
-    <button
-      type="button"
-      className={`${styles.navItem} ${isActive ? styles.navItemActive : ''}`}
-      onClick={() => { item.onClick?.(); onItemClick(item) }}
-      aria-current={isActive ? 'page' : undefined}
-    >
-      <span className={styles.navItemIconLabel}>
-        {item.icon && <span className={styles.navItemIcon}>{item.icon}</span>}
-        <span className={styles.navItemLabel}>{item.label}</span>
-      </span>
-      {item.trailing === 'chevron' && (
-        <span className={styles.navItemTrailingIcon}><IconChevronDown size={20} /></span>
+const NavItemRow: React.FC<NavItemRowProps> = ({ item, isActive, onItemClick }) => {
+  const hasSubItems = item.trailing === 'chevron' && item.subItems && item.subItems.length > 0
+  const [isOpen, setIsOpen] = useState(false)
+
+  const handleClick = () => {
+    if (hasSubItems) setIsOpen(o => !o)
+    item.onClick?.()
+    onItemClick(item)
+  }
+
+  return (
+    <div className={styles.itemWrapper}>
+      <button
+        type="button"
+        className={`${styles.navItem} ${isActive ? styles.navItemActive : ''}`}
+        onClick={handleClick}
+        aria-current={isActive ? 'page' : undefined}
+        aria-expanded={hasSubItems ? isOpen : undefined}
+      >
+        <span className={styles.navItemIconLabel}>
+          {item.icon && <span className={styles.navItemIcon}>{item.icon}</span>}
+          <span className={styles.navItemLabel}>{item.label}</span>
+        </span>
+        {item.trailing === 'chevron' && (
+          <span className={styles.navItemTrailingIcon}>
+            {isOpen ? <IconChevronUp size={20} /> : <IconChevronDown size={20} />}
+          </span>
+        )}
+        {item.trailing && item.trailing !== 'chevron' && (
+          <span className={styles.navItemTrailing}>{item.trailing}</span>
+        )}
+      </button>
+      {hasSubItems && isOpen && (
+        <div className={styles.navSubItems}>
+          {item.subItems!.map((sub: NavSubItem) => (
+            <button
+              key={sub.id}
+              type="button"
+              className={styles.navSubItem}
+              onClick={() => onItemClick({ ...sub, trailing: undefined })}
+            >
+              {sub.label}
+            </button>
+          ))}
+        </div>
       )}
-      {item.trailing && item.trailing !== 'chevron' && (
-        <span className={styles.navItemTrailing}>{item.trailing}</span>
-      )}
-    </button>
-  </div>
-)
+    </div>
+  )
+}
 
 /* ── Section ────────────────────────────────────────────────────────────── */
 interface SectionProps {

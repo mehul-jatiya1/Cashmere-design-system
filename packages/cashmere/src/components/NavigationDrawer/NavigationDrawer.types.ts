@@ -1,11 +1,18 @@
 import React from 'react'
 
+export interface NavSubItem {
+  id: string
+  label: string
+}
+
 export interface NavItem {
   id: string
   label: string
   icon?: React.ReactNode
-  /** 'chevron' renders a standard expand chevron; any ReactNode renders inline */
+  /** 'chevron' renders an expand/collapse chevron; any ReactNode renders inline */
   trailing?: 'chevron' | React.ReactNode
+  /** Sub-items shown when trailing === 'chevron' and item is expanded */
+  subItems?: NavSubItem[]
   href?: string
   onClick?: () => void
 }

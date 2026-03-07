@@ -2,8 +2,8 @@ import React, { useState } from 'react'
 import type { Meta, StoryObj } from '@storybook/react'
 import {
   IconHome, IconBargraph, IconBookOpenText, IconMoney, IconDocument,
-  IconWaiting, IconCode, IconSettings, IconChevronDown, IconChevronUp,
-  IconChevronDown24, IconChevronUp24,
+  IconWaiting, IconCode, IconSettings, IconSearch, IconBell, IconHelp, IconUser,
+  IconChevronDown, IconChevronUp, IconChevronDown24, IconChevronUp24,
 } from '@cashfree/cashmere'
 import { Page, PageHeader, Section, Table, TR, TD, Token, Value, font, mono } from './_docs'
 
@@ -22,6 +22,10 @@ const ALL_ICONS = [
   { name: 'IconWaiting',       Component: IconWaiting,       category: 'Status' },
   { name: 'IconCode',          Component: IconCode,          category: 'Developer' },
   { name: 'IconSettings',      Component: IconSettings,      category: 'Navigation' },
+  { name: 'IconSearch',        Component: IconSearch,        category: 'Navigation' },
+  { name: 'IconBell',          Component: IconBell,          category: 'Navigation' },
+  { name: 'IconHelp',          Component: IconHelp,          category: 'Navigation' },
+  { name: 'IconUser',          Component: IconUser,          category: 'Navigation' },
   { name: 'IconChevronDown',   Component: IconChevronDown,   category: 'Directional' },
   { name: 'IconChevronUp',     Component: IconChevronUp,     category: 'Directional' },
   { name: 'IconChevronDown24', Component: IconChevronDown24, category: 'Directional' },

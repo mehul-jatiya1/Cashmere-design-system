@@ -11,7 +11,6 @@ import {
   IconWaiting,
   IconCode,
   IconSettings,
-  IconChevronDown,
 } from '@cashfree/cashmere'
 import type { NavSection, ProductVertical } from '@cashfree/cashmere'
 
@@ -82,7 +81,18 @@ const PulseAppLogo = () => (
   </svg>
 )
 
-const ChevronTrailing = () => <IconChevronDown size={20} />
+const TX_HISTORY_ITEMS = [
+  { id: 'payments',  label: 'Payments'  },
+  { id: 'orders',    label: 'Orders'    },
+  { id: 'refunds',   label: 'Refunds'   },
+  { id: 'disputes',  label: 'Disputes'  },
+]
+
+const SUB_ITEMS = [
+  { id: 'menu-1', label: 'Menu 1' },
+  { id: 'menu-2', label: 'Menu 2' },
+  { id: 'menu-3', label: 'Menu 3' },
+]
 
 function buildSections(testMode: boolean, setTestMode: (v: boolean) => void): NavSection[] {
   return [
@@ -91,7 +101,7 @@ function buildSections(testMode: boolean, setTestMode: (v: boolean) => void): Na
       items: [
         { id: 'home',        label: 'Home',                  icon: <IconHome size={20} /> },
         { id: 'insights',    label: 'Insights',              icon: <IconBargraph size={20} /> },
-        { id: 'tx-history',  label: 'Transactional History', icon: <IconBookOpenText size={20} />, trailing: <ChevronTrailing /> },
+        { id: 'tx-history',  label: 'Transactional History', icon: <IconBookOpenText size={20} />, trailing: 'chevron', subItems: TX_HISTORY_ITEMS },
         { id: 'settlements', label: 'Settlements',           icon: <IconMoney size={20} /> },
         { id: 'reports',     label: 'Reports',               icon: <IconDocument size={20} /> },
       ],
@@ -100,10 +110,10 @@ function buildSections(testMode: boolean, setTestMode: (v: boolean) => void): Na
       id: 'products',
       title: 'Products',
       items: [
-        { id: 'collection-methods', label: 'Collection Methods', trailing: <ChevronTrailing /> },
-        { id: 'one-click-checkout', label: 'One Click Checkout', trailing: <ChevronTrailing /> },
-        { id: 'recurring-payments', label: 'Recurring Payments', trailing: <ChevronTrailing /> },
-        { id: 'riskshield',         label: 'Riskshield',         trailing: <ChevronTrailing /> },
+        { id: 'collection-methods', label: 'Collection Methods', trailing: 'chevron', subItems: SUB_ITEMS },
+        { id: 'one-click-checkout', label: 'One Click Checkout', trailing: 'chevron', subItems: SUB_ITEMS },
+        { id: 'recurring-payments', label: 'Recurring Payments', trailing: 'chevron', subItems: SUB_ITEMS },
+        { id: 'riskshield',         label: 'Riskshield',         trailing: 'chevron', subItems: SUB_ITEMS },
       ],
     },
     {
