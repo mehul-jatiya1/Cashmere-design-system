@@ -95,7 +95,7 @@ const Group = ({ title, description, children }: GroupProps) => (
         <p style={{ fontFamily: font, fontSize: 12, color: '#767676', margin: '4px 0 0', lineHeight: 1.5 }}>{description}</p>
       )}
     </div>
-    <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12 }}>{children}</div>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 0 }}>{children}</div>
   </div>
 )
 
