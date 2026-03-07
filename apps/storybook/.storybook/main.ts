@@ -17,7 +17,6 @@ const config: StorybookConfig = {
     config.resolve.alias = [
       ...(Array.isArray(config.resolve.alias) ? config.resolve.alias : []),
       { find: '@cashfree/cashmere-tokens/css', replacement: resolve(__dirname, '../../../packages/tokens/src/css/index.css') },
-      { find: '@cashfree/cashmere/styles', replacement: resolve(__dirname, '../../../packages/cashmere/dist/index.css') },
       { find: '@cashfree/cashmere', replacement: resolve(__dirname, '../../../packages/cashmere/src/index.ts') },
       { find: '@cashfree/cashmere-tokens', replacement: resolve(__dirname, '../../../packages/tokens/src/index.ts') },
     ]

@@ -1,6 +1,5 @@
 import type { Preview } from '@storybook/react'
 import '@cashfree/cashmere-tokens/css'
-import '@cashfree/cashmere/styles'
 
 const preview: Preview = {
   parameters: {
