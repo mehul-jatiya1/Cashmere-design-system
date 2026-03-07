@@ -1,0 +1,115 @@
+/* ==========================================================================
+   Tags — Cashmere Design System
+   All values reference sds token variables — no raw values.
+   ========================================================================== */
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sds-spacing-4);
+  border-radius: var(--sds-radius-full);
+  font-family: var(--sds-family-web-font);
+  box-sizing: border-box;
+  white-space: nowrap;
+}
+
+/* "For corners" — flat left side, rounded right side */
+.corners {
+  border-radius: 0 var(--sds-radius-full) var(--sds-radius-full) 0;
+}
+
+/* --------------------------------------------------------------------------
+   Sizes
+   -------------------------------------------------------------------------- */
+
+.small {
+  padding: var(--sds-spacing-2) var(--sds-spacing-8);
+  font-size: var(--sds-size-12);
+  font-weight: var(--sds-weight-semibold);
+  line-height: 1.33;
+}
+
+.small .icon {
+  width: var(--sds-icon-xs);
+  height: var(--sds-icon-xs);
+  flex-shrink: 0;
+}
+
+.large {
+  padding: var(--sds-spacing-4) var(--sds-spacing-12);
+  font-size: var(--sds-size-16);
+  font-weight: var(--sds-weight-bold);
+  line-height: 1;
+}
+
+.large .icon {
+  width: var(--sds-icon-sm);
+  height: var(--sds-icon-sm);
+  flex-shrink: 0;
+}
+
+/* --------------------------------------------------------------------------
+   Status — text + icon color
+   -------------------------------------------------------------------------- */
+
+.positive {
+  color: var(--sds-positive-text-default);
+}
+
+.negative {
+  color: var(--sds-negative-text-default);
+}
+
+.warning {
+  color: var(--sds-warning-text-default);
+}
+
+.information {
+  color: var(--sds-info-text-default);
+}
+
+.intermediate {
+  color: var(--sds-neutral-text-muted);
+}
+
+/* --------------------------------------------------------------------------
+   Background (applied when type = default | background | corners)
+   -------------------------------------------------------------------------- */
+
+.positive.withBg {
+  background-color: var(--sds-positive-bg-subtle);
+}
+
+.negative.withBg {
+  background-color: var(--sds-negative-bg-subtle);
+}
+
+.warning.withBg {
+  background-color: var(--sds-warning-bg-subtle);
+}
+
+.information.withBg {
+  background-color: var(--sds-info-bg-subtle);
+}
+
+.intermediate.withBg {
+  background-color: var(--sds-neutral-bg-default-subtle);
+}
+
+/* --------------------------------------------------------------------------
+   Icon wrapper
+   -------------------------------------------------------------------------- */
+
+.icon {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+/* --------------------------------------------------------------------------
+   Text wrapper
+   -------------------------------------------------------------------------- */
+
+.text {
+  display: inline;
+}

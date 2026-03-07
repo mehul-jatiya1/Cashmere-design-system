@@ -1,0 +1,60 @@
+/* ==========================================================================
+   Breadcrumbs — Cashmere Design System
+   All values reference sds token variables — no raw values.
+   ========================================================================== */
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: var(--sds-spacing-8);
+  flex-wrap: wrap;
+}
+
+/* --------------------------------------------------------------------------
+   Link item (navigable ancestor pages)
+   -------------------------------------------------------------------------- */
+
+.link {
+  font-family: var(--sds-family-web-font);
+  font-size: var(--sds-size-16);
+  font-weight: var(--sds-weight-semibold);
+  line-height: 1.5;
+  color: var(--sds-neutral-text-secondary);
+  text-decoration: underline;
+  text-underline-offset: var(--sds-spacing-2);
+  white-space: nowrap;
+  max-width: 212px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.link:hover {
+  color: var(--sds-neutral-text-primary);
+}
+
+/* --------------------------------------------------------------------------
+   Chevron separator
+   -------------------------------------------------------------------------- */
+
+.chevron {
+  width: var(--sds-icon-xs);
+  height: var(--sds-icon-xs);
+  flex-shrink: 0;
+  color: var(--sds-neutral-text-secondary);
+}
+
+/* --------------------------------------------------------------------------
+   Current page (non-interactive last item)
+   -------------------------------------------------------------------------- */
+
+.current {
+  font-family: var(--sds-family-web-font);
+  font-size: var(--sds-size-16);
+  font-weight: var(--sds-weight-semibold);
+  line-height: 1.5;
+  color: var(--sds-neutral-text-primary);
+  white-space: nowrap;
+  max-width: 212px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

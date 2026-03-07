@@ -50,3 +50,12 @@ export type {
 
 export { TopNavigation } from './components/TopNavigation'
 export type { TopNavigationProps } from './components/TopNavigation'
+
+export { Tags } from './components/Tags'
+export type { TagsProps, TagsStatus, TagsType, TagsSize } from './components/Tags'
+
+export { Breadcrumbs } from './components/Breadcrumbs'
+export type { BreadcrumbsProps, BreadcrumbItem } from './components/Breadcrumbs'
+
+export { PageHeaderset } from './components/PageHeaderset'
+export type { PageHeadersetProps } from './components/PageHeaderset'
