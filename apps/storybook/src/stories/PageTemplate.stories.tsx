@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import type { Meta, StoryObj } from '@storybook/react'
-import { TopNavigation, NavigationDrawer, IconHome, IconBargraph, IconBookOpenText, IconMoney, IconDocument, IconWaiting, IconCode, IconSettings, Switch } from '@cashfree/cashmere'
+import { TopNavigation, NavigationDrawer, PageHeaderset, IconHome, IconBargraph, IconBookOpenText, IconMoney, IconDocument, IconWaiting, IconCode, IconSettings, Switch } from '@cashfree/cashmere'
 import type { NavSection } from '@cashfree/cashmere'
 
 const meta: Meta = {
@@ -108,13 +108,13 @@ export const Composed: Story = {
             showHelp
           />
           <main style={{ flex: 1, padding: 32, overflow: 'auto', fontFamily: 'DM Sans, sans-serif' }}>
-            <h1 style={{ margin: 0, fontSize: 24, fontWeight: 700, color: '#1b1b1b' }}>Dashboard</h1>
-            <p style={{ color: '#5f5f5f', marginTop: 8 }}>
-              Active: <strong>{activeItemId}</strong> · Product: <strong>{activeProductId}</strong>
-            </p>
-            <p style={{ color: '#767676', marginTop: 16, fontSize: 13 }}>
-              Resize the canvas to see the search bar shrink. It will compress down to its min-width of 444px, then the overall layout scrolls.
-            </p>
+            <PageHeaderset
+              type="homepage"
+              heading="Payments"
+              subheading="View and manage all your payment transactions"
+              primaryAction={{ label: 'Initiate Refund' }}
+              secondaryAction={{ label: 'Export' }}
+            />
           </main>
         </div>
       </div>
