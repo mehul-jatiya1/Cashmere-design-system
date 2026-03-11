@@ -22,7 +22,6 @@ interface PageHeadersetArgs {
 
 const meta: Meta<PageHeadersetArgs> = {
   title: 'Components/PageHeaderset',
-  tags: ['autodocs'],
   parameters: {
     layout: 'padded',
     docs: {

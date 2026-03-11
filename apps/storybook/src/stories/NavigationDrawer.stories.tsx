@@ -18,7 +18,6 @@ import type { NavSection, ProductVertical } from '@cashfree/cashmere'
 const meta: Meta<typeof NavigationDrawer> = {
   title: 'Components/NavigationDrawer',
   component: NavigationDrawer,
-  tags: ['autodocs'],
   parameters: {
     layout: 'fullscreen',
     docs: {

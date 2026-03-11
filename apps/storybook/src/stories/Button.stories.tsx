@@ -6,7 +6,6 @@ import { Button, IconHome, IconSettings, IconChevronDown } from '@cashfree/cashm
 const meta: Meta<typeof Button> = {
   title: 'Components/Button',
   component: Button,
-  tags: ['autodocs'],
   parameters: {
     layout: 'centered',
     docs: {

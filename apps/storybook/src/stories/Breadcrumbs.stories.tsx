@@ -6,7 +6,6 @@ import { Breadcrumbs } from '@cashfree/cashmere'
 const meta: Meta<typeof Breadcrumbs> = {
   title: 'Components/Breadcrumbs',
   component: Breadcrumbs,
-  tags: ['autodocs'],
   parameters: {
     docs: {
       description: {

@@ -6,7 +6,6 @@ import { Tags } from '@cashfree/cashmere'
 const meta: Meta<typeof Tags> = {
   title: 'Components/Tags',
   component: Tags,
-  tags: ['autodocs'],
   parameters: {
     docs: {
       description: {
@@ -16,7 +15,7 @@ const meta: Meta<typeof Tags> = {
     },
     design: {
       type: 'figma',
-      url: 'https://www.figma.com/design/placeholder/Cashmere?node-id=tags',
+      url: 'https://www.figma.com/design/OEwHAfVtHhfYFGKEalynMP/Cashmere-Design-System?node-id=7279-11245&t=8ohgna1Sfb7mqqZH-11',
     },
     viewport: {
       defaultViewport: 'desktop',

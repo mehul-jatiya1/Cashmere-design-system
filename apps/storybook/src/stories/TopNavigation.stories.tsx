@@ -6,7 +6,6 @@ import { TopNavigation } from '@cashfree/cashmere'
 const meta: Meta<typeof TopNavigation> = {
   title: 'Components/TopNavigation',
   component: TopNavigation,
-  tags: ['autodocs'],
   parameters: {
     layout: 'fullscreen',
     docs: {

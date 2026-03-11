@@ -1,0 +1,115 @@
+/* ==========================================================================
+   FilterChips — Cashmere Design System
+   All values reference sds token variables — no raw values.
+   ========================================================================== */
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sds-spacing-6);
+  padding: var(--sds-spacing-6) var(--sds-spacing-12);
+  border-radius: var(--sds-radius-full);
+  border: 1.5px solid var(--sds-neutral-border-default);
+  background-color: var(--sds-neutral-bg-default);
+  font-family: var(--sds-family-web-font);
+  font-size: var(--sds-size-14);
+  font-weight: var(--sds-weight-medium);
+  line-height: 1.29;
+  color: var(--sds-neutral-text-default);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: border-color 0.15s ease, background-color 0.15s ease, color 0.15s ease;
+  box-sizing: border-box;
+  outline: none;
+}
+
+/* Hover */
+.chip:hover:not(:disabled) {
+  border-color: var(--sds-primary-border-default);
+  color: var(--sds-primary-text-default);
+}
+
+/* Focus visible */
+.chip:focus-visible {
+  border-color: var(--sds-primary-border-default);
+  box-shadow: 0 0 0 3px var(--sds-primary-bg-subtle);
+  color: var(--sds-primary-text-default);
+}
+
+/* Active / selected */
+.chip.active {
+  border-color: var(--sds-primary-border-default);
+  background-color: var(--sds-primary-bg-subtle);
+  font-weight: var(--sds-weight-semibold);
+  color: var(--sds-primary-text-default);
+}
+
+.chip.active:hover:not(:disabled) {
+  background-color: var(--sds-primary-bg-default);
+}
+
+/* Disabled */
+.chip:disabled {
+  border-color: var(--sds-neutral-border-subtle);
+  background-color: var(--sds-neutral-bg-default);
+  color: var(--sds-neutral-text-disabled);
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+/* --------------------------------------------------------------------------
+   Inner elements
+   -------------------------------------------------------------------------- */
+
+.leadingIcon {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  width: var(--sds-icon-xs);
+  height: var(--sds-icon-xs);
+  color: inherit;
+}
+
+.leadingIcon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.label {
+  display: inline;
+}
+
+/* Badge — small accent pill with count */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: var(--sds-spacing-16);
+  height: var(--sds-spacing-16);
+  padding: 0 var(--sds-spacing-4);
+  border-radius: var(--sds-radius-full);
+  background-color: var(--sds-primary-bg-default);
+  color: var(--sds-primary-text-onbg-default);
+  font-size: var(--sds-size-12);
+  font-weight: var(--sds-weight-semibold);
+  line-height: 1;
+}
+
+.chip:disabled .badge {
+  background-color: var(--sds-neutral-bg-subtle);
+  color: var(--sds-neutral-text-disabled);
+}
+
+.trailingIcon {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  width: var(--sds-icon-xs);
+  height: var(--sds-icon-xs);
+  color: inherit;
+}
+
+.trailingIcon svg {
+  width: 100%;
+  height: 100%;
+}

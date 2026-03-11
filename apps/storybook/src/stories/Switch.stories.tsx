@@ -6,7 +6,6 @@ import { Switch } from '@cashfree/cashmere'
 const meta: Meta<typeof Switch> = {
   title: 'Components/Switch',
   component: Switch,
-  tags: ['autodocs'],
   parameters: {
     layout: 'centered',
     docs: {

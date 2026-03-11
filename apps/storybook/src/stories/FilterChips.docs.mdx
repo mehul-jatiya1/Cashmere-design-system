@@ -1,0 +1,89 @@
+import { Meta, Canvas, Controls } from '@storybook/blocks'
+import * as FilterChipsStories from './FilterChips.stories'
+
+<Meta of={FilterChipsStories} />
+
+# FilterChips
+
+FilterChips are interactive pill-shaped controls that let users apply or toggle filters on a dataset. They appear inline within filter bars and support a selected (active) state, a badge showing the number of matched items, and optional leading/trailing icons. Their design uses a full border-radius pill shape with primary-colour feedback on interaction.
+
+---
+
+## When to use
+
+| Use FilterChips when... | Don't use FilterChips when... |
+|---|---|
+| Allowing users to toggle one or more filter categories | You need mutually exclusive single-select — use a radio or segmented control |
+| Showing how many items match a filter via a badge count | The action is destructive or navigational — use a Button |
+| Presenting a compact, inline filter bar in a table or list view | The label is longer than 2–3 words — use a Select dropdown instead |
+| The filter state (on/off) needs to be visually clear at a glance | You need a tag to display read-only status — use Tags instead |
+
+---
+
+## Anatomy
+
+1. **Leading icon** — Optional. Communicates the filter category at a glance (e.g. a layers icon for "Type"). 16×16px, inherits chip colour.
+2. **Label** — Short text (1–3 words) naming the filter. Medium weight by default, semibold when active.
+3. **Badge** — Optional accent pill showing the count of matching items. Blue background, white text. Hidden in disabled state.
+4. **Trailing icon** — Defaults to a chevron down, indicating the chip may expand or open a dropdown. Can be replaced via `trailingIcon` prop.
+5. **Container** — Pill shape (`border-radius: full`). Border-only in default state; primary border + tinted background in active state.
+
+---
+
+## Variants
+
+<Canvas of={FilterChipsStories.Default} />
+<Controls of={FilterChipsStories.Default} />
+
+### States
+
+<Canvas of={FilterChipsStories.AllStates} />
+
+| State | When it applies |
+|---|---|
+| Default | Filter is available but not applied |
+| Active | Filter is currently applied — primary border + tinted background |
+| Disabled | Filter is unavailable in the current context |
+| Hover | Mouse is over the chip (CSS `:hover`) — primary border appears |
+| Focus | Keyboard focus (CSS `:focus-visible`) — primary border + focus ring |
+
+### Without badge
+
+<Canvas of={FilterChipsStories.WithoutBadge} />
+
+Use `showBadge={false}` when a count is not available or when showing counts would be misleading.
+
+### Text only
+
+<Canvas of={FilterChipsStories.TextOnly} />
+
+The leading icon is optional. Omit it when the label alone is sufficient to identify the filter.
+
+---
+
+## Do / Don't
+
+**Do:**
+- Use `isActive` to reflect the current filter state — always keep visual state in sync with data
+- Show a badge count when it helps users understand the impact of the filter before applying it
+- Place FilterChips in a horizontal scrollable row when there are more than 5
+
+**Don't:**
+- Use FilterChips as navigation links or call-to-action buttons
+- Use the `disabled` state to hide unavailable filters — use it sparingly for filters that are temporarily locked
+- Stack FilterChips vertically; they are designed for horizontal inline use
+
+---
+
+## Accessibility
+
+- The chip renders as a `<button>` with `aria-pressed` reflecting the `isActive` state — screen readers announce "pressed" or "not pressed"
+- Badge text is inside the button's accessible name, so the count is read aloud
+- Focus ring uses `box-shadow` to remain visible even when `outline` is reset globally — meets WCAG 2.4.7
+- Disabled chips have `disabled` HTML attribute — fully excluded from keyboard tab order
+
+---
+
+## Props
+
+<Controls />

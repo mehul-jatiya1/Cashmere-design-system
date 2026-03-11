@@ -59,3 +59,6 @@ export type { BreadcrumbsProps, BreadcrumbItem } from './components/Breadcrumbs'
 
 export { PageHeaderset } from './components/PageHeaderset'
 export type { PageHeadersetProps } from './components/PageHeaderset'
+
+export { FilterChips } from './components/FilterChips'
+export type { FilterChipsProps } from './components/FilterChips'
