@@ -1,0 +1,72 @@
+import { Meta, Canvas, Controls } from '@storybook/blocks'
+import * as SwitchStories from './Switch.stories'
+
+<Meta of={SwitchStories} />
+
+# Switch
+
+Switch is a binary toggle for enabling or disabling a feature or setting. Unlike a checkbox, a Switch implies **immediate effect** — no submit button is required. It uses `role="switch"` and `aria-checked` for full screen-reader compatibility, and supports Space/Enter keyboard activation.
+
+---
+
+## When to use
+
+| Use Switch when... | Don't use Switch when... |
+|---|---|
+| A setting takes effect immediately (e.g. "Enable 2FA") | You need a confirmation step before the action applies — use a modal + button |
+| The setting has a clear on/off binary state | You need to select from more than 2 options — use a RadioGroup |
+| The setting is independent of other settings on the page | Multiple related settings need to be submitted together — use checkboxes |
+
+---
+
+## Anatomy
+
+1. **Track** — The oval background that changes colour to reflect state (off = muted, on = primary).
+2. **Thumb** — The circular indicator that slides between positions.
+3. **Label** (optional) — Describes the setting. Always use a label unless the context makes the purpose unambiguous.
+
+---
+
+## Variants
+
+<Canvas of={SwitchStories.Default} />
+<Controls of={SwitchStories.Default} />
+
+### All states
+
+<Canvas of={SwitchStories.AllStates} />
+
+### Controlled usage
+
+Switch is a controlled component — the parent must manage state via `checked` + `onChange`.
+
+<Canvas of={SwitchStories.Controlled} />
+
+---
+
+## Do / Don't
+
+**Do:**
+- Always label the Switch so users know what is being toggled
+- Use Switch for settings that take immediate effect
+- Keep the label concise — describe the outcome when on (e.g. "Show balance" not "Balance visibility")
+
+**Don't:**
+- Use Switch inside a form that requires a submit action
+- Use Switch when you need a tri-state — use a Checkbox with indeterminate instead
+- Disable without explaining why via a tooltip or helper text
+
+---
+
+## Accessibility
+
+- Renders as `<button role="switch" aria-checked>` — recognised by all major screen readers
+- Keyboard: `Space` and `Enter` both toggle the switch
+- Disabled state uses both `disabled` attribute and `aria-disabled="true"`
+- The track meets WCAG AA colour contrast in both on and off states
+
+---
+
+## Props
+
+<Controls />

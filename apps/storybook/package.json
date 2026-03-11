@@ -10,6 +10,8 @@
   "dependencies": {
     "@cashfree/cashmere": "workspace:*",
     "@cashfree/cashmere-tokens": "workspace:*",
+    "@storybook/addon-a11y": "^8.6.18",
+    "@storybook/addon-designs": "^8.0.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },

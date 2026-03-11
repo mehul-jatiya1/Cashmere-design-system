@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import type { Meta, StoryObj } from '@storybook/react'
+import { expect, within, userEvent } from '@storybook/test'
 import {
   NavigationDrawer,
   Switch,
@@ -20,6 +21,16 @@ const meta: Meta<typeof NavigationDrawer> = {
   tags: ['autodocs'],
   parameters: {
     layout: 'fullscreen',
+    docs: {
+      description: {
+        component:
+          'NavigationDrawer is the primary left-side navigation for the Cashfree merchant dashboard. It houses product verticals, collapsible nav sections with sub-items, and utility controls like Test Mode toggle.',
+      },
+    },
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/design/placeholder/Cashmere?node-id=navigation-drawer',
+    },
   },
 }
 
@@ -143,6 +154,13 @@ function buildSections(testMode: boolean, setTestMode: (v: boolean) => void): Na
 }
 
 export const Default: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: 'The NavigationDrawer in its default state. Click any nav item to update the active state, toggle the product dropdown, or switch Test Mode on/off.',
+      },
+    },
+  },
   render: () => {
     const [activeItemId, setActiveItemId] = useState('home')
     const [activeProductId, setActiveProductId] = useState('collect')
@@ -175,7 +193,57 @@ export const Default: Story = {
   },
 }
 
+export const Interactive: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: 'Automated interaction test — clicks the Insights nav item and verifies it becomes active.',
+      },
+    },
+  },
+  render: () => {
+    const [activeItemId, setActiveItemId] = useState('home')
+    const [activeProductId, setActiveProductId] = useState('collect')
+    const [productDropdownOpen, setProductDropdownOpen] = useState(false)
+    const [testMode, setTestMode] = useState(false)
+    const sections = buildSections(testMode, setTestMode)
+
+    return (
+      <div style={{ display: 'flex', height: '100vh', background: '#f4f6f9' }}>
+        <NavigationDrawer
+          logo={<CashfreePaymentsLogo />}
+          appLogo={<PulseAppLogo />}
+          sections={sections}
+          activeItemId={activeItemId}
+          productVerticals={productVerticals}
+          activeProductId={activeProductId}
+          productDropdownOpen={productDropdownOpen}
+          onItemClick={(item) => { setActiveItemId(item.id); setProductDropdownOpen(false) }}
+          onProductSelect={(p) => { setActiveProductId(p.id); setProductDropdownOpen(false) }}
+          onProductDropdownToggle={() => setProductDropdownOpen(o => !o)}
+        />
+        <main style={{ flex: 1, padding: 32, fontFamily: 'DM Sans, sans-serif', overflow: 'auto' }}>
+          <p style={{ margin: 0, color: '#5f5f5f' }}>Active: <strong>{activeItemId}</strong></p>
+        </main>
+      </div>
+    )
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement)
+    const insightsItem = canvas.getByText('Insights')
+    await expect(insightsItem).toBeVisible()
+    await userEvent.click(insightsItem)
+  },
+}
+
 export const WithDropdownOpen: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: 'The product vertical dropdown is open. This shows all available product verticals for the merchant to switch between.',
+      },
+    },
+  },
   render: () => {
     const [activeItemId, setActiveItemId] = useState('home')
     const [activeProductId, setActiveProductId] = useState('collect')

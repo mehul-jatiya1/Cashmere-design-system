@@ -3,10 +3,12 @@ import { resolve } from 'path'
 import type { InlineConfig } from 'vite'
 
 const config: StorybookConfig = {
-  stories: ['../src/**/*.stories.@(ts|tsx)'],
+  stories: ['../src/**/*.stories.@(ts|tsx)', '../src/**/*.docs.mdx'],
   addons: [
     '@storybook/addon-essentials',
     '@storybook/addon-interactions',
+    '@storybook/addon-a11y',
+    '@storybook/addon-designs',
   ],
   framework: {
     name: '@storybook/react-vite',

@@ -1,0 +1,64 @@
+import { Meta, Canvas, Controls } from '@storybook/blocks'
+import * as NavigationDrawerStories from './NavigationDrawer.stories'
+
+<Meta of={NavigationDrawerStories} />
+
+# NavigationDrawer
+
+NavigationDrawer is the primary navigation surface for the Cashfree merchant dashboard. It is a persistent left-side panel housing product verticals (Collect, Secure, Payouts), grouped navigation sections, collapsible sub-menus, and utility controls such as the Test Mode toggle. It is the first thing a merchant sees when they log in, so clarity and speed of navigation are critical.
+
+---
+
+## When to use
+
+| Use NavigationDrawer when... | Don't use NavigationDrawer when... |
+|---|---|
+| Building a full-page merchant dashboard layout | You only need a header nav — use TopNavigation |
+| You have 5+ primary destinations needing permanent access | The product is a single-page tool with 2–3 sections |
+| Product verticals need to be switchable in-place | Mobile-only surfaces — consider a bottom tab bar |
+
+---
+
+## Anatomy
+
+1. **Logo area** — The Cashfree Payments wordmark + app product logo (e.g. Pulse)
+2. **Product vertical selector** — Dropdown for switching between Collect / Secure / Payouts
+3. **Nav sections** — Grouped navigation items, optionally with a section title
+4. **Nav item** — Icon + label + optional trailing (chevron for sub-menus, or custom React node for inline controls like Switch)
+5. **Sub-items** — Indented children revealed when a parent item is expanded
+6. **Collapsible sections** — "More Products" type sections that can be hidden
+7. **Test Mode toggle** — Switch component embedded directly as a trailing node
+
+---
+
+## Stories
+
+<Canvas of={NavigationDrawerStories.Default} />
+
+### Product dropdown open
+
+<Canvas of={NavigationDrawerStories.WithDropdownOpen} />
+
+---
+
+## Do / Don't
+
+**Do:**
+- Keep nav labels to 2–3 words maximum
+- Group related items into sections with a title
+- Use the Test Mode toggle as a persistent, always-visible control — never hide it
+- Mark the active item correctly so users always know where they are
+
+**Don't:**
+- Put more than 8 items in a single section without grouping
+- Use the NavigationDrawer on mobile without a responsive breakpoint — switch to a bottom sheet or hamburger menu
+- Add product verticals that the merchant hasn't activated
+
+---
+
+## Accessibility
+
+- Nav items are rendered as `<button>` elements — keyboard-navigable with Tab/Enter/Space
+- Active item uses `aria-current="page"`
+- The product vertical dropdown uses `aria-expanded`
+- Sub-menu expansion uses `aria-expanded` on the parent button

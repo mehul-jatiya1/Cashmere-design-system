@@ -1,0 +1,59 @@
+import { Meta, Canvas, Controls } from '@storybook/blocks'
+import * as TopNavigationStories from './TopNavigation.stories'
+
+<Meta of={TopNavigationStories} />
+
+# TopNavigation
+
+TopNavigation is the persistent top bar across every page of the Cashfree merchant dashboard. It provides global search (for transactions, orders, and reports), a notification bell with unread badge, and a contextual help icon. It sits above the page content and always remains visible as the merchant navigates between sections.
+
+---
+
+## When to use
+
+| Use TopNavigation when... | Don't use TopNavigation when... |
+|---|---|
+| Building a full merchant dashboard layout | You only need a mobile navigation bar |
+| You need persistent global search | You're building a standalone micro-page with no navigation |
+| You need a notification entry point | The app is embedded (iframe) and has its own host shell |
+
+---
+
+## Anatomy
+
+1. **Search field** — Global search input. Placeholder customised per context.
+2. **Notification bell** — Opens the notifications panel. Red badge when unread notifications exist.
+3. **Help icon** — Opens contextual help or documentation.
+4. **Account avatar** (optional) — Merchant account switcher or profile access.
+
+---
+
+## Variants
+
+<Canvas of={TopNavigationStories.Default} />
+
+### No unread notifications
+
+<Canvas of={TopNavigationStories.NoUnreadNotifications} />
+
+---
+
+## Do / Don't
+
+**Do:**
+- Keep the search placeholder descriptive — "Search transactions, orders..." rather than just "Search"
+- Always show the notification bell even when there are no notifications — hide the badge, not the icon
+- Pair TopNavigation with NavigationDrawer in a full layout
+
+**Don't:**
+- Hide the TopNavigation on any page — it must always be visible
+- Put page-specific actions in the TopNavigation — use PageHeaderset instead
+- Remove the help icon — merchants often need contextual guidance
+
+---
+
+## Accessibility
+
+- Search input is a native `<input type="search">` — browser search semantics apply
+- Notification bell has `aria-label="Notifications"` and `aria-live` for badge updates
+- All icon buttons have visible focus rings and `aria-label` attributes

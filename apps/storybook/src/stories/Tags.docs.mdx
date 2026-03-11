@@ -1,0 +1,78 @@
+import { Meta, Canvas, Controls } from '@storybook/blocks'
+import * as TagsStories from './Tags.stories'
+
+<Meta of={TagsStories} />
+
+# Tags
+
+Tags display semantic status labels on content in the Cashmere design system. They combine colour, an icon, and a label to communicate state at a glance — critical for payment flows where users need to instantly distinguish success from failure. The five statuses map to Cashmere's semantic colour tokens, ensuring consistent meaning across every surface.
+
+---
+
+## When to use
+
+| Use Tags when... | Don't use Tags when... |
+|---|---|
+| Showing transaction or order status (Paid, Failed, Pending) | You need interactive filtering — use a Chip or Filter component |
+| Communicating KYC or account verification state | The state has more than 5 values — consider a text label instead |
+| Labelling content in tables, cards, or lists | You need to show a count — use a Badge instead |
+| A quick visual scan of status is critical | The status changes in real-time — pair with a loading skeleton |
+
+---
+
+## Anatomy
+
+1. **Icon** — Present in `default`, `icon`, and `corners` types. Communicates status without relying on colour alone (WCAG 1.4.1).
+2. **Label** — Short text (1–3 words) that names the status explicitly.
+3. **Container** — Background colour (in `default`, `background`, `corners` types) reinforces the semantic meaning.
+
+---
+
+## Variants
+
+<Canvas of={TagsStories.Default} />
+<Controls of={TagsStories.Default} />
+
+### Statuses
+
+All five statuses are designed as a complete semantic set. Never repurpose a status colour for a different meaning.
+
+<Canvas of={TagsStories.AllStatuses} />
+
+### Types
+
+Choose the type based on visual context. `default` works in most cases; `text` is for very subtle labelling; `corners` is purpose-built for table cells.
+
+<Canvas of={TagsStories.AllTypes} />
+
+### Corners in context
+
+<Canvas of={TagsStories.CornersInContext} />
+
+---
+
+## Do / Don't
+
+**Do:**
+- Use the status that semantically matches the state — `positive` for success, `negative` for errors, `warning` for caution, `information` for neutral info
+- Pair Tags with a text label so users who cannot perceive colour still understand the state
+- Use `small` in dense tables, `large` in cards and summaries
+
+**Don't:**
+- Use Tags as interactive filters or buttons — they are read-only indicators
+- Use the `corners` type outside of a card or table cell context
+- Change the colour of a status to match a brand preference — it breaks semantic meaning
+
+---
+
+## Accessibility
+
+- Status is communicated by both colour **and** icon — satisfies WCAG 1.4.1 (Use of Colour)
+- The icon SVG has `aria-hidden="true"` — the label text conveys the meaning to screen readers
+- All foreground/background colour combinations meet WCAG AA 4.5:1 contrast ratio
+
+---
+
+## Props
+
+<Controls />

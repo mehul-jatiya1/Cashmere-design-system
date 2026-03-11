@@ -1,5 +1,6 @@
 import React from 'react'
 import type { Meta, StoryObj } from '@storybook/react'
+import { expect, within } from '@storybook/test'
 import { PageHeaderset } from '@cashfree/cashmere'
 
 // Flat args matching Figma's four controls exactly:
@@ -24,6 +25,19 @@ const meta: Meta<PageHeadersetArgs> = {
   tags: ['autodocs'],
   parameters: {
     layout: 'padded',
+    docs: {
+      description: {
+        component:
+          'PageHeaderset is the top content area of every page in the Cashfree dashboard. It combines the page title, optional subheading, action buttons (primary + secondary), status tags, and breadcrumbs into one consistent header block.',
+      },
+    },
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/design/placeholder/Cashmere?node-id=page-headerset',
+    },
+    viewport: {
+      defaultViewport: 'desktop',
+    },
   },
   argTypes: {
     type: {
@@ -115,11 +129,25 @@ const defaultArgs: PageHeadersetArgs = {
 export const Playground: Story = {
   args: defaultArgs,
   render: renderPageHeaderset,
+  parameters: {
+    docs: {
+      description: {
+        story: 'Full playground — toggle all controls to explore every PageHeaderset combination.',
+      },
+    },
+  },
 }
 
 export const Homepage: Story = {
   args: defaultArgs,
   render: renderPageHeaderset,
+  parameters: {
+    docs: {
+      description: {
+        story: 'Homepage variant — large heading, subheading, and action buttons. No breadcrumbs. Used for top-level sections like the dashboard home.',
+      },
+    },
+  },
 }
 
 export const HomepageNoButtons: Story = {
@@ -141,6 +169,13 @@ export const InternalPage: Story = {
     tagLabel: 'Success',
   },
   render: renderPageHeaderset,
+  parameters: {
+    docs: {
+      description: {
+        story: 'Internal page variant — includes breadcrumbs above the heading and a status tag. Used for detail pages like a single transaction.',
+      },
+    },
+  },
 }
 
 export const InternalPageNoButtons: Story = {
@@ -166,4 +201,47 @@ export const InternalPageNegativeStatus: Story = {
     tagLabel: 'Failed',
   },
   render: renderPageHeaderset,
+  parameters: {
+    docs: {
+      description: {
+        story: 'Internal page with a negative/failed status — used for failed transactions or declined payments where a retry action is available.',
+      },
+    },
+  },
+}
+
+/* ── Interactive ────────────────────────────────────────────────────────── */
+
+export const Interactive: Story = {
+  args: defaultArgs,
+  parameters: {
+    docs: {
+      description: {
+        story: 'Automated interaction test — verifies the heading and primary action button are visible.',
+      },
+    },
+  },
+  render: renderPageHeaderset,
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement)
+    const heading = canvas.getByText('Placeholder')
+    await expect(heading).toBeVisible()
+    const primaryBtn = canvas.getByRole('button', { name: /Initiate Refund/i })
+    await expect(primaryBtn).toBeVisible()
+  },
+}
+
+/* ── Mobile ─────────────────────────────────────────────────────────────── */
+
+export const Mobile: Story = {
+  args: defaultArgs,
+  render: renderPageHeaderset,
+  parameters: {
+    viewport: { defaultViewport: 'mobile' },
+    docs: {
+      description: {
+        story: 'How PageHeaderset renders on mobile (375px). Buttons should stack vertically on small screens.',
+      },
+    },
+  },
 }

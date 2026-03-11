@@ -1,0 +1,81 @@
+import { Meta, Canvas, Controls } from '@storybook/blocks'
+import * as PageHeadersetStories from './PageHeaderset.stories'
+
+<Meta of={PageHeadersetStories} />
+
+# PageHeaderset
+
+PageHeaderset is the top content area of every page in the Cashfree merchant dashboard. It brings together the page title, optional subheading, primary and secondary action buttons, status tags (for internal detail pages), and breadcrumb navigation into one consistent, reusable block. Every new page in the dashboard should start with a PageHeaderset.
+
+---
+
+## When to use
+
+| Use PageHeaderset when... | Don't use PageHeaderset when... |
+|---|---|
+| Starting any new dashboard page | Inside a modal or drawer — use the modal header instead |
+| The page has a clear primary action (e.g. Initiate Refund) | The page is purely a settings form with no named actions |
+| The page is a detail view that needs breadcrumbs | A section header within a page — use a smaller heading |
+
+---
+
+## Anatomy
+
+1. **Breadcrumbs** (optional, `internalpage` only) — Wayfinding trail above the heading
+2. **Heading** — Primary `<h1>` for the page. Keep it under 50 characters.
+3. **Subheading** (optional) — Supporting text below the heading. 1–2 sentences max.
+4. **Status tag** (optional, `internalpage` only) — Semantic status of the entity (e.g. "Success", "Failed")
+5. **Action buttons** (optional) — Primary CTA + one secondary action, right-aligned
+
+---
+
+## Variants
+
+<Canvas of={PageHeadersetStories.Playground} />
+<Controls of={PageHeadersetStories.Playground} />
+
+### Homepage type
+
+Used for top-level section pages (Payments, Reports, Settings). No breadcrumbs.
+
+<Canvas of={PageHeadersetStories.Homepage} />
+
+### Internal page type
+
+Used for detail pages (a single transaction, refund, or order). Includes breadcrumbs and a status tag.
+
+<Canvas of={PageHeadersetStories.InternalPage} />
+
+### Failed / Negative state
+
+When the entity has a negative status — common for failed payments.
+
+<Canvas of={PageHeadersetStories.InternalPageNegativeStatus} />
+
+---
+
+## Do / Don't
+
+**Do:**
+- Use `homepage` type for the first level of navigation (e.g. Payments, Settlements)
+- Use `internalpage` type for every detail page — always include breadcrumbs so users can navigate back
+- Keep action button labels under 4 words and action-oriented ("Initiate Refund", not "Refund Action")
+
+**Don't:**
+- Put more than 2 action buttons in the header — move additional actions to a more menu
+- Use `internalpage` without breadcrumbs — it defeats the purpose of the variant
+- Use the heading for real-time data (e.g. a live transaction count) — it causes layout shifts
+
+---
+
+## Accessibility
+
+- The heading renders as `<h1>` — there should be only one per page
+- Breadcrumbs are wrapped in `<nav aria-label="breadcrumb">`
+- Action buttons use standard `<button>` with descriptive labels — screen readers can navigate them by role
+
+---
+
+## Props
+
+<Controls />
