@@ -1,6 +1,6 @@
 # Cashmere Design System — Designer's Guide to Generating Components
 
-> **Who is this for?** Junior designers who want to turn a Figma component into a live, coded component in the Cashmere design system — no coding experience required.
+> **Who is this for?** Any designer or non-developer who wants to turn a Figma component into a live, coded component in the Cashmere design system — no coding experience required.
 
 ---
 
@@ -18,9 +18,15 @@ The whole process takes about 5 minutes.
 
 ## One-Time Setup (Do This Once)
 
-### Step 1 — Install Claude Code
+### Step 1 — Get a Claude Pro Subscription
 
-Claude Code is the AI tool that does the work. Open your **Terminal** (press `Cmd + Space`, type "Terminal", press Enter) and run:
+1. Go to **claude.ai** in your browser
+2. Sign up and subscribe to **Claude Pro** ($20/month)
+3. That's it — no API keys needed
+
+### Step 2 — Install Claude Code
+
+Claude Code is the AI tool that runs in Terminal. Open your **Terminal** (press `Cmd + Space`, type "Terminal", press Enter) and run:
 
 ```bash
 npm install -g @anthropic-ai/claude-code
@@ -32,29 +38,18 @@ claude --version
 ```
 You should see a version number like `1.x.x`.
 
-### Step 2 — Get an Anthropic API Key
+### Step 3 — Log In to Claude Code
 
-1. Go to **console.anthropic.com** in your browser
-2. Sign in (ask Mehul for the team credentials)
-3. Click **API Keys** in the left sidebar
-4. Click **Create Key**, give it your name (e.g. "Priya's Key")
-5. Copy the key — it starts with `sk-ant-...`
-
-Now save it permanently so you never have to type it again:
+Run this in Terminal:
 ```bash
-echo 'export ANTHROPIC_API_KEY=sk-ant-PASTE-YOUR-KEY-HERE' >> ~/.zshrc
-source ~/.zshrc
+claude
 ```
 
-Verify it's saved:
-```bash
-echo $ANTHROPIC_API_KEY
-```
-You should see your key printed.
+The first time, it will open a browser window — log in with the **same email and password** you use on claude.ai. You'll only need to do this once.
 
-### Step 3 — Install the Component Generator Plugin
+### Step 4 — Install the Component Generator Plugin
 
-This installs the `/generate-component` command into Claude Code:
+Run this in Terminal to install the `/generate-cashmere-component` command:
 
 ```bash
 mkdir -p ~/.claude/skills/generate-cashmere-component
@@ -65,7 +60,7 @@ curl -o ~/.claude/skills/generate-cashmere-component/SKILL.md \
 > **If the above doesn't work**, ask Mehul to AirDrop you the file `SKILL.md` and place it at:
 > `~/.claude/skills/generate-cashmere-component/SKILL.md`
 
-### Step 4 — Install Node.js & pnpm (if not already installed)
+### Step 5 — Install Node.js & pnpm (if not already installed)
 
 ```bash
 # Check if they're installed (if you see version numbers, you're good)
@@ -75,6 +70,14 @@ pnpm --version
 # If not installed:
 brew install node
 npm install -g pnpm
+```
+
+### Step 6 — Clone the Cashmere Repo (if you don't have it)
+
+```bash
+git clone https://github.com/mehul-jatiya1/Cashmere-design-system.git ~/Documents/cashmere
+cd ~/Documents/cashmere
+pnpm install
 ```
 
 ---
@@ -102,7 +105,7 @@ You'll see the Claude Code prompt appear.
 Type this command (replace the URL with your actual Figma link):
 
 ```
-/generate-component https://www.figma.com/design/YOUR-FIGMA-LINK-HERE
+/generate-cashmere-component https://www.figma.com/design/YOUR-FIGMA-LINK-HERE
 ```
 
 Then press **Enter** and watch Claude do its work. You'll see it:
@@ -125,7 +128,7 @@ If Storybook isn't running yet, open a new terminal tab and run:
 cd ~/Documents/cashmere
 pnpm dev
 ```
-Then visit http://localhost:6006 — your new component will appear in the left sidebar.
+Then visit http://localhost:6006 — your new component will appear in the left sidebar under **Components**.
 
 ---
 
@@ -143,7 +146,7 @@ apps/storybook/src/stories/
   └── Badge.stories.tsx  ← Storybook preview with all variants
 ```
 
-It also automatically updates `packages/cashmere/src/index.ts` to export your new component, and pushes everything to GitHub.
+It also automatically updates the main export file and pushes everything to GitHub.
 
 ---
 
@@ -152,12 +155,8 @@ It also automatically updates `packages/cashmere/src/index.ts` to export your ne
 **"command not found: claude"**
 → Restart your terminal and try again. If still broken, run `npm install -g @anthropic-ai/claude-code`
 
-**"authentication error" or "invalid api key"**
-→ Your API key isn't set. Run:
-```bash
-echo $ANTHROPIC_API_KEY
-```
-If it's empty, redo Step 2 of the One-Time Setup.
+**"not logged in" or "authentication error"**
+→ Run `claude` in terminal — it will open a browser to log in with your claude.ai account.
 
 **Storybook shows a blank page**
 → Wait 30 more seconds and refresh. It takes ~30s to compile after `pnpm dev`.
