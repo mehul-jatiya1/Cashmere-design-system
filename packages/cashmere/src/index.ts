@@ -62,3 +62,6 @@ export type { PageHeadersetProps } from './components/PageHeaderset'
 
 export { FilterChips } from './components/FilterChips'
 export type { FilterChipsProps } from './components/FilterChips'
+
+export { Checkbox } from './components/Checkbox'
+export type { CheckboxProps } from './components/Checkbox'

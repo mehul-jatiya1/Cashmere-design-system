@@ -1,0 +1,168 @@
+import { Meta, Canvas, Controls } from '@storybook/blocks'
+import * as CheckboxStories from './Checkbox.stories'
+
+<Meta of={CheckboxStories} />
+
+# Checkbox
+
+> **Source:** [Cashmere Design System](https://www.figma.com/design/OEwHAfVtHhfYFGKEalynMP/Cashmere-Design-System?node-id=8277-34569) · cashfree.com
+
+Checkbox is a form control that allows users to select one or more options from a set. It supports three checked states — unchecked, checked, and indeterminate — and a read-only mode that displays the current state without allowing interaction. The component is 20×20px with a 1.5px border, uses a primary blue fill when selected, and includes smooth transitions on hover and focus.
+
+---
+
+## Anatomy
+
+| Part | Description |
+|---|---|
+| **Wrapper** | `<label>` element acting as the click target, wrapping the hidden input and custom box. Uses `inline-flex` with `--sds-spacing-8` (8px) gap between box and label. |
+| **Hidden input** | Visually hidden `<input type="checkbox">` kept in the DOM for accessibility — focus, keyboard, and form submission all work through this element. |
+| **Visual box** | 20×20px `<span>` rendering the checkbox appearance. Border, fill, and shadow are CSS-driven by the input's `:checked`, `:indeterminate`, and `:focus-visible` pseudo-classes. |
+| **Check icon** | 12×12px SVG checkmark (`stroke="currentColor"`) shown when checked. |
+| **Indeterminate icon** | 12×12px SVG dash (`stroke="currentColor"`) shown when indeterminate. |
+| **Label** | Optional `<span>` with 14px DM Sans text displayed to the right of the box. |
+
+---
+
+## Default
+
+<Canvas of={CheckboxStories.Default} />
+<Controls of={CheckboxStories.Default} />
+
+---
+
+## All Checked States
+
+<Canvas of={CheckboxStories.AllStates} />
+
+---
+
+## Disabled
+
+<Canvas of={CheckboxStories.Disabled} />
+
+---
+
+## Read-only
+
+<Canvas of={CheckboxStories.ReadOnly} />
+
+---
+
+## Interactive
+
+<Canvas of={CheckboxStories.Interactive} />
+
+---
+
+## Variations
+
+### Behaviour
+
+| Behaviour | `checked` Prop | Visual Style | When to use |
+|---|---|---|---|
+| **Unselected** | `false` (default) | White box, neutral border | Nothing is selected |
+| **Selected** | `true` | Blue fill, white checkmark | Item is confirmed/selected |
+| **Indeterminate** | `'indeterminate'` | Blue fill, white dash | Parent of a partially-selected group |
+| **Not editable** | `readOnly={true}` | Grey fill, muted border | Viewing a locked/system-set value |
+
+### States
+
+| State | Description |
+|---|---|
+| **Default** | Resting state — neutral border, white background |
+| **Hover** | Pointer over the label — border changes to `--sds-primary-border-default` (blue) |
+| **Pressed** | Actively clicked — same visual as hover |
+| **Focus** | Keyboard / programmatic focus — blue border + 3px blue ring via `box-shadow` |
+| **Disabled** | `disabled={true}` — 40% opacity, `cursor: not-allowed`, no interaction |
+| **Read-only** | `readOnly={true}` — grey appearance, `cursor: default`, no onChange fired |
+
+---
+
+## Props & Tokens
+
+### Props
+
+| Prop Name | Required | Type | Default | Description |
+|---|---|---|---|---|
+| `checked` | — | `boolean \| 'indeterminate'` | `false` | Whether the checkbox is checked, unchecked, or in an indeterminate state |
+| `disabled` | — | `boolean` | `false` | Whether the checkbox is disabled and non-interactive |
+| `readOnly` | — | `boolean` | `false` | Whether the checkbox is read-only — shows state but cannot be changed |
+| `label` | — | `string` | — | Optional visible label text displayed to the right of the box |
+| `id` | — | `string` | — | HTML id for the input — used to associate with an external `<label>` |
+| `name` | — | `string` | — | HTML name attribute for form submission |
+| `onChange` | — | `React.ChangeEventHandler<HTMLInputElement>` | — | Change handler — not called when `readOnly` or `disabled` |
+| `className` | — | `string` | — | Additional CSS class applied to the wrapper element |
+
+### Design Tokens — Layout
+
+| Property | Token | Value |
+|---|---|---|
+| Box size | — | `20×20px` |
+| Border width | — | `1.5px` |
+| Border radius | `--sds-radius-sm` | `4px` |
+| Gap (box → label) | `--sds-spacing-8` | `8px` |
+| Focus ring | — | `box-shadow: 0 0 0 3px` |
+
+### Design Tokens — Colors
+
+| Property | Token | Value |
+|---|---|---|
+| Default border | `--sds-neutral-border-default` | `#bbb` |
+| Default background | `--sds-neutral-bg-default` | `#fff` |
+| Hover / focus border | `--sds-primary-border-default` | `#094eff` |
+| Checked fill | `--sds-primary-bg-default` | `#094eff` |
+| Focus ring | `--sds-primary-bg-subtle` | `#e5edff` |
+| ReadOnly background | `--sds-neutral-bg-subtle` | `#f5f5f5` |
+| ReadOnly border | `--sds-neutral-border-subtle` | `#e0e0e0` |
+| Label text | `--sds-neutral-text-default` | `#1b1b1b` |
+
+---
+
+## Usage Guidelines
+
+### When to use
+
+- Use checkboxes when users need to select one or more items from a list independently of each other
+- Use the indeterminate state on a parent checkbox when only some children in a group are selected
+- Use the read-only state to display a value set by the system that the current user cannot change
+- Prefer checkboxes over toggles when the action takes effect on form submission, not immediately
+
+### Indeterminate
+
+**✓ Do** — Use indeterminate on a "Select all" parent checkbox only when some (but not all) children are checked.
+
+**✕ Don't** — Use indeterminate as a third user-selectable option or leave it permanently indeterminate.
+
+### Disabled vs Read-only
+
+**✓ Do** — Use `disabled` when the action cannot be performed. Use `readOnly` when the value was set elsewhere and is shown for transparency.
+
+**✕ Don't** — Use `disabled` when intent is only to prevent changes. If users should see the value, use `readOnly`.
+
+---
+
+## Platform
+
+### Desktop
+- 20×20px box exceeds the minimum 16px icon target
+- Hover state provides clear affordance before clicking
+- Focus ring is clearly visible without shifting layout
+
+### Tablet
+- The `<label>` wrapper expands the click area beyond the 20×20px box
+- Ensure surrounding padding brings the total interactive area to ≥44×44px
+
+### Mobile
+- Keep label text to 1–2 lines to avoid excessive row height
+- Use at least 12px vertical spacing between items in lists to prevent mis-taps
+
+---
+
+## Accessibility
+
+- The visually hidden `<input type="checkbox">` keeps the element accessible to screen readers and keyboard users without extra ARIA
+- `aria-checked="mixed"` is set automatically for indeterminate state
+- Associate with an external label via the `id` prop: `<label htmlFor="my-checkbox">...</label>`
+- Focus ring satisfies WCAG 2.4.7 (Focus Visible)
+- Read-only checkboxes use `aria-readonly="true"` so screen readers announce "read-only"

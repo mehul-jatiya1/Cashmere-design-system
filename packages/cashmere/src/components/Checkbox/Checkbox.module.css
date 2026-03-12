@@ -1,0 +1,114 @@
+/* ==========================================================================
+   Checkbox — Cashmere Design System
+   All values reference sds token variables — no raw values.
+   ========================================================================== */
+
+.wrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sds-spacing-8);
+  cursor: pointer;
+  user-select: none;
+  position: relative;
+}
+
+.wrapper.disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+.wrapper.readOnly {
+  cursor: default;
+}
+
+/* --------------------------------------------------------------------------
+   Visually hidden real input — kept in DOM for a11y
+   -------------------------------------------------------------------------- */
+
+.input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+  margin: 0;
+}
+
+/* --------------------------------------------------------------------------
+   Visual checkbox box
+   -------------------------------------------------------------------------- */
+
+.box {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  border-radius: var(--sds-radius-sm);
+  border: 1.5px solid var(--sds-neutral-border-default);
+  background-color: var(--sds-neutral-bg-default);
+  color: var(--sds-primary-text-onbg-default);
+  box-sizing: border-box;
+  transition: border-color 0.15s ease, background-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+/* Hover */
+.wrapper:not(.disabled):not(.readOnly):hover .box {
+  border-color: var(--sds-primary-border-default);
+}
+
+/* Focus visible */
+.input:focus-visible ~ .box {
+  border-color: var(--sds-primary-border-default);
+  box-shadow: 0 0 0 3px var(--sds-primary-bg-subtle);
+}
+
+/* Selected */
+.input:checked ~ .box {
+  background-color: var(--sds-primary-bg-default);
+  border-color: var(--sds-primary-bg-default);
+}
+
+/* Indeterminate */
+.input:indeterminate ~ .box {
+  background-color: var(--sds-primary-bg-default);
+  border-color: var(--sds-primary-bg-default);
+}
+
+/* Hover on selected/indeterminate */
+.wrapper:not(.disabled):not(.readOnly):hover .input:checked ~ .box,
+.wrapper:not(.disabled):not(.readOnly):hover .input:indeterminate ~ .box {
+  background-color: var(--sds-primary-border-default);
+  border-color: var(--sds-primary-border-default);
+}
+
+/* Not editable — grey appearance */
+.readOnly .box {
+  background-color: var(--sds-neutral-bg-subtle);
+  border-color: var(--sds-neutral-border-subtle);
+  color: var(--sds-neutral-text-muted);
+}
+
+.readOnly .input:checked ~ .box,
+.readOnly .input:indeterminate ~ .box {
+  background-color: var(--sds-neutral-bg-subtle);
+  border-color: var(--sds-neutral-border-subtle);
+  color: var(--sds-neutral-text-muted);
+}
+
+/* --------------------------------------------------------------------------
+   Label
+   -------------------------------------------------------------------------- */
+
+.label {
+  font-family: var(--sds-family-web-font);
+  font-size: var(--sds-size-14);
+  font-weight: var(--sds-weight-regular);
+  line-height: 1.43;
+  color: var(--sds-neutral-text-default);
+}
+
+.disabled .label {
+  color: var(--sds-neutral-text-disabled);
+}
