@@ -2,35 +2,33 @@ import React, { useRef, useEffect } from 'react'
 import styles from './Checkbox.module.css'
 
 export interface CheckboxProps {
-  /** Whether the checkbox is checked, unchecked, or in an indeterminate state */
   checked?: boolean | 'indeterminate'
-  /** Whether the checkbox is disabled and non-interactive */
   disabled?: boolean
-  /** Whether the checkbox is read-only — shows current state but cannot be changed */
+  /** Read-only — shows state but cannot be changed (Figma: "Not editable") */
   readOnly?: boolean
-  /** Optional visible label text */
   label?: string
-  /** HTML id for the input — used to associate with an external label */
   id?: string
-  /** HTML name attribute for form submission */
   name?: string
-  /** Change handler — not called when readOnly or disabled */
   onChange?: React.ChangeEventHandler<HTMLInputElement>
   className?: string
 }
 
 function CheckIcon() {
   return (
-    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <path d="M2.5 6L5 8.5L9.5 3.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  )
-}
-
-function IndeterminateIcon() {
-  return (
-    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <path d="M3 6H9" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+    <svg
+      className={styles.checkIcon}
+      viewBox="0 0 14 14"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+    >
+      <path
+        d="M2.5 7L5.5 10L11.5 4"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
     </svg>
   )
 }
@@ -53,14 +51,32 @@ export const Checkbox: React.FC<CheckboxProps> = ({
     }
   }, [checked])
 
+  // Compute inner box class explicitly — no CSS sibling selectors needed
+  const getInnerClass = () => {
+    if (readOnly)                                  return styles.innerReadOnly
+    if (disabled && checked === false)             return styles.innerDisabledUnselected
+    if (disabled && checked === true)              return styles.innerDisabledChecked
+    if (disabled && checked === 'indeterminate')   return styles.innerDisabledIndeterminate
+    if (checked === true)                          return styles.innerChecked
+    if (checked === 'indeterminate')               return styles.innerIndeterminate
+    return ''
+  }
+
+  // Dash colour: white when checked, grey when disabled or readOnly
+  const getDashClass = () => {
+    if (disabled || readOnly) return styles.dashMuted
+    return ''
+  }
+
   const wrapperCls = [
     styles.wrapper,
     disabled ? styles.disabled : '',
     readOnly ? styles.readOnly : '',
     className ?? '',
-  ]
-    .filter(Boolean)
-    .join(' ')
+  ].filter(Boolean).join(' ')
+
+  const innerCls = [styles.inner, getInnerClass()].filter(Boolean).join(' ')
+  const dashCls  = [styles.dash,  getDashClass()].filter(Boolean).join(' ')
 
   return (
     <label className={wrapperCls}>
@@ -77,9 +93,17 @@ export const Checkbox: React.FC<CheckboxProps> = ({
         aria-checked={checked === 'indeterminate' ? 'mixed' : Boolean(checked)}
         aria-readonly={readOnly || undefined}
       />
+      {/*
+        .box   24×24 outer container — overflow:hidden clips fill to rounded corners
+        .fill  absolute inset-0 layer — driven by :hover / :active / :focus-visible
+        .inner absolute inset-[12.5%] → ~18×18 visual box
+      */}
       <span className={styles.box} aria-hidden="true">
-        {checked === true && <CheckIcon />}
-        {checked === 'indeterminate' && <IndeterminateIcon />}
+        <span className={styles.fill} />
+        <span className={innerCls}>
+          {checked === true          && <CheckIcon />}
+          {checked === 'indeterminate' && <span className={dashCls} />}
+        </span>
       </span>
       {label && <span className={styles.label}>{label}</span>}
     </label>

@@ -1,7 +1,23 @@
 /* ==========================================================================
    Checkbox — Cashmere Design System
-   All values reference sds token variables — no raw values.
+   Figma node: 8277:34569
+
+   Approach: explicit class names computed in TSX (like NavigationDrawer).
+   No CSS sibling selectors. Each visual state = its own flat class.
+
+   Structure:
+     label.wrapper [.disabled] [.readOnly]
+       input.input          (visually hidden)
+       span.box             24×24 outer, overflow:hidden, radius-300 (8px)
+         span.fill          absolute inset-0 — hover/pressed/focus fill layer
+         span.inner + modifier class
+           svg.checkIcon / span.dash [.dashMuted]
+       span.label
    ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Wrapper
+   -------------------------------------------------------------------------- */
 
 .wrapper {
   display: inline-flex;
@@ -14,7 +30,6 @@
 
 .wrapper.disabled {
   cursor: not-allowed;
-  opacity: 0.4;
 }
 
 .wrapper.readOnly {
@@ -22,7 +37,7 @@
 }
 
 /* --------------------------------------------------------------------------
-   Visually hidden real input — kept in DOM for a11y
+   Hidden real input — stays in DOM for a11y / form submission
    -------------------------------------------------------------------------- */
 
 .input {
@@ -35,66 +50,125 @@
 }
 
 /* --------------------------------------------------------------------------
-   Visual checkbox box
+   Outer box — 24×24, clips fill layer + inner to rounded corners
    -------------------------------------------------------------------------- */
 
 .box {
-  display: inline-flex;
+  position: relative;
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  border-radius: var(--sds-radius-300); /* 8px */
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+/* --------------------------------------------------------------------------
+   Fill layer — full-bleed background for hover / pressed / focus states
+   Sits behind .inner (DOM order: fill first, inner second)
+   -------------------------------------------------------------------------- */
+
+.fill {
+  position: absolute;
+  inset: 0;
+  background-color: transparent;
+  transition: background-color 0.1s ease;
+}
+
+.wrapper:not(.disabled):not(.readOnly):hover  .fill { background-color: var(--sds-accent-bg-subtle);       /* #e5edff */ }
+.wrapper:not(.disabled):not(.readOnly):active .fill { background-color: var(--sds-accent-bg-subtlepressed); /* #ccdaff */ }
+
+/* Focus fill driven by the hidden input's focus-visible state */
+.input:focus-visible ~ .box .fill { background-color: var(--sds-focus-infocus-subtle); /* #e8e8e8 */ }
+
+/* --------------------------------------------------------------------------
+   Inner check base — absolute inset 12.5% = ~3px → ~18×18px
+   Base = Unselected / Default state
+   -------------------------------------------------------------------------- */
+
+.inner {
+  position: absolute;
+  inset: 12.5%;
+  border-radius: var(--sds-radius-200); /* 4px */
+  border: var(--sds-stroke-focus) solid var(--sds-neutral-border-default); /* 2px, #1b1b1b */
+  background-color: var(--sds-neutral-bg-default-white); /* #fffffc */
+  display: flex;
   align-items: center;
   justify-content: center;
-  flex-shrink: 0;
-  width: 20px;
-  height: 20px;
-  border-radius: var(--sds-radius-sm);
-  border: 1.5px solid var(--sds-neutral-border-default);
-  background-color: var(--sds-neutral-bg-default);
-  color: var(--sds-primary-text-onbg-default);
   box-sizing: border-box;
-  transition: border-color 0.15s ease, background-color 0.15s ease, box-shadow 0.15s ease;
+  color: var(--sds-neutral-icon-inverse); /* white — used by SVG stroke="currentColor" */
 }
 
-/* Hover */
-.wrapper:not(.disabled):not(.readOnly):hover .box {
-  border-color: var(--sds-primary-border-default);
+/* --------------------------------------------------------------------------
+   Inner modifiers — one class per behaviour × state combination
+   -------------------------------------------------------------------------- */
+
+/* Selected (checked=true) — blue fill, no border, white icon */
+.innerChecked {
+  background-color: var(--sds-accent-bg-default); /* #094eff */
+  border: none;
 }
 
-/* Focus visible */
-.input:focus-visible ~ .box {
-  border-color: var(--sds-primary-border-default);
-  box-shadow: 0 0 0 3px var(--sds-primary-bg-subtle);
+/* Indeterminate — blue fill, no border, 2px padding for dash centering */
+.innerIndeterminate {
+  background-color: var(--sds-accent-bg-default); /* #094eff */
+  border: none;
+  padding: 2px;
 }
 
-/* Selected */
-.input:checked ~ .box {
-  background-color: var(--sds-primary-bg-default);
-  border-color: var(--sds-primary-bg-default);
+/* Disabled + Unselected — transparent bg, grey border only */
+.innerDisabledUnselected {
+  background-color: transparent;
+  border-color: var(--sds-neutral-border-disabled); /* #d1d1d1 */
 }
 
-/* Indeterminate */
-.input:indeterminate ~ .box {
-  background-color: var(--sds-primary-bg-default);
-  border-color: var(--sds-primary-bg-default);
+/* Disabled + Checked — grey fill, grey icon, no border */
+.innerDisabledChecked {
+  background-color: var(--sds-neutral-bg-default-disabled); /* #e8e8e8 */
+  border: none;
+  color: var(--sds-neutral-icon-disabled); /* #8d8d8d */
 }
 
-/* Hover on selected/indeterminate */
-.wrapper:not(.disabled):not(.readOnly):hover .input:checked ~ .box,
-.wrapper:not(.disabled):not(.readOnly):hover .input:indeterminate ~ .box {
-  background-color: var(--sds-primary-border-default);
-  border-color: var(--sds-primary-border-default);
+/* Disabled + Indeterminate — grey fill, no border, 2px padding, grey dash */
+.innerDisabledIndeterminate {
+  background-color: var(--sds-accent-bg-disabled); /* #e8e8e8 */
+  border: none;
+  padding: 2px;
 }
 
-/* Not editable — grey appearance */
-.readOnly .box {
-  background-color: var(--sds-neutral-bg-subtle);
-  border-color: var(--sds-neutral-border-subtle);
-  color: var(--sds-neutral-text-muted);
+/* Not editable (readOnly) — grey fill, no border, grey icon (all behaviours) */
+.innerReadOnly {
+  background-color: var(--sds-neutral-bg-default-disabled); /* #e8e8e8 */
+  border: none;
+  color: var(--sds-neutral-icon-disabled); /* #8d8d8d */
 }
 
-.readOnly .input:checked ~ .box,
-.readOnly .input:indeterminate ~ .box {
-  background-color: var(--sds-neutral-bg-subtle);
-  border-color: var(--sds-neutral-border-subtle);
-  color: var(--sds-neutral-text-muted);
+/* --------------------------------------------------------------------------
+   Checkmark icon — 14×14px matching Figma
+   -------------------------------------------------------------------------- */
+
+.checkIcon {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+}
+
+/* --------------------------------------------------------------------------
+   Indeterminate dash — 10×2px centred bar
+   -------------------------------------------------------------------------- */
+
+.dash {
+  display: block;
+  width: 10px;
+  height: 2px;
+  border-radius: 2px;
+  background-color: var(--sds-accent-icon-subtle); /* #fffffc white */
+  flex-shrink: 0;
+}
+
+/* Grey dash for disabled/readOnly indeterminate */
+.dashMuted {
+  background-color: var(--sds-neutral-icon-disabled); /* #8d8d8d */
 }
 
 /* --------------------------------------------------------------------------
@@ -106,9 +180,9 @@
   font-size: var(--sds-size-14);
   font-weight: var(--sds-weight-regular);
   line-height: 1.43;
-  color: var(--sds-neutral-text-default);
+  color: var(--sds-neutral-text-primary); /* #1b1b1b */
 }
 
 .disabled .label {
-  color: var(--sds-neutral-text-disabled);
+  color: var(--sds-neutral-text-disabled); /* #8d8d8d */
 }
