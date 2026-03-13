@@ -1,0 +1,241 @@
+/* =============================================================================
+   RadioButton — Cashmere Design System
+   All values reference --sds-* token variables.
+   ============================================================================= */
+
+/* ─── RadioGroup container ──────────────────────────────────────────────────── */
+
+.group {
+  display: inline-flex;
+  flex-direction: column;
+  gap: var(--sds-spacing-4);
+  font-family: var(--sds-family-web-font);
+}
+
+.groupDisabled {
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+/* label-position: left — legend sits beside the radio list */
+.groupLeft {
+  flex-direction: row;
+  align-items: flex-start;
+  gap: var(--sds-spacing-16);
+}
+
+/* ─── Group label (legend) ──────────────────────────────────────────────────── */
+
+.groupLabel {
+  font-size: var(--sds-size-14);
+  font-weight: var(--sds-weight-medium);
+  color: var(--sds-neutral-text-default);
+  line-height: 1.4;
+}
+
+.groupLeft .groupLabel {
+  padding-top: 1px; /* optical alignment with first radio circle */
+  white-space: nowrap;
+}
+
+.required {
+  color: var(--sds-negative-text-default);
+  font-weight: var(--sds-weight-bold);
+}
+
+.optional {
+  font-size: var(--sds-size-12);
+  font-weight: var(--sds-weight-regular);
+  color: var(--sds-neutral-text-muted);
+}
+
+/* ─── Radio list (orientation) ──────────────────────────────────────────────── */
+
+.list {
+  display: flex;
+}
+
+.vertical {
+  flex-direction: column;
+  gap: var(--sds-spacing-12);
+}
+
+.horizontal {
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: var(--sds-spacing-8) var(--sds-spacing-16);
+}
+
+/* ─── Group-level help / error text ────────────────────────────────────────── */
+
+.helpText {
+  font-size: var(--sds-size-12);
+  color: var(--sds-neutral-text-muted);
+  line-height: 1.4;
+}
+
+.errorText {
+  font-size: var(--sds-size-12);
+  color: var(--sds-negative-text-default);
+  line-height: 1.4;
+}
+
+/* ─── Individual Radio item ─────────────────────────────────────────────────── */
+
+.item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sds-spacing-2);
+}
+
+.itemDisabled {
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+/* ─── Radio label row ───────────────────────────────────────────────────────── */
+
+.label {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+  color: var(--sds-neutral-text-default);
+  font-family: var(--sds-family-web-font);
+}
+
+/* ─── Native input (visually hidden, stays accessible) ─────────────────────── */
+
+.nativeInput {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ─── Custom circle indicator ───────────────────────────────────────────────── */
+
+.circle {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--sds-radius-full);
+  border: 1.5px solid var(--sds-neutral-border-default);
+  background-color: var(--sds-neutral-bg-default);
+  box-sizing: border-box;
+  transition: border-color 120ms ease, background-color 120ms ease, box-shadow 120ms ease;
+}
+
+/* Hover — unselected */
+.label:hover .circle:not(.circleSelected) {
+  border-color: var(--sds-primary-border-default);
+  background-color: var(--sds-primary-bg-subtle);
+}
+
+/* Selected */
+.circleSelected {
+  border-color: var(--sds-primary-bg-default);
+  background-color: var(--sds-primary-bg-default);
+}
+
+/* Hover — selected */
+.label:hover .circleSelected {
+  border-color: var(--sds-primary-border-default);
+  background-color: var(--sds-primary-bg-default);
+}
+
+/* Error state (unselected) */
+.circleError {
+  border-color: var(--sds-negative-text-default);
+}
+
+/* Focus ring */
+.nativeInput:focus-visible + .circle {
+  box-shadow: 0 0 0 3px var(--sds-primary-bg-subtle);
+}
+
+/* ─── Inner dot ─────────────────────────────────────────────────────────────── */
+
+.dot {
+  display: block;
+  border-radius: var(--sds-radius-full);
+  background-color: var(--sds-neutral-bg-default);
+  flex-shrink: 0;
+}
+
+/* ─── Per-radio help text ───────────────────────────────────────────────────── */
+
+.itemHelpText {
+  font-family: var(--sds-family-web-font);
+  font-size: var(--sds-size-12);
+  color: var(--sds-neutral-text-muted);
+  line-height: 1.4;
+}
+
+/* ─── Sizes ─────────────────────────────────────────────────────────────────── */
+
+/* small — 12×12px circle, 4×4px dot, 12px label */
+.small .label {
+  gap: var(--sds-spacing-6);
+}
+.small .circle {
+  width: 12px;
+  height: 12px;
+}
+.small .dot {
+  width: 4px;
+  height: 4px;
+}
+.small .labelText {
+  font-size: var(--sds-size-12);
+  line-height: 12px;
+}
+.small .itemHelpText {
+  padding-left: calc(12px + var(--sds-spacing-6));
+}
+
+/* medium — 16×16px circle, 6×6px dot, 14px label */
+.medium .label {
+  gap: var(--sds-spacing-8);
+}
+.medium .circle {
+  width: 16px;
+  height: 16px;
+}
+.medium .dot {
+  width: 6px;
+  height: 6px;
+}
+.medium .labelText {
+  font-size: var(--sds-size-14);
+  line-height: 16px;
+}
+.medium .itemHelpText {
+  padding-left: calc(16px + var(--sds-spacing-8));
+}
+
+/* large — 20×20px circle, 8×8px dot, 16px label */
+.large .label {
+  gap: var(--sds-spacing-8);
+}
+.large .circle {
+  width: 20px;
+  height: 20px;
+}
+.large .dot {
+  width: 8px;
+  height: 8px;
+}
+.large .labelText {
+  font-size: var(--sds-size-16);
+  line-height: 20px;
+}
+.large .itemHelpText {
+  padding-left: calc(20px + var(--sds-spacing-8));
+}

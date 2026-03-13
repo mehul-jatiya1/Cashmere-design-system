@@ -65,3 +65,14 @@ export type { FilterChipsProps } from './components/FilterChips'
 
 export { Checkbox } from './components/Checkbox'
 export type { CheckboxProps } from './components/Checkbox'
+
+export { Radio, RadioGroup } from './components/RadioButton'
+export type {
+  RadioProps,
+  RadioGroupProps,
+  RadioSize,
+  RadioGroupOrientation,
+  RadioGroupLabelPosition,
+  RadioGroupValidationState,
+  RadioGroupNecessityIndicator,
+} from './components/RadioButton'

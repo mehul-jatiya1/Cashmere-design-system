@@ -1,0 +1,221 @@
+import { Meta, Canvas, Controls } from '@storybook/blocks'
+import * as RadioButtonStories from './RadioButton.stories'
+
+<Meta of={RadioButtonStories} />
+
+# Radio Button
+
+> **Source:** [Figma — Radio Button](https://www.figma.com/design/OEwHAfVtHhfYFGKEalynMP/Cashmere-Design-System?node-id=8280-16532) · cashfree.com
+
+---
+
+## Introduction
+
+Radio Button is a single-selection form control used when a user must choose exactly one option from a mutually exclusive set. It is a **compound component** — a `<RadioGroup>` container wraps one or more `<Radio>` children. The group manages shared state, label, help/error text, and layout; individual radios only carry their value and optional help text.
+
+**When to use over other controls:**
+- Use Radio (not Checkbox) when only one option can be true at a time
+- Use Radio (not Select/Dropdown) when there are 2–5 options and all should be visible simultaneously
+- Use Radio (not Toggle) when the action takes effect only on form submission, not immediately
+
+---
+
+## Import
+
+```tsx
+import { Radio, RadioGroup } from '@cashfree/cashmere';
+import type { RadioProps, RadioGroupProps } from '@cashfree/cashmere';
+```
+
+---
+
+## Default
+
+<Canvas of={RadioButtonStories.Default} />
+<Controls of={RadioButtonStories.Default} />
+
+---
+
+## Sizes
+
+Three sizes share the same visual structure but differ in circle diameter, dot size, and label font size.
+
+| Size | Circle | Inner dot | Label size | Use case |
+|---|---|---|---|---|
+| **small** | 12×12px | 4px | 12px | Dense lists, compact forms, data tables |
+| **medium** *(default)* | 16×16px | 6px | 14px | Standard forms, settings pages |
+| **large** | 20×20px | 8px | 16px | Prominent choices, onboarding flows |
+
+<Canvas of={RadioButtonStories.AllSizes} />
+
+---
+
+## States
+
+<Canvas of={RadioButtonStories.AllStates} />
+
+---
+
+## Orientations
+
+<Canvas of={RadioButtonStories.Orientations} />
+
+---
+
+## Help Text
+
+<Canvas of={RadioButtonStories.WithHelpText} />
+
+---
+
+## Controlled Pattern
+
+<Canvas of={RadioButtonStories.Controlled} />
+
+---
+
+## Interactive Test
+
+<Canvas of={RadioButtonStories.Interactive} />
+
+---
+
+## Mobile
+
+<Canvas of={RadioButtonStories.Mobile} />
+
+---
+
+## API Reference
+
+### `<Radio>` Props
+
+| Prop | Required | Type | Default | Description |
+|---|---|---|---|---|
+| `value` | ✱ | `string` | — | Value submitted on form submission and returned in `onChange`. Must be unique within the group. |
+| `children` | ✱ | `string` | — | The visible label text for this option. |
+| `helpText` | — | `string` | `undefined` | Secondary text shown below this radio's label. For clarification, not errors. |
+| `isDisabled` | — | `boolean` | `false` | Disables only this radio option while leaving others interactive. |
+| `size` | — | `'small' \| 'medium' \| 'large'` | Inherited | Overrides the group size for this radio. Avoid mixing sizes within a group. |
+| `testID` | — | `string` | `undefined` | Test identifier for automated testing. |
+
+> ✱ = required
+
+### `<RadioGroup>` Props
+
+| Prop | Required | Type | Default | Description |
+|---|---|---|---|---|
+| `children` | ✱ | `React.ReactNode` | — | One or more `<Radio>` components. |
+| `label` | ✱ | `string` | — | Visible label for the entire radio group. |
+| `value` | — | `string` | `undefined` | Controlled selected value. Use with `onChange`. |
+| `defaultValue` | — | `string` | `undefined` | Initial selected value for uncontrolled usage. |
+| `onChange` | — | `({ name, value }) => void` | `undefined` | Fires when selection changes. |
+| `name` | — | `string` | auto | HTML `name` attribute for form submission. |
+| `size` | — | `'small' \| 'medium' \| 'large'` | `'medium'` | Size of all radios in the group. |
+| `orientation` | — | `'vertical' \| 'horizontal'` | `'vertical'` | Layout direction of the radio options. |
+| `labelPosition` | — | `'top' \| 'left'` | `'top'` | Position of the group label. |
+| `helpText` | — | `string` | `undefined` | Assistive text shown below the group. Hidden when `validationState="error"`. |
+| `errorText` | — | `string` | `undefined` | Error message shown when `validationState="error"`. |
+| `validationState` | — | `'none' \| 'error'` | `'none'` | When `'error'`, renders `errorText` with destructive styling. |
+| `isDisabled` | — | `boolean` | `false` | Disables all radio options in the group. |
+| `isRequired` | — | `boolean` | `false` | Sets `aria-required` on the group for form validation. |
+| `necessityIndicator` | — | `'required' \| 'optional' \| 'none'` | `'none'` | Visual necessity indicator shown after the group label. |
+| `testID` | — | `string` | `undefined` | Test identifier for the group container. |
+
+> ✱ = required
+
+---
+
+## Design Tokens
+
+### Size tokens
+
+| Size | Circle diameter | Inner dot | Label font | Gap between options |
+|---|---|---|---|---|
+| `small` | 12px | 4×4px | 12px | `--sds-spacing-12` |
+| `medium` | 16px | 6×6px | 14px | `--sds-spacing-12` |
+| `large` | 20px | 8×8px | 16px | `--sds-spacing-12` |
+
+### Color tokens
+
+| State | Part | Token | Value |
+|---|---|---|---|
+| Unselected / Default | Border | `--sds-neutral-border-default` | `#bbb` |
+| Unselected / Default | Fill | `--sds-neutral-bg-default` | `#fff` |
+| Unselected / Hover | Border | `--sds-primary-border-default` | `#094eff` |
+| Unselected / Hover | Fill | `--sds-primary-bg-subtle` | `#e5edff` |
+| Selected / Default | Border + Fill | `--sds-primary-bg-default` | `#094eff` |
+| Selected / Default | Dot | `--sds-neutral-bg-default` | `#fff` |
+| Focus ring | Shadow | `--sds-primary-bg-subtle` | `#e5edff` |
+| Disabled | Opacity | — | `0.4` |
+| Error / Unselected | Border | `--sds-negative-text-default` | `#ee0033` |
+
+---
+
+## Usage Guidelines
+
+### When to use
+
+- Use when the user must pick **exactly one** option from a set of 2–5 mutually exclusive choices
+- Use when all options must be visible simultaneously (vs. a dropdown which hides them)
+- Use in forms where selection takes effect on submission (vs. a toggle that acts immediately)
+
+### Number of options
+
+**✓ Do** — Limit radio groups to 2–5 options. If you have more than 5, consider a Select dropdown.
+
+**✕ Don't** — Create a radio group with 8–10 options; users must scan everything before deciding.
+
+### Grouping related options
+
+**✓ Do** — Always include a `label` so the set of choices has a clear heading: "Payment method", "Delivery speed", "Account type".
+
+**✕ Don't** — Rely on surrounding page text to explain what the group is for. Screen readers depend on the group label.
+
+### Default selections
+
+**✓ Do** — Pre-select the safest default using `defaultValue` to reduce friction.
+
+**✕ Don't** — Leave a required radio group unselected with no default. Users may miss it and get a confusing validation error.
+
+### Error handling
+
+**✓ Do** — Set `validationState="error"` with specific `errorText`: "Select a document type to continue."
+
+**✕ Don't** — Use `helpText` to communicate errors. It is always visible and sets expectations, not failures.
+
+### Disabled state
+
+- Always pair a disabled option with a tooltip or adjacent helper text explaining why it is unavailable
+- Never silently hide options — show them at 40% opacity so users understand the full option set
+
+---
+
+## Platform
+
+### Desktop
+Full-size targets (16×16px medium) with hover states.
+- Arrow keys cycle through options within the group natively
+- Focus ring (`box-shadow: 0 0 0 3px var(--sds-primary-bg-subtle)`) satisfies WCAG 2.4.7
+
+### Tablet
+Touch targets must be ≥44×44px.
+- The `<label>` wraps the full row to expand the tap target beyond the circle
+- Vertical orientation preferred — horizontal can crowd on portrait tablets
+
+### Mobile
+Same rules as tablet; additionally:
+- Use at least `--sds-spacing-16` vertical gap between items to prevent mis-taps
+- For more than 4 options, consider a bottom sheet or full-screen selection modal
+
+---
+
+## Accessibility
+
+- The underlying `<input type="radio">` handles focus, keyboard, and form submission natively
+- Arrow keys navigate between options within the same `name` group per [W3C ARIA radio button pattern](https://www.w3.org/WAI/ARIA/apg/patterns/radio/)
+- The group uses `role="group"` + `aria-labelledby` — screen readers announce the group label before each option
+- `isRequired` + `necessityIndicator="required"` should be used together — `aria-required` provides the machine-readable cue; the indicator provides the visual one
+- Error text is rendered with `role="alert"` so screen readers announce it immediately on validation change
+- Disabled radios remain in the DOM so assistive technologies communicate the full option set
+- Color is not the sole indicator of selected state — the inner white dot provides a shape-based cue alongside the blue fill
